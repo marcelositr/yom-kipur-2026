@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { marcos } from '../data/marcos';
+
+const marco01 = marcos.find((item) => item.id === 1);
 ---
 <BaseLayout>
   <section class="hero">
@@ -21,4 +24,73 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       calendário judaico e o ritmo da caminhada.
     </p>
   </section>
+
+  {marco01 && (
+    <section class="container draft-section" aria-labelledby="primeiro-marco">
+      <div class="eyebrow">Laboratório editorial</div>
+      <h2 id="primeiro-marco">Primeiro marco em construção</h2>
+      <a class="draft-card" href={`${import.meta.env.BASE_URL}marcos/01-o-rei-esta-no-campo/`}>
+        <div>
+          <span class="status">Rascunho · Marco 01</span>
+          <strong>{marco01.title}</strong>
+          <span>{marco01.hebrewDate} · {marco01.civilDate}</span>
+        </div>
+        <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  )}
 </BaseLayout>
+
+<style>
+  .draft-section {
+    margin-bottom: 6rem;
+  }
+
+  .draft-section h2 {
+    margin: .55rem 0 1.4rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 500;
+  }
+
+  .draft-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: var(--ivory);
+    text-decoration: none;
+    transition: transform .18s ease, box-shadow .18s ease;
+  }
+
+  .draft-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+  }
+
+  .draft-card div {
+    display: grid;
+    gap: .35rem;
+  }
+
+  .draft-card strong {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 500;
+  }
+
+  .draft-card span:not(.status) {
+    color: var(--muted);
+  }
+
+  .status {
+    color: var(--gold);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+</style>
