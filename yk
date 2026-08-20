@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+usage() {
+  cat <<'EOF'
+Caminho para Yom Kipur 5787
+
+Uso:
+  ./yk setup       prepara Node, dependências e Chromium
+  ./yk dev         sobe o site local
+  ./yk test        valida conteúdo, Astro/TypeScript e build
+  ./yk render [N]  renderiza o card do marco N (padrão: 1)
+  ./yk doctor      diagnostica o ambiente
+  ./yk help        mostra esta ajuda
+EOF
+}
+
+command="${1:-help}"
+shift || true
+
+case "$command" in
+  setup)
+    exec bash "$ROOT/scripts/setup.sh" "$@"
+    ;;
+  dev)
+    exec bash "$ROOT/scripts/dev.sh" "$@"
+    ;;
+  test)
+    exec bash "$ROOT/scripts/test.sh" "$@"
+    ;;
+  render)
+    exec bash "$ROOT/scripts/render-card.sh" "$@"
+    ;;
+  doctor)
+    exec bash "$ROOT/scripts/doctor.sh" "$@"
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    printf 'Comando desconhecido: %s\n\n' "$command" >&2
+    usage >&2
+    exit 2
+    ;;
+esac
