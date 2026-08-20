@@ -43,23 +43,27 @@ Depois de clonar ou atualizar o projeto:
 bash yk setup
 ```
 
-A partir daí, os comandos do dia a dia são:
+No dia a dia:
 
 ```bash
-bash yk dev
+bash yk dev --open
+bash yk open
 bash yk test
 bash yk render 1
 bash yk doctor
+bash yk help
 ```
 
 Comandos disponíveis:
 
-- `bash yk setup` — prepara Node, dependências npm e Chromium.
+- `bash yk setup` — prepara Node, dependências npm e Chromium e roda uma validação completa.
 - `bash yk dev` — sobe o site local com Astro.
+- `bash yk dev --open` — sobe o Astro e abre o navegador quando o servidor responder.
+- `bash yk open [CAMINHO]` — abre no navegador o localhost que já estiver rodando.
 - `bash yk test` — valida conteúdo, Astro/TypeScript e build.
 - `bash yk render N` — gera o PNG do marco `N`; sem número, usa o Marco 01.
 - `bash yk doctor` — mostra branch, Node, npm, fnm e estado básico do ambiente.
-- `bash yk help` — mostra a ajuda rápida.
+- `bash yk help` — mostra ajuda detalhada, parâmetros e exemplos.
 
 ## Estrutura
 
@@ -72,7 +76,7 @@ Comandos disponíveis:
 ├── docs/                # regras editoriais e sistema visual
 ├── public/
 │   └── assets/          # ambientações e recursos públicos
-├── scripts/             # setup, dev, testes, diagnóstico e renderização
+├── scripts/             # setup, dev, open, testes, diagnóstico e renderização
 ├── src/
 │   ├── components/      # componentes visuais reutilizáveis
 │   ├── data/            # fonte estruturada dos marcos
@@ -93,16 +97,34 @@ npm install
 npm run dev
 ```
 
-O Astro normalmente abrirá em:
+O Astro abre localmente em:
 
 ```text
-http://localhost:4321/
+http://localhost:4321/yom-kipur-2026/
 ```
 
 O laboratório do Marco 01 fica em:
 
 ```text
-http://localhost:4321/marcos/01-o-rei-esta-no-campo/
+http://localhost:4321/yom-kipur-2026/marcos/01-o-rei-esta-no-campo/
+```
+
+Para iniciar e abrir automaticamente:
+
+```bash
+bash yk dev --open
+```
+
+Se o servidor já estiver rodando:
+
+```bash
+bash yk open
+```
+
+Também é possível abrir uma rota específica:
+
+```bash
+bash yk open marcos/01-o-rei-esta-no-campo/
 ```
 
 ## Teste completo
