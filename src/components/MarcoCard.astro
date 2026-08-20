@@ -1,0 +1,32 @@
+---
+import '../styles/card.css';
+import type { Marco } from '../data/marcos';
+
+interface Props {
+  marco: Marco;
+}
+
+const { marco } = Astro.props;
+---
+<div class="yk-card-frame">
+  <article class="yk-card" data-theme={marco.theme}>
+    <div class="yk-card__body">
+      <div class="yk-card__topline">{marco.hebrewDate} · {marco.civilDate}</div>
+      <div class="yk-card__classification">{marco.classification}</div>
+      <div class="yk-card__hebrew" lang="he" dir="rtl">{marco.hebrew}</div>
+      <h2 class="yk-card__title">{marco.title}</h2>
+      <div class="yk-card__translit">{marco.transliteration}</div>
+      <div class="yk-card__translation">{marco.translation}</div>
+      <div class="yk-card__summary">{marco.summary}</div>
+      <div class="yk-card__practice">
+        <strong>Para viver este marco</strong>
+        <p>{marco.practice}</p>
+      </div>
+      {marco.biblicalReference && <div class="yk-card__reference">{marco.biblicalReference}</div>}
+    </div>
+    <footer class="yk-card__footer">
+      <span>Marcelo Trindade · @marcelositr</span>
+      <span>devnux.com.br</span>
+    </footer>
+  </article>
+</div>
