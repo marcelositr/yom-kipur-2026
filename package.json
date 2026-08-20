@@ -11,6 +11,7 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "test": "npm run content:validate && npm run check && npm run build",
     "card:render": "tsx scripts/render-card.ts",
     "content:validate": "tsx scripts/validate-content.ts"
   },
