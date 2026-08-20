@@ -11,11 +11,11 @@
 </head>
 <body>
   <div class="yk-card-frame">
-    <article class="yk-card" data-theme="{{theme}}">
+    <article class="yk-card" data-theme="{{theme}}" style="--yk-background: url('{{background}}')">
       <div class="yk-card__body">
         <div class="yk-card__topline">{{hebrewDate}} · {{civilDate}}</div>
         <div class="yk-card__classification">{{classification}}</div>
-        <div class="yk-card__hebrew">{{hebrew}}</div>
+        <div class="yk-card__hebrew" lang="he" dir="rtl">{{hebrew}}</div>
         <h1 class="yk-card__title">{{title}}</h1>
         <div class="yk-card__translit">{{transliteration}}</div>
         <div class="yk-card__translation">{{translation}}</div>
