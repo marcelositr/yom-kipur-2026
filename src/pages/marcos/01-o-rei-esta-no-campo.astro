@@ -5,6 +5,8 @@ import { marcos } from '../../data/marcos';
 
 const marco = marcos.find((item) => item.id === 1);
 if (!marco) throw new Error('Marco 01 não encontrado.');
+
+const devotionalUrl = `${import.meta.env.BASE_URL}downloads/2026-08-21_marco01_o-rei-esta-no-campo.txt`;
 ---
 <BaseLayout
   title={`${marco.title} · Caminho para Yom Kipur 5787`}
@@ -35,6 +37,16 @@ if (!marco) throw new Error('Marco 01 não encontrado.');
       </dl>
 
       {marco.calendarNote && <p class="note">{marco.calendarNote}</p>}
+
+      <div class="download-block">
+        <div>
+          <div class="download-kicker">Texto devocional</div>
+          <strong>Marco 01 · arquivo TXT para WhatsApp</strong>
+        </div>
+        <a class="download-button" href={devotionalUrl} download>
+          Baixar .TXT
+        </a>
+      </div>
 
       <div class="sources">
         <h2>Fontes de verificação</h2>
@@ -114,6 +126,38 @@ if (!marco) throw new Error('Marco 01 não encontrado.');
     line-height: 1.65;
   }
 
+  .download-block {
+    margin-top: 1.5rem;
+    padding: 1rem 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fffdf8;
+  }
+
+  .download-kicker {
+    margin-bottom: .3rem;
+    color: var(--gold);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .download-button {
+    flex: 0 0 auto;
+    padding: .75rem 1rem;
+    border-radius: 999px;
+    background: var(--forest);
+    color: var(--ivory);
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
   .sources {
     margin-top: 2rem;
   }
@@ -162,6 +206,13 @@ if (!marco) throw new Error('Marco 01 não encontrado.');
     .preview-column {
       max-width: 540px;
       margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .download-block {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 </style>
