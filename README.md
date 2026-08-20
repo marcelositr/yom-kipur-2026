@@ -52,10 +52,11 @@ A versão esperada é `v22.12.0` ou superior dentro da série 22.x.
 ├── docs/                # regras e documentação editorial
 ├── scripts/             # validação e renderização
 ├── src/
+│   ├── components/      # componentes visuais reutilizáveis
 │   ├── data/            # fonte estruturada dos marcos
 │   ├── layouts/
 │   ├── pages/
-│   └── styles/
+│   └── styles/          # design system do site e do card
 └── .github/workflows/   # CI, sem deploy público
 ```
 
@@ -66,7 +67,27 @@ npm install
 npm run dev
 ```
 
-Validação:
+O Astro normalmente abrirá em:
+
+```text
+http://localhost:4321/
+```
+
+O laboratório do Marco 01 fica em:
+
+```text
+http://localhost:4321/marcos/01-o-rei-esta-no-campo/
+```
+
+## Teste completo
+
+```bash
+npm test
+```
+
+Esse comando valida o conteúdo, executa a checagem do Astro/TypeScript e gera o build estático.
+
+Também é possível executar as etapas separadamente:
 
 ```bash
 npm run content:validate
@@ -74,13 +95,15 @@ npm run check
 npm run build
 ```
 
-Para instalar o Chromium usado na renderização dos cards:
+## Renderização do card
+
+Para instalar o Chromium usado na renderização:
 
 ```bash
 npx playwright install chromium
 ```
 
-Renderizar um marco em PNG:
+Renderizar o Marco 01 em PNG:
 
 ```bash
 npm run card:render -- 1
@@ -96,6 +119,8 @@ cards/rendered/01-o-rei-esta-no-campo.png
 
 O card é composto em HTML/CSS e capturado pelo Chromium em **1080 × 1920**.
 
+O preview exibido pelo site e o PNG exportado usam a mesma fonte de estilos (`src/styles/card.css`). Isso evita divergência entre o que é revisado no navegador e o material final.
+
 A imagem de fundo pode ser produzida separadamente, inclusive com geração de imagem, mas hebraico, niqqud, datas, referências e créditos permanecem texto real. Isso evita erros gráficos em conteúdo que precisa de precisão textual.
 
 ## Primeiro marco
@@ -104,7 +129,7 @@ A imagem de fundo pode ser produzida separadamente, inclusive com geração de i
 
 **הַמֶּלֶךְ בַּשָּׂדֶה · HaMelech BaSadeh · O Rei está no campo**
 
-O primeiro marco está registrado apenas como `draft`. Conteúdo visual e devocional devem passar por revisão factual antes da publicação.
+O primeiro marco está registrado como `draft` e possui uma página de laboratório para revisão visual e factual. O devocional ainda não é tratado como conteúdo publicado.
 
 ## Documentação editorial
 
