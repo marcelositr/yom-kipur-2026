@@ -167,5 +167,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco06-tzedaka.svg',
     practice: 'Escolha uma necessidade real e contribua de modo responsável com algo que você possa oferecer. Faça com discrição, sem esperar reconhecimento e sem transformar a ajuda em palco.',
     status: 'draft'
+  },
+  {
+    id: 7,
+    slug: 'quando-o-retorno-vira-oracao',
+    title: 'Quando o retorno vira oração',
+    hebrew: 'סְלִיחוֹת',
+    transliteration: 'Selichot',
+    translation: 'Súplicas por perdão',
+    hebrewDate: '26 Elul 5786',
+    civilDate: '8 de setembro de 2026',
+    publicationDate: '7 de setembro de 2026',
+    theme: 'selichot',
+    summary: 'Depois de retornar, reparar e agir com justiça, a caminhada ganha voz. Selichot é a tradição litúrgica judaica de súplicas por perdão e misericórdia na preparação para os Yamim Noraim.',
+    classification: 'Liturgia penitencial judaica · tradição comunitária',
+    conceptSource: 'Êxodo 34:6-7 · atributos de misericórdia',
+    conceptSourceUrl: 'https://www.sefaria.org/Exodus.34.6-7',
+    traditionSource: 'Talmud Bavli · Rosh Hashaná 17b · os atributos de misericórdia',
+    traditionSourceUrl: 'https://www.sefaria.org/Rosh_Hashanah.17b.6',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=26&hm=Elul&hy=5786',
+    calendarNote: '26 Elul 5786 começa ao pôr do sol de segunda-feira, 7 de setembro. Comunidades sefarditas já recitam Selichot desde o início de Elul; no costume ashkenazi de 5786, Leil Selichot ocorreu após o anoitecer de sábado, 5 de setembro.',
+    biblicalReference: 'Êxodo 34:6-7 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco07-selichot.svg',
+    practice: 'Leia Êxodo 34:6-7 lentamente. Depois, em suas próprias palavras, faça uma oração breve pedindo misericórdia e força para continuar a Teshuvá que você já começou, sem tentar reproduzir uma liturgia que pertence a uma comunidade específica.',
+    status: 'draft'
   }
 ];
