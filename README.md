@@ -29,7 +29,7 @@ O ritmo é determinado pelo calendário judaico, pela progressão espiritual e p
 
 ## Requisito de ambiente
 
-Este projeto usa Astro 7 e exige **Node.js 22.12.0 ou superior dentro da série 22.x**.
+Este projeto usa Astro 7 e exige **Node.js 22.19.0 ou superior dentro da série 22.x**.
 
 A versão está registrada em `.nvmrc` e o `npm` está configurado para falhar cedo quando o Node não for compatível.
 
