@@ -20,11 +20,11 @@ fi
 if [[ -d node_modules ]]; then
   printf '\nnode_modules: presente\n'
 else
-  printf '\nnode_modules: ausente (rode ./yk setup)\n'
+  printf '\nnode_modules: ausente (rode bash yk setup)\n'
 fi
 
 if [[ -d "$HOME/.cache/ms-playwright" ]] || [[ -d "$HOME/.cache/ms-playwright-go" ]]; then
   printf 'Playwright cache: presente\n'
 else
-  printf 'Playwright cache: não detectado (rode ./yk setup se precisar renderizar cards)\n'
+  printf 'Playwright cache: não detectado (rode bash yk setup se precisar renderizar cards)\n'
 fi
