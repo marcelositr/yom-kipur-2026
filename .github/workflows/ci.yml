@@ -15,12 +15,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          cache: npm
       - name: Install dependencies
         run: npm install
-      - name: Validate content
-        run: npm run content:validate
-      - name: Check Astro
-        run: npm run check
-      - name: Build site
-        run: npm run build
+      - name: Test project
+        run: npm test
