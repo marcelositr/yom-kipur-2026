@@ -5,6 +5,8 @@ import { marcos } from '../../data/marcos';
 
 const marco = marcos.find((item) => item.id === 13);
 if (!marco) throw new Error('Marco 13 não encontrado.');
+
+const devotionalUrl = `${import.meta.env.BASE_URL}downloads/2026-09-20_marco13_a-vida-vem-primeiro.txt`;
 ---
 <BaseLayout
   title={`${marco.title} · Caminho para Yom Kipur 5787`}
@@ -13,7 +15,7 @@ if (!marco) throw new Error('Marco 13 não encontrado.');
   <section class="marco-page container">
     <div class="marco-copy">
       <a class="back" href={import.meta.env.BASE_URL}>← Voltar</a>
-      <div class="eyebrow">Marco 13 · card em construção</div>
+      <div class="eyebrow">Marco 13 · rascunho editorial</div>
       <h1>{marco.title}</h1>
       <p class="lede">{marco.summary}</p>
 
@@ -40,10 +42,14 @@ if (!marco) throw new Error('Marco 13 não encontrado.');
         <p>Questões de jejum, medicação e risco à saúde precisam ser tratadas com responsabilidade individual e orientação qualificada.</p>
       </div>
 
-      <div class="workflow-note">
-        <div class="workflow-kicker">Etapa atual</div>
-        <strong>Somente o card está sendo produzido.</strong>
-        <p>O texto devocional entra apenas na próxima etapa do fluxo editorial.</p>
+      <div class="download-block">
+        <div>
+          <div class="download-kicker">Texto devocional</div>
+          <strong>Marco 13 · arquivo TXT para WhatsApp</strong>
+        </div>
+        <a class="download-button" href={devotionalUrl} download>
+          Baixar .TXT
+        </a>
       </div>
 
       <div class="sources">
@@ -122,7 +128,6 @@ if (!marco) throw new Error('Marco 13 não encontrado.');
   }
 
   .note,
-  .workflow-note,
   .safety-note {
     padding: 1rem 1.15rem;
     background: var(--ivory);
@@ -133,26 +138,47 @@ if (!marco) throw new Error('Marco 13 não encontrado.');
     border-left: 3px solid var(--gold);
   }
 
-  .workflow-note,
   .safety-note {
     margin-top: 1rem;
     border: 1px solid var(--line);
     border-radius: 16px;
   }
 
-  .workflow-note p,
   .safety-note p {
     margin: .35rem 0 0;
   }
 
-  .workflow-kicker,
-  .safety-kicker {
+  .safety-kicker,
+  .download-kicker {
     margin-bottom: .3rem;
     color: var(--gold);
     font-size: .72rem;
     font-weight: 800;
     letter-spacing: .12em;
     text-transform: uppercase;
+  }
+
+  .download-block {
+    margin-top: 1.5rem;
+    padding: 1rem 1.15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #fffdf8;
+  }
+
+  .download-button {
+    flex: 0 0 auto;
+    padding: .75rem 1rem;
+    border-radius: 999px;
+    background: var(--forest);
+    color: var(--ivory);
+    font-size: .9rem;
+    font-weight: 700;
+    text-decoration: none;
   }
 
   .sources {
@@ -203,6 +229,13 @@ if (!marco) throw new Error('Marco 13 não encontrado.');
     .preview-column {
       max-width: 540px;
       margin-inline: auto;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .download-block {
+      align-items: flex-start;
+      flex-direction: column;
     }
   }
 </style>
