@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Fundo abstrato para Pikuach Nefesh</title>
+  <desc id="desc">Composição em azul-esverdeado profundo com arcos protetores e um núcleo de luz dourada simbolizando a preservação da vida.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b2424"/>
+      <stop offset="0.58" stop-color="#12352f"/>
+      <stop offset="1" stop-color="#071a1c"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="60%" r="42%">
+      <stop offset="0" stop-color="#d9b86c" stop-opacity="0.72"/>
+      <stop offset="0.28" stop-color="#b89550" stop-opacity="0.30"/>
+      <stop offset="0.7" stop-color="#8d743f" stop-opacity="0.08"/>
+      <stop offset="1" stop-color="#8d743f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="arch" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d8bd78" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#9d8248" stop-opacity="0.08"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="28"/></filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect width="1080" height="1920" fill="url(#glow)"/>
+
+  <g opacity="0.15">
+    <circle cx="170" cy="260" r="2" fill="#e8d7a4"/>
+    <circle cx="865" cy="315" r="2.5" fill="#e8d7a4"/>
+    <circle cx="920" cy="690" r="1.5" fill="#e8d7a4"/>
+    <circle cx="115" cy="810" r="2" fill="#e8d7a4"/>
+  </g>
+
+  <ellipse cx="540" cy="1235" rx="330" ry="280" fill="#d8b765" opacity="0.08" filter="url(#blur)"/>
+
+  <path d="M205 1420 C205 1040 330 815 540 720 C750 815 875 1040 875 1420" fill="none" stroke="url(#arch)" stroke-width="9"/>
+  <path d="M270 1420 C270 1080 370 890 540 805 C710 890 810 1080 810 1420" fill="none" stroke="#d8bd78" stroke-opacity="0.18" stroke-width="5"/>
+
+  <g transform="translate(540 1230)">
+    <ellipse cx="0" cy="70" rx="170" ry="48" fill="#020c0d" opacity="0.38"/>
+    <path d="M-150 25 C-105 -30 -55 -48 0 -48 C55 -48 105 -30 150 25 C112 16 78 10 45 8 C27 40 12 72 0 108 C-12 72 -27 40 -45 8 C-78 10 -112 16 -150 25 Z" fill="#d2b56f" opacity="0.20"/>
+    <circle cx="0" cy="-10" r="54" fill="#dfc47c" opacity="0.86"/>
+    <circle cx="0" cy="-10" r="96" fill="#dfc47c" opacity="0.13" filter="url(#blur)"/>
+    <path d="M0 -62 C18 -36 30 -14 30 10 C30 33 17 52 0 64 C-17 52 -30 33 -30 10 C-30 -14 -18 -36 0 -62 Z" fill="#f1dfae" opacity="0.68"/>
+  </g>
+
+  <path d="M0 1650 C225 1555 365 1585 540 1660 C710 1733 875 1702 1080 1618 L1080 1920 L0 1920 Z" fill="#061617" opacity="0.76"/>
+  <path d="M0 1705 C220 1632 386 1650 548 1710 C712 1772 876 1745 1080 1680" fill="none" stroke="#d1b46d" stroke-opacity="0.09" stroke-width="3"/>
+</svg>
