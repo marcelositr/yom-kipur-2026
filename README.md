@@ -33,27 +33,46 @@ Este projeto usa Astro 7 e exige **Node.js 22.12.0 ou superior dentro da série 
 
 A versão está registrada em `.nvmrc` e o `npm` está configurado para falhar cedo quando o Node não for compatível.
 
-Com `fnm`:
+## Atalho `yk`
+
+O projeto possui um launcher único para evitar a necessidade de lembrar os comandos internos.
+
+Na primeira execução após clonar ou atualizar o projeto, rode:
 
 ```bash
-fnm install
-fnm use
-node -v
+bash yk setup
 ```
 
-A versão esperada é `v22.12.0` ou superior dentro da série 22.x.
+O `setup` ajusta as permissões dos scripts. Depois disso, use normalmente:
+
+```bash
+./yk dev
+./yk test
+./yk render 1
+./yk doctor
+```
+
+Comandos disponíveis:
+
+- `./yk setup` — prepara Node, dependências npm e Chromium.
+- `./yk dev` — sobe o site local com Astro.
+- `./yk test` — valida conteúdo, Astro/TypeScript e build.
+- `./yk render N` — gera o PNG do marco `N`; sem número, usa o Marco 01.
+- `./yk doctor` — mostra branch, Node, npm, fnm e estado básico do ambiente.
+- `./yk help` — mostra a ajuda rápida.
 
 ## Estrutura
 
 ```text
 .
+├── yk                    # launcher principal
 ├── cards/
 │   ├── templates/       # composição 9:16 determinística
 │   └── rendered/        # PNGs gerados localmente, não versionados
 ├── docs/                # regras editoriais e sistema visual
 ├── public/
 │   └── assets/          # ambientações e recursos públicos
-├── scripts/             # validação e renderização
+├── scripts/             # setup, dev, testes, diagnóstico e renderização
 ├── src/
 │   ├── components/      # componentes visuais reutilizáveis
 │   ├── data/            # fonte estruturada dos marcos
@@ -63,9 +82,13 @@ A versão esperada é `v22.12.0` ou superior dentro da série 22.x.
 └── .github/workflows/   # CI, sem deploy público
 ```
 
-## Desenvolvimento
+## Desenvolvimento manual
+
+Os comandos abaixo continuam disponíveis caso seja necessário trabalhar sem o launcher:
 
 ```bash
+fnm install
+fnm use
 npm install
 npm run dev
 ```
@@ -84,31 +107,32 @@ http://localhost:4321/marcos/01-o-rei-esta-no-campo/
 
 ## Teste completo
 
+Via launcher:
+
+```bash
+./yk test
+```
+
+Manualmente:
+
 ```bash
 npm test
 ```
 
 Esse comando valida o conteúdo, executa a checagem do Astro/TypeScript e gera o build estático.
 
-Também é possível executar as etapas separadamente:
-
-```bash
-npm run content:validate
-npm run check
-npm run build
-```
-
 ## Renderização do card
 
-Para instalar o Chromium usado na renderização:
+Via launcher:
+
+```bash
+./yk render 1
+```
+
+Manualmente:
 
 ```bash
 npx playwright install chromium
-```
-
-Renderizar o Marco 01 em PNG:
-
-```bash
 npm run card:render -- 1
 ```
 
