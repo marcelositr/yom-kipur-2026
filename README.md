@@ -37,13 +37,13 @@ A versão está registrada em `.nvmrc` e o `npm` está configurado para falhar c
 
 O projeto possui um launcher único para evitar a necessidade de lembrar os comandos internos.
 
-Na primeira execução após clonar ou atualizar o projeto, rode:
+Depois de clonar ou atualizar o projeto:
 
 ```bash
-bash yk setup
+./yk setup
 ```
 
-O `setup` ajusta as permissões dos scripts. Depois disso, use normalmente:
+A partir daí, os comandos do dia a dia são:
 
 ```bash
 ./yk dev
