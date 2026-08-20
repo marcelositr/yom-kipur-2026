@@ -7,9 +7,12 @@ interface Props {
 }
 
 const { marco } = Astro.props;
+const backgroundStyle = marco.backgroundAsset
+  ? `--yk-background: url('${marco.backgroundAsset}')`
+  : undefined;
 ---
 <div class="yk-card-frame">
-  <article class="yk-card" data-theme={marco.theme}>
+  <article class="yk-card" data-theme={marco.theme} style={backgroundStyle}>
     <div class="yk-card__body">
       <div class="yk-card__topline">{marco.hebrewDate} · {marco.civilDate}</div>
       <div class="yk-card__classification">{marco.classification}</div>
