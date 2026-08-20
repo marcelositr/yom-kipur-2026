@@ -22,6 +22,7 @@ O ritmo é determinado pelo calendário judaico, pela progressão espiritual e p
 - Astro 7
 - TypeScript
 - HTML/CSS
+- SVG próprio para ambientações vetoriais
 - Playwright / Chromium para renderização dos cards
 - GitHub Actions para validação e build
 - GitHub Pages futuramente
@@ -49,7 +50,9 @@ A versão esperada é `v22.12.0` ou superior dentro da série 22.x.
 ├── cards/
 │   ├── templates/       # composição 9:16 determinística
 │   └── rendered/        # PNGs gerados localmente, não versionados
-├── docs/                # regras e documentação editorial
+├── docs/                # regras editoriais e sistema visual
+├── public/
+│   └── assets/          # ambientações e recursos públicos
 ├── scripts/             # validação e renderização
 ├── src/
 │   ├── components/      # componentes visuais reutilizáveis
@@ -121,7 +124,9 @@ O card é composto em HTML/CSS e capturado pelo Chromium em **1080 × 1920**.
 
 O preview exibido pelo site e o PNG exportado usam a mesma fonte de estilos (`src/styles/card.css`). Isso evita divergência entre o que é revisado no navegador e o material final.
 
-A imagem de fundo pode ser produzida separadamente, inclusive com geração de imagem, mas hebraico, niqqud, datas, referências e créditos permanecem texto real. Isso evita erros gráficos em conteúdo que precisa de precisão textual.
+A ambientação do Marco 01 é um SVG próprio do projeto (`public/assets/backgrounds/marco01-proximidade.svg`) com campo, caminho, oliveiras e luz de entardecer. O renderizador incorpora esse recurso no PNG final, portanto o export não depende de servidor web nem de conexão externa.
+
+Hebraico, niqqud, datas, referências e créditos permanecem texto real. Isso evita erros gráficos em conteúdo que precisa de precisão textual.
 
 ## Primeiro marco
 
@@ -131,9 +136,10 @@ A imagem de fundo pode ser produzida separadamente, inclusive com geração de i
 
 O primeiro marco está registrado como `draft` e possui uma página de laboratório para revisão visual e factual. O devocional ainda não é tratado como conteúdo publicado.
 
-## Documentação editorial
+## Documentação
 
-Leia [`docs/EDITORIAL.md`](docs/EDITORIAL.md) antes de criar ou alterar conteúdo.
+- [`docs/EDITORIAL.md`](docs/EDITORIAL.md) — limites, fontes e regras editoriais.
+- [`docs/VISUAL.md`](docs/VISUAL.md) — identidade gráfica e regras dos cards.
 
 ## Crédito editorial
 
