@@ -143,5 +143,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco05-reparacao.svg',
     practice: 'Identifique uma relação em que você causou dano, ficou devendo algo ou precisa pedir perdão. Defina uma reparação concreta e dê o primeiro passo com humildade, sem transformar o pedido em nova pressão sobre a outra pessoa.',
     status: 'draft'
+  },
+  {
+    id: 6,
+    slug: 'abra-a-mao',
+    title: 'Abra a mão',
+    hebrew: 'צְדָקָה',
+    transliteration: 'Tzedaká',
+    translation: 'Justiça, retidão e generosidade responsável',
+    hebrewDate: '24 Elul 5786',
+    civilDate: '6 de setembro de 2026',
+    publicationDate: '5 de setembro de 2026',
+    theme: 'tzedaka',
+    summary: 'Depois de examinar, retornar e reparar, a mudança começa a alcançar quem está fora de nós. Tzedaká transforma consciência em responsabilidade concreta diante da necessidade do próximo.',
+    classification: 'Mitzvá bíblica no judaísmo · prática voluntária para não judeus',
+    conceptSource: 'Deuteronômio 15:8 · כִּי פָתֹחַ תִּפְתַּח אֶת יָדְךָ לוֹ',
+    conceptSourceUrl: 'https://www.sefaria.org/Deuteronomy.15.8',
+    traditionSource: 'Rambam · Mishneh Torah, Gifts to the Poor 7:1',
+    traditionSourceUrl: 'https://www.sefaria.org/Mishneh_Torah%2C_Gifts_to_the_Poor.7.1',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=24&hm=Elul&hy=5786',
+    calendarNote: '24 Elul 5786 começa ao pôr do sol de sábado, 5 de setembro. A publicação está prevista após o encerramento do Shabbat, já na entrada de 24 Elul.',
+    biblicalReference: 'Deuteronômio 15:8 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco06-tzedaka.svg',
+    practice: 'Escolha uma necessidade real e contribua de modo responsável com algo que você possa oferecer. Faça com discrição, sem esperar reconhecimento e sem transformar a ajuda em palco.',
+    status: 'draft'
   }
 ];
