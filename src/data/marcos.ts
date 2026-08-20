@@ -239,5 +239,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco09-livros-abertos.svg',
     practice: 'Escolha uma decisão concreta que ainda está em aberto na sua vida e escreva qual resposta refletiria melhor a pessoa que você deseja ser diante de Hashem. Depois, dê hoje o primeiro passo possível nessa direção.',
     status: 'draft'
+  },
+  {
+    id: 10,
+    slug: 'nao-adie-o-retorno',
+    title: 'Não adie o retorno',
+    hebrew: 'עֲשֶׂרֶת יְמֵי תְּשׁוּבָה',
+    transliteration: 'Aseret Yemei Teshuvá',
+    translation: 'Dez Dias de Teshuvá',
+    hebrewDate: '4 Tishrei 5787',
+    civilDate: '15 de setembro de 2026',
+    publicationDate: '14 de setembro de 2026',
+    theme: 'aseret-yemei-teshuva',
+    summary: 'Depois de Rosh Hashaná, a tradição judaica entra nos Dez Dias de Teshuvá. O chamado não é ao pânico, mas à prontidão: aquilo que você já reconheceu, agora pede uma resposta mais consciente e concreta.',
+    classification: 'Período rabínico-litúrgico entre Rosh Hashaná e Yom Kipur',
+    conceptSource: 'Talmud Bavli · Rosh Hashaná 18a · os dez dias entre Rosh Hashaná e Yom Kipur',
+    conceptSourceUrl: 'https://www.sefaria.org/Rosh_Hashanah.18a.12',
+    traditionSource: 'Rambam · Mishneh Torah, Hilchot Teshuvá 2:6',
+    traditionSourceUrl: 'https://www.sefaria.org/Mishneh_Torah%2C_Repentance.2.6',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=4&hm=Tishrei&hy=5787',
+    calendarNote: '4 Tishrei 5787 começa ao pôr do sol de segunda-feira, 14 de setembro. A publicação nessa noite entra no próprio 4 Tishrei, depois do encerramento de Tzom Gedaliah.',
+    biblicalReference: 'Isaías 55:6 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco10-aseret-yemei-teshuva.svg',
+    practice: 'Escolha uma coisa que você já sabe que precisa mudar e que ainda vem adiando. Defina uma ação pequena, concreta e possível e faça-a hoje. Urgência aqui não significa ansiedade; significa não deixar para amanhã aquilo que já pode começar agora.',
+    status: 'draft'
   }
 ];
