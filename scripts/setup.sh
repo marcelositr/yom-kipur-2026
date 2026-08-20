@@ -3,6 +3,9 @@ set -euo pipefail
 
 source "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/_common.sh"
 
+say "Ajustando permissão dos atalhos"
+chmod +x "$PROJECT_ROOT/yk" "$PROJECT_ROOT"/scripts/*.sh
+
 ensure_fnm
 
 say "Instalando/ativando o Node definido em .nvmrc"
@@ -19,4 +22,4 @@ npx playwright install chromium
 say "Validando o projeto"
 npm test
 
-printf '\nTudo pronto. Use: ./yk dev\n'
+printf '\nTudo pronto. Daqui pra frente use: ./yk dev\n'
