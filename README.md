@@ -40,26 +40,26 @@ O projeto possui um launcher único para evitar a necessidade de lembrar os coma
 Depois de clonar ou atualizar o projeto:
 
 ```bash
-./yk setup
+bash yk setup
 ```
 
 A partir daí, os comandos do dia a dia são:
 
 ```bash
-./yk dev
-./yk test
-./yk render 1
-./yk doctor
+bash yk dev
+bash yk test
+bash yk render 1
+bash yk doctor
 ```
 
 Comandos disponíveis:
 
-- `./yk setup` — prepara Node, dependências npm e Chromium.
-- `./yk dev` — sobe o site local com Astro.
-- `./yk test` — valida conteúdo, Astro/TypeScript e build.
-- `./yk render N` — gera o PNG do marco `N`; sem número, usa o Marco 01.
-- `./yk doctor` — mostra branch, Node, npm, fnm e estado básico do ambiente.
-- `./yk help` — mostra a ajuda rápida.
+- `bash yk setup` — prepara Node, dependências npm e Chromium.
+- `bash yk dev` — sobe o site local com Astro.
+- `bash yk test` — valida conteúdo, Astro/TypeScript e build.
+- `bash yk render N` — gera o PNG do marco `N`; sem número, usa o Marco 01.
+- `bash yk doctor` — mostra branch, Node, npm, fnm e estado básico do ambiente.
+- `bash yk help` — mostra a ajuda rápida.
 
 ## Estrutura
 
@@ -110,7 +110,7 @@ http://localhost:4321/marcos/01-o-rei-esta-no-campo/
 Via launcher:
 
 ```bash
-./yk test
+bash yk test
 ```
 
 Manualmente:
@@ -126,7 +126,7 @@ Esse comando valida o conteúdo, executa a checagem do Astro/TypeScript e gera o
 Via launcher:
 
 ```bash
-./yk render 1
+bash yk render 1
 ```
 
 Manualmente:
