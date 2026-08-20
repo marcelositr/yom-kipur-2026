@@ -71,5 +71,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco02-emuna.svg',
     practice: 'Escolha hoje uma pequena decisão que você sabe ser correta e cumpra-a com fidelidade, sem depender do ânimo do momento.',
     status: 'draft'
+  },
+  {
+    id: 3,
+    slug: 'voltar-comeca-com-um-passo',
+    title: 'Voltar começa com um passo',
+    hebrew: 'תְּשׁוּבָה',
+    transliteration: 'Teshuvá',
+    translation: 'Retorno',
+    hebrewDate: '15 Elul 5786',
+    civilDate: '28 de agosto de 2026',
+    publicationDate: '27 de agosto de 2026',
+    theme: 'teshuva',
+    summary: 'Teshuvá é retorno. Depois de reconhecer a proximidade de Hashem e aprender a permanecer em confiança, começamos a mudar conscientemente a direção da caminhada.',
+    classification: 'Conceito bíblico e tradição judaica',
+    conceptSource: 'Deuteronômio 30:2 · וְשַׁבְתָּ עַד־יְהוָה אֱלֹהֶיךָ',
+    conceptSourceUrl: 'https://www.sefaria.org/Deuteronomy.30.2',
+    traditionSource: 'Teshuvá · retorno a Hashem',
+    traditionSourceUrl: 'https://www.chabad.org/library/article_cdo/aid/361890/jewish/Teshuvah.htm',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=15&hm=Elul&hy=5786',
+    calendarNote: '15 Elul 5786 começa ao pôr do sol de quinta-feira, 27 de agosto. A publicação nessa noite já entra no próprio 15 Elul.',
+    biblicalReference: 'Deuteronômio 30:2 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco03-teshuva.svg',
+    practice: 'Escolha uma área concreta em que você percebe distância entre o que sabe e o que vive. Defina um primeiro passo pequeno e possível de retorno e cumpra-o hoje.',
+    status: 'draft'
   }
 ];
