@@ -1,0 +1,54 @@
+<svg width="1080" height="1920" viewBox="0 0 1080 1920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="540" y1="0" x2="540" y2="1920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E241E"/>
+      <stop offset="0.58" stop-color="#18372D"/>
+      <stop offset="1" stop-color="#0A1D19"/>
+    </linearGradient>
+    <radialGradient id="light" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540 525) rotate(90) scale(540 470)">
+      <stop stop-color="#D8B972" stop-opacity="0.42"/>
+      <stop offset="0.55" stop-color="#D8B972" stop-opacity="0.11"/>
+      <stop offset="1" stop-color="#D8B972" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="path" x1="540" y1="720" x2="540" y2="1920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9C893" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#F0E7CF" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="blur" x="-120" y="-120" width="1320" height="2160" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="36"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect width="1080" height="1120" fill="url(#light)"/>
+
+  <g opacity="0.2">
+    <circle cx="130" cy="225" r="2" fill="#F2E6C7"/>
+    <circle cx="860" cy="320" r="2.5" fill="#F2E6C7"/>
+    <circle cx="725" cy="145" r="1.5" fill="#F2E6C7"/>
+    <circle cx="310" cy="410" r="1.8" fill="#F2E6C7"/>
+    <circle cx="950" cy="560" r="1.5" fill="#F2E6C7"/>
+  </g>
+
+  <g filter="url(#blur)" opacity="0.22">
+    <ellipse cx="540" cy="665" rx="235" ry="290" fill="#C8A45F"/>
+  </g>
+
+  <path d="M350 865C350 655 434 505 540 505C646 505 730 655 730 865V1030H350V865Z" fill="#0B1D18" stroke="#B69557" stroke-opacity="0.28" stroke-width="3"/>
+  <path d="M405 870C405 704 466 590 540 590C614 590 675 704 675 870V1028H405V870Z" fill="#C9AE6A" fill-opacity="0.18"/>
+  <path d="M450 870C450 750 490 670 540 670C590 670 630 750 630 870V1030H450V870Z" fill="#F0E6C8" fill-opacity="0.16"/>
+
+  <path d="M468 1920C470 1640 489 1430 515 1270C534 1154 539 1088 540 1010C541 1088 546 1154 565 1270C591 1430 610 1640 612 1920H468Z" fill="url(#path)"/>
+
+  <path d="M0 1290C190 1230 315 1235 445 1320C350 1425 258 1510 0 1570V1290Z" fill="#081813" fill-opacity="0.78"/>
+  <path d="M1080 1260C890 1210 767 1230 635 1320C730 1425 824 1515 1080 1578V1260Z" fill="#081813" fill-opacity="0.78"/>
+
+  <g opacity="0.22" stroke="#D9C893" stroke-width="2">
+    <path d="M144 1160C255 1094 363 1084 450 1110"/>
+    <path d="M930 1150C827 1094 724 1087 635 1112"/>
+    <path d="M232 1610C322 1540 398 1490 472 1465"/>
+    <path d="M844 1618C757 1543 682 1492 608 1468"/>
+  </g>
+
+  <rect x="74" y="78" width="932" height="1764" rx="26" stroke="#D9C893" stroke-opacity="0.1" stroke-width="2"/>
+</svg>
