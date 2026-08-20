@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Fundo simbólico para Tzedaká</title>
+  <desc id="desc">Cena abstrata em tons verdes e dourados com uma mão aberta, pão e luz suave, simbolizando generosidade responsável.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#264c46"/>
+      <stop offset="0.46" stop-color="#79684f"/>
+      <stop offset="1" stop-color="#173d32"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f1d89e" stop-opacity="0.68"/>
+      <stop offset="1" stop-color="#f1d89e" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#102d27"/>
+      <stop offset="0.5" stop-color="#234d3f"/>
+      <stop offset="1" stop-color="#112f28"/>
+    </linearGradient>
+    <filter id="blur"><feGaussianBlur stdDeviation="34"/></filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <circle cx="760" cy="390" r="250" fill="url(#glow)" filter="url(#blur)"/>
+  <circle cx="760" cy="390" r="92" fill="#d9ba7f" opacity="0.26"/>
+
+  <path d="M0 870 C180 790 360 830 520 760 C720 672 894 696 1080 612 L1080 1180 L0 1180 Z" fill="#1f493d" opacity="0.58"/>
+  <path d="M0 1030 C210 930 420 1000 602 920 C792 838 934 854 1080 792 L1080 1280 L0 1280 Z" fill="#15382f" opacity="0.78"/>
+
+  <rect y="1260" width="1080" height="660" fill="url(#table)"/>
+  <path d="M0 1450 C250 1404 438 1438 620 1392 C812 1342 944 1368 1080 1322" stroke="#b99a62" stroke-opacity="0.12" stroke-width="4" fill="none"/>
+  <path d="M0 1580 C220 1534 410 1570 602 1522 C792 1474 950 1490 1080 1450" stroke="#b99a62" stroke-opacity="0.09" stroke-width="3" fill="none"/>
+
+  <g transform="translate(178 1180)">
+    <ellipse cx="230" cy="270" rx="185" ry="72" fill="#d8bd84" opacity="0.25"/>
+    <path d="M65 255 C102 170 192 134 276 158 C344 177 396 235 390 289 C382 355 320 388 244 388 C146 388 84 345 65 255 Z" fill="#bf9d62" opacity="0.72"/>
+    <path d="M113 244 C162 211 220 198 276 205" stroke="#f0d79c" stroke-opacity="0.48" stroke-width="8" stroke-linecap="round"/>
+    <path d="M132 292 C190 263 249 257 316 272" stroke="#f0d79c" stroke-opacity="0.38" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(520 1210) rotate(-7)">
+    <path d="M72 328 C118 287 151 230 171 164 C178 139 191 127 208 132 C226 137 231 154 225 181 L210 249 C229 204 245 162 256 117 C262 93 276 80 295 84 C314 88 320 105 315 131 L298 226 C318 180 335 137 347 94 C354 70 370 58 389 64 C408 69 413 87 406 111 L381 220 C404 178 421 145 437 112 C448 90 465 80 483 88 C501 96 505 114 495 136 L446 255 C424 308 392 355 352 394 C315 429 271 451 224 448 C168 444 114 407 72 328 Z" fill="#d7b680" opacity="0.80"/>
+    <path d="M92 337 C152 355 207 355 260 336 C313 318 359 283 397 235" stroke="#f0d79c" stroke-opacity="0.34" stroke-width="8" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <g opacity="0.52">
+    <circle cx="865" cy="1194" r="10" fill="#e0c99a"/>
+    <circle cx="902" cy="1235" r="7" fill="#e0c99a"/>
+    <circle cx="831" cy="1253" r="5" fill="#e0c99a"/>
+    <circle cx="946" cy="1280" r="8" fill="#e0c99a"/>
+  </g>
+
+  <rect width="1080" height="1920" fill="none" stroke="#f5f0e5" stroke-opacity="0.045" stroke-width="2"/>
+</svg>
