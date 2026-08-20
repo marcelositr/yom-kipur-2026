@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { marcos } from '../data/marcos';
 
-const marco01 = marcos.find((item) => item.id === 1);
+const orderedMarcos = [...marcos].sort((a, b) => a.id - b.id);
 ---
 <BaseLayout>
   <section class="hero">
@@ -25,20 +25,26 @@ const marco01 = marcos.find((item) => item.id === 1);
     </p>
   </section>
 
-  {marco01 && (
-    <section class="container draft-section" aria-labelledby="primeiro-marco">
-      <div class="eyebrow">Laboratório editorial</div>
-      <h2 id="primeiro-marco">Primeiro marco em construção</h2>
-      <a class="draft-card" href={`${import.meta.env.BASE_URL}marcos/01-o-rei-esta-no-campo/`}>
-        <div>
-          <span class="status">Rascunho · Marco 01</span>
-          <strong>{marco01.title}</strong>
-          <span>{marco01.hebrewDate} · {marco01.civilDate}</span>
-        </div>
-        <span aria-hidden="true">→</span>
-      </a>
-    </section>
-  )}
+  <section class="container draft-section" aria-labelledby="marcos-em-construcao">
+    <div class="eyebrow">Laboratório editorial</div>
+    <h2 id="marcos-em-construcao">Marcos em construção</h2>
+
+    <div class="draft-list">
+      {orderedMarcos.map((marco) => (
+        <a
+          class="draft-card"
+          href={`${import.meta.env.BASE_URL}marcos/${String(marco.id).padStart(2, '0')}-${marco.slug}/`}
+        >
+          <div>
+            <span class="status">{marco.status === 'draft' ? 'Rascunho' : marco.status} · Marco {String(marco.id).padStart(2, '0')}</span>
+            <strong>{marco.title}</strong>
+            <span>{marco.hebrewDate} · {marco.civilDate}</span>
+          </div>
+          <span aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  </section>
 </BaseLayout>
 
 <style>
@@ -51,6 +57,11 @@ const marco01 = marcos.find((item) => item.id === 1);
     font-family: Georgia, 'Times New Roman', serif;
     font-size: clamp(2rem, 4vw, 3.2rem);
     font-weight: 500;
+  }
+
+  .draft-list {
+    display: grid;
+    gap: 1rem;
   }
 
   .draft-card {
