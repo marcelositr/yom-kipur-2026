@@ -4,61 +4,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=1080, initial-scale=1" />
   <style>
-    :root {
-      --ivory: #f5f0e5;
-      --forest: #173d32;
-      --gold: #a9884f;
-      --ink: #15231f;
-    }
     * { box-sizing: border-box; }
-    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; }
-    body { font-family: Arial, Helvetica, sans-serif; background: var(--forest); color: var(--ivory); }
-    .card {
-      width: 1080px;
-      height: 1920px;
-      position: relative;
-      padding: 112px 92px 84px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background:
-        linear-gradient(180deg, rgba(7, 24, 20, .18) 0%, rgba(7, 24, 20, .74) 72%, rgba(7, 24, 20, .92) 100%),
-        var(--card-image, linear-gradient(135deg, #244b3f, #102c25));
-      background-size: cover;
-      background-position: center;
-    }
-    .topline { font-size: 28px; letter-spacing: .14em; text-transform: uppercase; color: #d4bc8d; }
-    .hebrew { margin-top: 250px; direction: rtl; text-align: right; font-family: "Noto Serif Hebrew", "Times New Roman", serif; font-size: 92px; line-height: 1.18; }
-    h1 { font-family: Georgia, "Times New Roman", serif; font-size: 88px; font-weight: 500; line-height: 1.02; margin: 28px 0 14px; max-width: 820px; }
-    .translit { font-size: 34px; color: #e2d2b2; }
-    .translation { font-size: 30px; margin-top: 12px; color: #f2eadb; }
-    .summary { margin-top: 50px; font-size: 34px; line-height: 1.45; max-width: 820px; }
-    .practice { border-top: 2px solid rgba(212,188,141,.6); padding-top: 28px; margin-top: 38px; }
-    .practice strong { display: block; color: #d4bc8d; font-size: 22px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
-    .practice p { margin: 0; font-size: 30px; line-height: 1.45; }
-    .reference { margin-top: 24px; font-size: 24px; color: #e2d2b2; }
-    .credit { display: flex; justify-content: space-between; gap: 24px; font-size: 20px; color: rgba(245,240,229,.76); }
+    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #173d32; }
+    {{styles}}
   </style>
 </head>
 <body>
-  <article class="card">
-    <div>
-      <div class="topline">{{hebrewDate}} · {{civilDate}}</div>
-      <div class="hebrew">{{hebrew}}</div>
-      <h1>{{title}}</h1>
-      <div class="translit">{{transliteration}}</div>
-      <div class="translation">{{translation}}</div>
-      <div class="summary">{{summary}}</div>
-      <div class="practice">
-        <strong>Para viver este marco</strong>
-        <p>{{practice}}</p>
+  <div class="yk-card-frame">
+    <article class="yk-card" data-theme="{{theme}}">
+      <div class="yk-card__body">
+        <div class="yk-card__topline">{{hebrewDate}} · {{civilDate}}</div>
+        <div class="yk-card__classification">{{classification}}</div>
+        <div class="yk-card__hebrew">{{hebrew}}</div>
+        <h1 class="yk-card__title">{{title}}</h1>
+        <div class="yk-card__translit">{{transliteration}}</div>
+        <div class="yk-card__translation">{{translation}}</div>
+        <div class="yk-card__summary">{{summary}}</div>
+        <div class="yk-card__practice">
+          <strong>Para viver este marco</strong>
+          <p>{{practice}}</p>
+        </div>
+        <div class="yk-card__reference">{{reference}}</div>
       </div>
-      <div class="reference">{{reference}}</div>
-    </div>
-    <footer class="credit">
-      <span>Marcelo Trindade · @marcelositr</span>
-      <span>devnux.com.br</span>
-    </footer>
-  </article>
+      <footer class="yk-card__footer">
+        <span>Marcelo Trindade · @marcelositr</span>
+        <span>devnux.com.br</span>
+      </footer>
+    </article>
+  </div>
 </body>
 </html>
