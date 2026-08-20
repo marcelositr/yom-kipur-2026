@@ -263,5 +263,30 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco10-aseret-yemei-teshuva.svg',
     practice: 'Escolha uma coisa que você já sabe que precisa mudar e que ainda vem adiando. Defina uma ação pequena, concreta e possível e faça-a hoje. Urgência aqui não significa ansiedade; significa não deixar para amanhã aquilo que já pode começar agora.',
     status: 'draft'
+  },
+  {
+    id: 11,
+    slug: 'retorne-ao-seu-deus',
+    title: 'Retorne ao seu Deus',
+    hebrew: 'שַׁבַּת שׁוּבָה',
+    transliteration: 'Shabbat Shuvah',
+    translation: 'Shabbat do Retorno',
+    hebrewDate: '8 Tishrei 5787',
+    civilDate: '19 de setembro de 2026',
+    publicationDate: '18 de setembro de 2026',
+    theme: 'shabbat-shuvah',
+    summary: 'No último Shabbat antes de Yom Kipur, a Haftarah começa com um chamado direto: “Shuvah Yisrael” — retorna, Israel. Depois de tantos passos de Teshuvá, o caminho é recolocado diante de nós com simplicidade: voltar a Hashem.',
+    classification: 'Shabbat especial dos Aseret Yemei Teshuvá · designação litúrgica pela Haftarah',
+    conceptSource: 'Oséias 14:2 na numeração judaica · שׁוּבָה יִשְׂרָאֵל עַד־יְהוָה אֱלֹהֶיךָ',
+    conceptSourceUrl: 'https://www.sefaria.org/Hosea.14.2',
+    traditionSource: 'Talmud Bavli · Yoma 86b · a grandeza da Teshuvá a partir de Oséias',
+    traditionSourceUrl: 'https://www.sefaria.org/Yoma.86b.3',
+    calendarSourceUrl: 'https://www.hebcal.com/holidays/shabbat-shuva-2026',
+    calendarNote: 'Shabbat Shuvah 5787 começa ao pôr do sol de sexta-feira, 18 de setembro, e termina ao anoitecer de sábado, 19 de setembro. Cai em 8 Tishrei e corresponde à Parashat Ha’azinu. A publicação está prevista para sexta-feira, antes do pôr do sol.',
+    parasha: 'Ha’azinu',
+    biblicalReference: 'Oséias 14:1 • ACF · Oséias 14:2 na numeração judaica',
+    backgroundAsset: '/assets/backgrounds/marco11-shabbat-shuvah.svg',
+    practice: 'Antes do início do Shabbat, releia Oséias 14:1–4 na ACF. Escolha uma coisa da qual você precisa se afastar e uma direção para a qual precisa retornar. Escreva ambas em uma frase curta e carregue essa decisão com você até Yom Kipur.',
+    status: 'draft'
   }
 ];
