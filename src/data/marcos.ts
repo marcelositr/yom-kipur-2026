@@ -95,5 +95,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco03-teshuva.svg',
     practice: 'Escolha uma área concreta em que você percebe distância entre o que sabe e o que vive. Defina um primeiro passo pequeno e possível de retorno e cumpra-o hoje.',
     status: 'draft'
+  },
+  {
+    id: 4,
+    slug: 'olhe-com-verdade-para-o-caminho',
+    title: 'Olhe com verdade para o caminho',
+    hebrew: 'חֶשְׁבּוֹן הַנֶּפֶשׁ',
+    transliteration: 'Cheshbon HaNefesh',
+    translation: 'Balanço da alma',
+    hebrewDate: '19 Elul 5786',
+    civilDate: '1º de setembro de 2026',
+    publicationDate: '31 de agosto de 2026',
+    theme: 'cheshbon-hanefesh',
+    summary: 'Teshuvá muda a direção. Cheshbon HaNefesh pede uma pausa honesta para examinar o caminho, reconhecer o que precisa permanecer e enxergar o que ainda precisa ser corrigido.',
+    classification: 'Prática ética judaica de introspecção',
+    conceptSource: 'Lamentações 3:40 · נַחְפְּשָׂה דְרָכֵינוּ וְנַחְקֹרָה וְנָשׁוּבָה עַד־יְהוָה',
+    conceptSourceUrl: 'https://www.sefaria.org/Lamentations.3.40',
+    traditionSource: 'Cheshbon HaNefesh · balanço espiritual no mês de Elul',
+    traditionSourceUrl: 'https://www.chabad.org/holidays/JewishNewYear/template_cdo/aid/971407/jewish/Soul-Accounting-in-5-Steps.htm',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=19&hm=Elul&hy=5786',
+    calendarNote: '19 Elul 5786 começa ao pôr do sol de segunda-feira, 31 de agosto. A publicação nessa noite já entra no próprio 19 Elul.',
+    biblicalReference: 'Lamentações 3:40 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco04-cheshbon-hanefesh.svg',
+    practice: 'Separe dez minutos e faça um balanço simples em uma folha: o que precisa continuar, o que precisa mudar e qual é o próximo passo concreto. Escreva com honestidade, sem se justificar e sem se condenar.',
+    status: 'draft'
   }
 ];
