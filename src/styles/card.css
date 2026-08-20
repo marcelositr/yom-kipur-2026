@@ -10,34 +10,39 @@
 .yk-card {
   --ivory: #f5f0e5;
   --forest: #173d32;
-  --gold: #a9884f;
+  --gold: #b99a62;
   --ink-deep: #071814;
+  --yk-background: none;
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
-  padding: 10.4cqw 8.5cqw 7.8cqw;
+  padding: 9.7cqw 8.5cqw 7.8cqw;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: var(--ivory);
-  background:
-    linear-gradient(180deg, rgba(7, 24, 20, .08) 0%, rgba(7, 24, 20, .42) 51%, rgba(7, 24, 20, .92) 100%),
-    radial-gradient(circle at 72% 15%, rgba(222, 183, 114, .52), transparent 28%),
-    linear-gradient(180deg, #607b73 0%, #8c8a72 38%, #3d5a48 39%, #173d32 100%);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  background-color: var(--forest);
+  background-image:
+    linear-gradient(180deg, rgba(5, 18, 16, .18) 0%, rgba(5, 18, 16, .20) 28%, rgba(5, 18, 16, .52) 58%, rgba(5, 18, 16, .93) 100%),
+    var(--yk-background),
+    linear-gradient(180deg, #526f68 0%, #987e5e 43%, #173d32 100%);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.045);
 }
 
-.yk-card[data-theme='proximidade']::before {
+.yk-card::after {
   content: '';
   position: absolute;
-  inset: 34% -8% auto -8%;
-  height: 23%;
-  background:
-    radial-gradient(ellipse at 13% 100%, rgba(12, 40, 31, .72) 0 32%, transparent 33%),
-    radial-gradient(ellipse at 86% 100%, rgba(17, 52, 39, .78) 0 36%, transparent 37%);
-  opacity: .86;
+  inset: 0;
   pointer-events: none;
+  background:
+    radial-gradient(circle at 74% 19%, rgba(245, 218, 160, .17), transparent 25%),
+    linear-gradient(90deg, rgba(2, 14, 11, .16), transparent 34%, transparent 70%, rgba(2, 14, 11, .10));
+  mix-blend-mode: screen;
+  opacity: .72;
 }
 
 .yk-card__body,
@@ -47,89 +52,94 @@
 }
 
 .yk-card__topline {
-  font: 700 2.55cqw/1.2 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  letter-spacing: .14em;
+  font: 750 2.35cqw/1.2 ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  letter-spacing: .135em;
   text-transform: uppercase;
-  color: #d4bc8d;
+  color: #e0c99a;
+  text-shadow: 0 1px 10px rgba(0,0,0,.22);
 }
 
 .yk-card__classification {
   display: inline-block;
-  margin-top: 2.4cqw;
-  padding: .9cqw 1.5cqw;
-  border: 1px solid rgba(212, 188, 141, .55);
+  margin-top: 2.2cqw;
+  padding: .85cqw 1.45cqw;
+  border: 1px solid rgba(224, 201, 154, .56);
   border-radius: 999px;
-  font: 650 1.85cqw/1.1 ui-sans-serif, system-ui, sans-serif;
-  letter-spacing: .05em;
-  color: #ead9b8;
-  background: rgba(7, 24, 20, .26);
+  font: 650 1.7cqw/1.12 ui-sans-serif, system-ui, sans-serif;
+  letter-spacing: .045em;
+  color: #f0dfbe;
+  background: rgba(7, 24, 20, .42);
+  backdrop-filter: blur(8px);
 }
 
 .yk-card__hebrew {
-  margin-top: 18cqw;
+  margin-top: 15.7cqw;
   direction: rtl;
   text-align: right;
   font-family: 'Noto Serif Hebrew', 'Noto Serif', 'Times New Roman', serif;
   font-size: 8.5cqw;
   line-height: 1.24;
   text-wrap: balance;
+  text-shadow: 0 2px 22px rgba(0,0,0,.28);
 }
 
 .yk-card__title {
-  max-width: 78cqw;
-  margin: 2.6cqw 0 1.2cqw;
+  max-width: 80cqw;
+  margin: 2.2cqw 0 1.15cqw;
   font-family: Georgia, 'Times New Roman', serif;
-  font-size: 8.15cqw;
+  font-size: 8.05cqw;
   font-weight: 500;
   line-height: 1.02;
   letter-spacing: -.025em;
   text-wrap: balance;
+  text-shadow: 0 2px 22px rgba(0,0,0,.25);
 }
 
 .yk-card__translit {
-  font: 500 3.15cqw/1.3 ui-sans-serif, system-ui, sans-serif;
-  color: #e2d2b2;
+  font: 540 3.05cqw/1.3 ui-sans-serif, system-ui, sans-serif;
+  color: #ead8b6;
 }
 
 .yk-card__translation {
-  margin-top: 1.1cqw;
-  font: 430 2.75cqw/1.35 ui-sans-serif, system-ui, sans-serif;
-  color: #f2eadb;
+  margin-top: 1cqw;
+  font: 430 2.65cqw/1.35 ui-sans-serif, system-ui, sans-serif;
+  color: #f6eee1;
 }
 
 .yk-card__summary {
-  max-width: 78cqw;
-  margin-top: 4.4cqw;
-  font: 430 3.05cqw/1.48 ui-sans-serif, system-ui, sans-serif;
+  max-width: 80cqw;
+  margin-top: 4.15cqw;
+  font: 440 2.95cqw/1.48 ui-sans-serif, system-ui, sans-serif;
   text-wrap: pretty;
+  text-shadow: 0 1px 16px rgba(0,0,0,.24);
 }
 
 .yk-card__practice {
-  margin-top: 3.5cqw;
-  padding-top: 2.5cqw;
-  border-top: .18cqw solid rgba(212, 188, 141, .64);
+  margin-top: 3.3cqw;
+  padding-top: 2.4cqw;
+  border-top: .18cqw solid rgba(224, 201, 154, .64);
 }
 
 .yk-card__practice strong {
   display: block;
-  margin-bottom: 1.2cqw;
-  font: 800 1.85cqw/1.2 ui-sans-serif, system-ui, sans-serif;
+  margin-bottom: 1.15cqw;
+  font: 800 1.75cqw/1.2 ui-sans-serif, system-ui, sans-serif;
   letter-spacing: .12em;
   text-transform: uppercase;
-  color: #d4bc8d;
+  color: #e0c99a;
 }
 
 .yk-card__practice p {
-  max-width: 79cqw;
+  max-width: 80cqw;
   margin: 0;
-  font: 430 2.7cqw/1.45 ui-sans-serif, system-ui, sans-serif;
+  font: 440 2.55cqw/1.45 ui-sans-serif, system-ui, sans-serif;
   text-wrap: pretty;
 }
 
 .yk-card__reference {
-  margin-top: 2cqw;
-  font: 520 2.15cqw/1.35 ui-sans-serif, system-ui, sans-serif;
-  color: #e2d2b2;
+  margin-top: 1.9cqw;
+  font: 550 2.05cqw/1.35 ui-sans-serif, system-ui, sans-serif;
+  color: #ead8b6;
 }
 
 .yk-card__footer {
@@ -137,8 +147,10 @@
   justify-content: space-between;
   align-items: end;
   gap: 2cqw;
-  font: 500 1.7cqw/1.25 ui-sans-serif, system-ui, sans-serif;
-  color: rgba(245, 240, 229, .76);
+  padding-top: 2.5cqw;
+  border-top: 1px solid rgba(245, 240, 229, .14);
+  font: 520 1.6cqw/1.25 ui-sans-serif, system-ui, sans-serif;
+  color: rgba(245,240,229,.74);
 }
 
 .yk-card__footer span:last-child {
