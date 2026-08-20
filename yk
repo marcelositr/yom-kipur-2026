@@ -8,12 +8,12 @@ usage() {
 Caminho para Yom Kipur 5787
 
 Uso:
-  ./yk setup       prepara Node, dependências e Chromium
-  ./yk dev         sobe o site local
-  ./yk test        valida conteúdo, Astro/TypeScript e build
-  ./yk render [N]  renderiza o card do marco N (padrão: 1)
-  ./yk doctor      diagnostica o ambiente
-  ./yk help        mostra esta ajuda
+  bash yk setup       prepara Node, dependências e Chromium
+  bash yk dev         sobe o site local
+  bash yk test        valida conteúdo, Astro/TypeScript e build
+  bash yk render [N]  renderiza o card do marco N (padrão: 1)
+  bash yk doctor      diagnostica o ambiente
+  bash yk help        mostra esta ajuda
 EOF
 }
 
