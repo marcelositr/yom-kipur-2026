@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" fill="none">
+  <defs>
+    <linearGradient id="sky" x1="540" y1="0" x2="540" y2="1920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#071F2A"/>
+      <stop offset="0.48" stop-color="#123A3B"/>
+      <stop offset="1" stop-color="#082622"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(540 610) rotate(90) scale(520 500)">
+      <stop stop-color="#E8C978" stop-opacity="0.48"/>
+      <stop offset="0.46" stop-color="#D7B15D" stop-opacity="0.16"/>
+      <stop offset="1" stop-color="#D7B15D" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="steps" x1="540" y1="1040" x2="540" y2="1920" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C39C53" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#5F4C2F" stop-opacity="0.1"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <rect width="1080" height="1920" fill="url(#glow)"/>
+
+  <circle cx="540" cy="615" r="180" fill="#E6C36B" opacity="0.13" filter="url(#blur)"/>
+
+  <!-- distant palace silhouette -->
+  <path d="M210 820H870V1180H210V820Z" fill="#0C292A" opacity="0.9"/>
+  <path d="M300 710H780V820H300V710Z" fill="#0B2527"/>
+  <path d="M350 655L540 520L730 655V710H350V655Z" fill="#0A2326"/>
+  <path d="M260 760H320V1180H260V760Z" fill="#102E2E"/>
+  <path d="M760 760H820V1180H760V760Z" fill="#102E2E"/>
+
+  <!-- central gate -->
+  <path d="M385 1180V900C385 814 455 744 540 744C625 744 695 814 695 900V1180H385Z" fill="#071C20"/>
+  <path d="M425 1180V910C425 846 476 795 540 795C604 795 655 846 655 910V1180H425Z" fill="#D7B15D" opacity="0.13"/>
+  <path d="M450 1180V922C450 872 490 832 540 832C590 832 630 872 630 922V1180H450Z" fill="#E8C978" opacity="0.08"/>
+
+  <!-- symbolic throne silhouette, intentionally abstract -->
+  <path d="M495 1020H585V1118H495V1020Z" fill="#C9A65C" opacity="0.26"/>
+  <path d="M474 1002H606L590 1028H490L474 1002Z" fill="#C9A65C" opacity="0.28"/>
+  <path d="M480 1118H600L616 1165H464L480 1118Z" fill="#C9A65C" opacity="0.22"/>
+
+  <!-- steps toward the gate -->
+  <path d="M350 1180H730L790 1260H290L350 1180Z" fill="url(#steps)"/>
+  <path d="M290 1260H790L850 1350H230L290 1260Z" fill="url(#steps)" opacity="0.9"/>
+  <path d="M230 1350H850L920 1455H160L230 1350Z" fill="url(#steps)" opacity="0.75"/>
+  <path d="M160 1455H920L1010 1585H70L160 1455Z" fill="url(#steps)" opacity="0.58"/>
+  <path d="M70 1585H1010L1080 1710V1920H0V1710L70 1585Z" fill="url(#steps)" opacity="0.42"/>
+
+  <!-- side columns -->
+  <rect x="120" y="980" width="56" height="550" fill="#173C39" opacity="0.6"/>
+  <rect x="904" y="980" width="56" height="550" fill="#173C39" opacity="0.6"/>
+  <rect x="104" y="948" width="88" height="34" rx="4" fill="#B8924D" opacity="0.24"/>
+  <rect x="888" y="948" width="88" height="34" rx="4" fill="#B8924D" opacity="0.24"/>
+
+  <!-- faint crown-like geometry above the gate, symbolic only -->
+  <path d="M448 645L485 602L540 648L595 602L632 645L616 694H464L448 645Z" stroke="#D5B365" stroke-width="5" opacity="0.18"/>
+
+  <!-- foreground vignette shapes -->
+  <path d="M0 1640C170 1570 320 1600 450 1715C320 1760 180 1825 0 1920V1640Z" fill="#061B19" opacity="0.5"/>
+  <path d="M1080 1640C910 1570 760 1600 630 1715C760 1760 900 1825 1080 1920V1640Z" fill="#061B19" opacity="0.5"/>
+</svg>
