@@ -360,5 +360,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco14-yom-kippur.svg',
     practice: 'Entre no dia com três eixos: Teshuvá, oração e responsabilidade. Leia Levítico 16:29–30 e reserve tempo real para silêncio e oração. Se você não é judeu, não trate o jejum como obrigação haláchica; qualquer abstinência deve ser voluntária e segura. Pikuach Nefesh permanece acima do jejum.',
     status: 'draft'
+  },
+  {
+    id: 15,
+    slug: 'permaneca-ate-o-fim',
+    title: 'Permaneça até o fim',
+    hebrew: 'נְעִילָה',
+    transliteration: 'Ne’ilá',
+    translation: 'Fechamento',
+    hebrewDate: '10 Tishrei 5787',
+    civilDate: '21 de setembro de 2026',
+    publicationDate: '21 de setembro de 2026',
+    theme: 'neilah',
+    summary: 'Quando Yom Kipur se aproxima do fim, a tradição judaica acrescenta Ne’ilá, a quinta e última oração do dia. A imagem das portas se fechando concentra tudo o que foi vivido: não é pânico diante de um mecanismo celeste, mas presença, decisão e responsabilidade diante do tempo que termina.',
+    classification: 'Liturgia conclusiva de Yom Kipur · quinta oração do dia na tradição judaica',
+    conceptSource: 'Talmud Bavli · Yoma 87b · נְעִילַת שְׁעָרִים · o fechamento das portas',
+    conceptSourceUrl: 'https://www.sefaria.org/Yoma.87b.9',
+    traditionSource: 'Rambam · Mishneh Torah, Prayer and the Priestly Blessing 1:7–8 · Ne’ilá perto do pôr do sol',
+    traditionSourceUrl: 'https://www.sefaria.org/Mishneh_Torah%2C_Prayer_and_the_Priestly_Blessing.1.7-8',
+    calendarSourceUrl: 'https://www.hebcal.com/holidays/yom-kippur-2026',
+    calendarNote: 'Ne’ilá pertence às horas finais de Yom Kipur, na segunda-feira, 21 de setembro de 2026. A publicação está prevista para a tarde, antes do encerramento do dia em cada localidade. Não são usados horários exatos neste card.',
+    biblicalReference: '1 Reis 18:39 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco15-neilah.svg',
+    practice: 'Perto do fim do dia, pare por alguns minutos e releia uma decisão concreta que surgiu nesta caminhada. Nomeie uma coisa que você deseja deixar para trás e uma coisa que levará adiante. Se você não pertence a uma comunidade judaica, não transforme a liturgia de Ne’ilá em obrigação: faça uma oração breve em suas próprias palavras e saia do dia com um próximo passo definido.',
+    status: 'draft'
   }
 ];
