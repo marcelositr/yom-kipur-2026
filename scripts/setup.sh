@@ -19,4 +19,4 @@ npx playwright install chromium
 say "Validando o projeto"
 npm test
 
-printf '\nTudo pronto. Use: ./yk dev\n'
+printf '\nTudo pronto. Use: bash yk dev\n'
