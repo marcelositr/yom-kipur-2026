@@ -13,6 +13,8 @@ export interface Marco {
   classification: string;
   traditionSource?: string;
   traditionSourceUrl?: string;
+  conceptSource?: string;
+  conceptSourceUrl?: string;
   calendarSourceUrl?: string;
   calendarNote?: string;
   parasha?: string;
@@ -44,6 +46,30 @@ export const marcos: Marco[] = [
     biblicalReference: 'Isaías 55:6 • ACF',
     backgroundAsset: '/assets/backgrounds/marco01-proximidade.svg',
     practice: 'Reserve alguns minutos em silêncio para reconhecer a proximidade de Hashem e escolher uma área da vida na qual você deseja iniciar um retorno consciente.',
+    status: 'draft'
+  },
+  {
+    id: 2,
+    slug: 'confiar-e-permanecer',
+    title: 'Confiar é permanecer',
+    hebrew: 'אֱמוּנָה',
+    transliteration: 'Emuná',
+    translation: 'Firmeza, fidelidade, confiança',
+    hebrewDate: '12 Elul 5786',
+    civilDate: '25 de agosto de 2026',
+    publicationDate: '24 de agosto de 2026',
+    theme: 'emuna',
+    summary: 'Depois de reconhecer a proximidade de Hashem, começamos a responder. Emuná não fica apenas na ideia: ela aprende a permanecer, caminhar e agir com fidelidade.',
+    classification: 'Conceito bíblico hebraico',
+    conceptSource: 'Habacuque 2:4 · וְצַדִּיק בֶּאֱמוּנָתוֹ יִחְיֶה',
+    conceptSourceUrl: 'https://www.sefaria.org/Habakkuk.2.4?with=Commentary',
+    traditionSource: 'Rabi Jonathan Sacks · Emuná como fidelidade, lealdade e compromisso',
+    traditionSourceUrl: 'https://www.chabad.org/parshah/article_cdo/aid/3488054/jewish/What-is-the-theme-of-the-stories-of-Genesis.htm',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=12&hm=Elul&hy=5786',
+    calendarNote: '12 Elul 5786 começa ao pôr do sol de segunda-feira, 24 de agosto. A publicação nessa noite já entra no próprio 12 Elul.',
+    biblicalReference: 'Habacuque 2:4 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco02-emuna.svg',
+    practice: 'Escolha hoje uma pequena decisão que você sabe ser correta e cumpra-a com fidelidade, sem depender do ânimo do momento.',
     status: 'draft'
   }
 ];
