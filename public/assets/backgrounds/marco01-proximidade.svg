@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Campo ao entardecer</title>
+  <desc id="desc">Paisagem contemplativa com colinas, oliveiras e um caminho iluminado ao entardecer.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#183d4c"/>
+      <stop offset="0.42" stop-color="#6e7f75"/>
+      <stop offset="0.72" stop-color="#b59a6c"/>
+      <stop offset="1" stop-color="#d7b06d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="20%" r="42%">
+      <stop offset="0" stop-color="#f5d79a" stop-opacity="0.95"/>
+      <stop offset="0.34" stop-color="#e2b86f" stop-opacity="0.52"/>
+      <stop offset="1" stop-color="#e2b86f" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#55705f"/>
+      <stop offset="1" stop-color="#2a4d3d"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#345844"/>
+      <stop offset="1" stop-color="#173d32"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d3bd91" stop-opacity="0.82"/>
+      <stop offset="1" stop-color="#a88756" stop-opacity="0.28"/>
+    </linearGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="17" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer>
+        <feFuncA type="table" tableValues="0 0.045"/>
+      </feComponentTransfer>
+    </filter>
+    <filter id="soft" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="9"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <rect width="1080" height="1100" fill="url(#glow)"/>
+  <circle cx="800" cy="385" r="62" fill="#f4daa0" opacity="0.8" filter="url(#soft)"/>
+  <circle cx="800" cy="385" r="39" fill="#f7e2b0" opacity="0.92"/>
+
+  <path d="M0 740 C180 680 335 725 500 700 C680 672 848 615 1080 675 L1080 1120 L0 1120 Z" fill="#455f52" opacity="0.76"/>
+  <path d="M0 850 C170 770 350 820 525 780 C705 740 866 755 1080 835 L1080 1290 L0 1290 Z" fill="url(#hillFar)"/>
+  <path d="M0 1010 C150 920 318 970 480 915 C635 860 820 880 1080 1000 L1080 1510 L0 1510 Z" fill="url(#hillNear)"/>
+
+  <path d="M575 998 C610 1110 610 1240 555 1362 C505 1475 465 1600 430 1920 L815 1920 C718 1660 662 1490 655 1350 C648 1212 673 1092 690 1008 Z" fill="url(#path)" opacity="0.92"/>
+
+  <g opacity="0.92">
+    <g transform="translate(110 880)">
+      <path d="M62 420 C42 298 58 188 94 76 C102 52 116 28 132 0" stroke="#182d24" stroke-width="23" stroke-linecap="round" fill="none"/>
+      <path d="M84 190 C36 155 12 118 0 72" stroke="#20362a" stroke-width="15" stroke-linecap="round" fill="none"/>
+      <path d="M96 132 C145 92 174 55 194 12" stroke="#20362a" stroke-width="15" stroke-linecap="round" fill="none"/>
+      <ellipse cx="30" cy="82" rx="98" ry="68" fill="#2c4d3b"/>
+      <ellipse cx="119" cy="48" rx="112" ry="77" fill="#365742"/>
+      <ellipse cx="172" cy="114" rx="92" ry="62" fill="#294a38"/>
+      <ellipse cx="68" cy="150" rx="113" ry="67" fill="#31523e"/>
+    </g>
+
+    <g transform="translate(780 965) scale(.76)">
+      <path d="M62 420 C42 298 58 188 94 76 C102 52 116 28 132 0" stroke="#182d24" stroke-width="23" stroke-linecap="round" fill="none"/>
+      <path d="M84 190 C36 155 12 118 0 72" stroke="#20362a" stroke-width="15" stroke-linecap="round" fill="none"/>
+      <path d="M96 132 C145 92 174 55 194 12" stroke="#20362a" stroke-width="15" stroke-linecap="round" fill="none"/>
+      <ellipse cx="30" cy="82" rx="98" ry="68" fill="#2c4d3b"/>
+      <ellipse cx="119" cy="48" rx="112" ry="77" fill="#365742"/>
+      <ellipse cx="172" cy="114" rx="92" ry="62" fill="#294a38"/>
+      <ellipse cx="68" cy="150" rx="113" ry="67" fill="#31523e"/>
+    </g>
+  </g>
+
+  <path d="M0 1470 C180 1390 354 1435 514 1410 C720 1377 866 1414 1080 1504 L1080 1920 L0 1920 Z" fill="#102d25" opacity="0.56"/>
+  <path d="M0 1610 C210 1515 365 1585 548 1535 C753 1478 910 1538 1080 1602 L1080 1920 L0 1920 Z" fill="#0d271f" opacity="0.42"/>
+
+  <rect width="1080" height="1920" filter="url(#grain)" opacity="0.85"/>
+</svg>
