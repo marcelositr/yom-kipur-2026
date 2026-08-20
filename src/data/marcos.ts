@@ -215,5 +215,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco08-rosh-hashana.svg',
     practice: 'Antes do pôr do sol, releia o caminho percorrido desde Elul e escreva uma frase simples: “Neste novo ano, quero viver diante de Hashem com ______.” Não transforme isso em promessa grandiosa; escolha uma palavra que possa orientar decisões concretas.',
     status: 'draft'
+  },
+  {
+    id: 9,
+    slug: 'o-que-fazemos-importa',
+    title: 'O que fazemos importa',
+    hebrew: 'שְׁלֹשָׁה סְפָרִים נִפְתָּחִין',
+    transliteration: 'Sheloshá Sefarim Niftachin',
+    translation: 'Três livros são abertos',
+    hebrewDate: '3 Tishrei 5787',
+    civilDate: '14 de setembro de 2026',
+    publicationDate: '13 de setembro de 2026',
+    theme: 'livros-abertos',
+    summary: 'Depois de reconhecer Hashem como Rei, a tradição talmúdica usa a imagem de livros abertos para ensinar responsabilidade: nossas escolhas importam, a vida moral não é neutra e a Teshuvá continua chamando para uma resposta concreta.',
+    classification: 'Imagem talmúdica de julgamento e responsabilidade',
+    conceptSource: 'Talmud Bavli · Rosh Hashaná 16b · שְׁלֹשָׁה סְפָרִים נִפְתָּחִין',
+    conceptSourceUrl: 'https://www.sefaria.org/Rosh_Hashanah.16b.12',
+    traditionSource: 'Mishná Rosh Hashaná 1:2 · todos passam diante de Hashem em julgamento',
+    traditionSourceUrl: 'https://www.sefaria.org/Mishnah_Rosh_Hashanah.1.2',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=3&hm=Tishrei&hy=5787',
+    calendarNote: '3 Tishrei 5787 começa ao pôr do sol de domingo, 13 de setembro. A publicação está prevista após o encerramento do segundo dia de Rosh Hashaná em cada localidade. O dia 14 de setembro também é Tzom Gedaliah; esse jejum não é o tema deste marco.',
+    biblicalReference: 'Salmos 33:15 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco09-livros-abertos.svg',
+    practice: 'Escolha uma decisão concreta que ainda está em aberto na sua vida e escreva qual resposta refletiria melhor a pessoa que você deseja ser diante de Hashem. Depois, dê hoje o primeiro passo possível nessa direção.',
+    status: 'draft'
   }
 ];
