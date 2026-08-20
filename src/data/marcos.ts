@@ -336,5 +336,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco13-pikuach-nefesh.svg',
     practice: 'Não faça do jejum um teste de fé. Havendo doença, uso de medicação ou dúvida real sobre segurança, procure orientação médica; se for judeu, também orientação rabínica qualificada. Este projeto não emite psak. Preservar a vida vem primeiro.',
     status: 'draft'
+  },
+  {
+    id: 14,
+    slug: 'volte-por-inteiro',
+    title: 'Volte por inteiro',
+    hebrew: 'יוֹם הַכִּפּוּרִים',
+    transliteration: 'Yom HaKipurim',
+    translation: 'Dia das Expiações',
+    hebrewDate: '10 Tishrei 5787',
+    civilDate: '21 de setembro de 2026',
+    publicationDate: '20 de setembro de 2026',
+    theme: 'yom-kippur',
+    summary: 'A caminhada chega a Yom Kipur. O décimo dia de Tishrei reúne Teshuvá, oração, confissão, jejum e busca de expiação e purificação. O jejum não é o objetivo isolado do dia e nunca se sobrepõe à preservação da vida.',
+    classification: 'Moed e mitzvá bíblicos para Israel · participação educativa/devocional voluntária para não judeus',
+    conceptSource: 'Levítico 16:30 · כִּי־בַיּוֹם הַזֶּה יְכַפֵּר עֲלֵיכֶם לְטַהֵר אֶתְכֶם',
+    conceptSourceUrl: 'https://www.sefaria.org/Leviticus.16.30',
+    traditionSource: 'Rambam · Mishneh Torah, Hilchot Teshuvá 2:7 · Yom Kipur como tempo de Teshuvá e confissão',
+    traditionSourceUrl: 'https://www.sefaria.org/Mishneh_Torah%2C_Repentance.2.7',
+    calendarSourceUrl: 'https://www.hebcal.com/holidays/yom-kippur-2026',
+    calendarNote: '10 Tishrei 5787 começa ao pôr do sol de domingo, 20 de setembro. A publicação está prevista para o fim da tarde, antes da entrada de Yom Kipur em cada localidade. O dia segue até a noite de segunda-feira, 21 de setembro.',
+    biblicalReference: 'Levítico 16:29–30 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco14-yom-kippur.svg',
+    practice: 'Entre no dia com três eixos: Teshuvá, oração e responsabilidade. Leia Levítico 16:29–30 e reserve tempo real para silêncio e oração. Se você não é judeu, não trate o jejum como obrigação haláchica; qualquer abstinência deve ser voluntária e segura. Pikuach Nefesh permanece acima do jejum.',
+    status: 'draft'
   }
 ];
