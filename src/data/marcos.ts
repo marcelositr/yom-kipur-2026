@@ -119,5 +119,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco04-cheshbon-hanefesh.svg',
     practice: 'Separe dez minutos e faça um balanço simples em uma folha: o que precisa continuar, o que precisa mudar e qual é o próximo passo concreto. Escreva com honestidade, sem se justificar e sem se condenar.',
     status: 'draft'
+  },
+  {
+    id: 5,
+    slug: 'voltar-tambem-e-reparar',
+    title: 'Voltar também é reparar',
+    hebrew: 'בֵּין אָדָם לַחֲבֵרוֹ',
+    transliteration: 'Bein Adam LaChavero',
+    translation: 'Entre a pessoa e seu próximo',
+    hebrewDate: '22 Elul 5786',
+    civilDate: '4 de setembro de 2026',
+    publicationDate: '3 de setembro de 2026',
+    theme: 'reparacao',
+    summary: 'O exame da própria vida também revela dívidas relacionais. Na tradição judaica, Teshuvá diante de Hashem não substitui a responsabilidade de reparar o dano causado a outra pessoa.',
+    classification: 'Princípio ético-haláchico rabínico',
+    conceptSource: 'Mishná Yoma 8:9 / Yoma 85b · עבירות שבין אדם לחבירו',
+    conceptSourceUrl: 'https://www.sefaria.org/Yoma.85b.7',
+    traditionSource: 'Rambam · Mishneh Torah, Hilchot Teshuvá 2:9',
+    traditionSourceUrl: 'https://www.sefaria.org/Mishneh_Torah%2C_Repentance.2.9',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=22&hm=Elul&hy=5786',
+    calendarNote: '22 Elul 5786 começa ao pôr do sol de quinta-feira, 3 de setembro. O marco antecede Leil Selichot, que em 5786 ocorre após o anoitecer de sábado, 5 de setembro, na tradição ashkenazi.',
+    biblicalReference: 'Levítico 19:18 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco05-reparacao.svg',
+    practice: 'Identifique uma relação em que você causou dano, ficou devendo algo ou precisa pedir perdão. Defina uma reparação concreta e dê o primeiro passo com humildade, sem transformar o pedido em nova pressão sobre a outra pessoa.',
+    status: 'draft'
   }
 ];
