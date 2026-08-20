@@ -312,5 +312,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco12-erev-yom-kippur.svg',
     practice: 'Prepare-se sem improviso: organize alimentação e hidratação, reduza pendências, separe tempo para oração e descanso e deixe o necessário pronto antes da entrada de Yom Kipur. Se houver qualquer questão de saúde, não mude medicamentos nem imponha jejum por conta própria.',
     status: 'draft'
+  },
+  {
+    id: 13,
+    slug: 'a-vida-vem-primeiro',
+    title: 'A vida vem primeiro',
+    hebrew: 'פִּקּוּחַ נֶפֶשׁ',
+    transliteration: 'Pikuach Nefesh',
+    translation: 'Preservação da vida',
+    hebrewDate: '9 Tishrei 5787',
+    civilDate: '20 de setembro de 2026',
+    publicationDate: '20 de setembro de 2026',
+    theme: 'pikuach-nefesh',
+    summary: 'Às portas de Yom Kipur, a tradição judaica estabelece um limite claro: o jejum não deve colocar uma vida em perigo. Diante de risco real, preservar a pessoa precede o jejum; questões médicas exigem responsabilidade, não heroísmo.',
+    classification: 'Princípio haláchico de preservação da vida · aplicação explícita a Yom Kipur',
+    conceptSource: 'Levítico 18:5 · וָחַי בָּהֶם',
+    conceptSourceUrl: 'https://www.sefaria.org/Leviticus.18.5',
+    traditionSource: 'Talmud Bavli · Yoma 85b · וָחַי בָּהֶם וְלֹא שֶׁיָּמוּת בָּהֶם · Mishná Yoma 8:5',
+    traditionSourceUrl: 'https://www.sefaria.org/Yoma.85b.3',
+    calendarSourceUrl: 'https://www.hebcal.com/holidays/yom-kippur-2026',
+    calendarNote: '9 Tishrei 5787 corresponde ao domingo, 20 de setembro, até o pôr do sol. Este card de segurança está previsto para a manhã desse domingo, antes da entrada de Yom Kipur. Yom Kipur começa ao pôr do sol de 20 de setembro e termina na noite de 21 de setembro.',
+    biblicalReference: 'Levítico 18:5 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco13-pikuach-nefesh.svg',
+    practice: 'Não faça do jejum um teste de fé. Havendo doença, uso de medicação ou dúvida real sobre segurança, procure orientação médica; se for judeu, também orientação rabínica qualificada. Este projeto não emite psak. Preservar a vida vem primeiro.',
+    status: 'draft'
   }
 ];
