@@ -7,8 +7,12 @@ interface Props {
 }
 
 const { marco } = Astro.props;
-const backgroundStyle = marco.backgroundAsset
-  ? `--yk-background: url('${marco.backgroundAsset}')`
+const backgroundAsset = marco.backgroundAsset?.replace(/^\/+/, '');
+const backgroundUrl = backgroundAsset
+  ? `${import.meta.env.BASE_URL}${backgroundAsset}`
+  : undefined;
+const backgroundStyle = backgroundUrl
+  ? `--yk-background: url('${backgroundUrl}')`
   : undefined;
 ---
 <div class="yk-card-frame">
