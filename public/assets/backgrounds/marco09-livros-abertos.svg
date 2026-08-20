@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Livros abertos sob luz</title>
+  <desc id="desc">Três formas abstratas de livros abertos sob luz dourada, usadas como símbolo editorial da imagem talmúdica de responsabilidade.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#071f25"/>
+      <stop offset="0.55" stop-color="#0b302f"/>
+      <stop offset="1" stop-color="#102c27"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="18%" r="68%">
+      <stop offset="0" stop-color="#d8bd77" stop-opacity="0.34"/>
+      <stop offset="0.45" stop-color="#b79a5a" stop-opacity="0.10"/>
+      <stop offset="1" stop-color="#071f25" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="page" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f3ead2" stop-opacity="0.92"/>
+      <stop offset="1" stop-color="#d7c89e" stop-opacity="0.72"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#8b7139" stop-opacity="0.15"/>
+      <stop offset="0.5" stop-color="#d0b46c" stop-opacity="0.76"/>
+      <stop offset="1" stop-color="#8b7139" stop-opacity="0.15"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect width="1080" height="1920" fill="url(#glow)"/>
+
+  <circle cx="540" cy="320" r="230" fill="#cdb06b" opacity="0.11" filter="url(#soft)"/>
+  <path d="M140 0H940L760 1060H320Z" fill="#d7bf7b" opacity="0.045"/>
+
+  <g opacity="0.20" stroke="#c7aa67" fill="none">
+    <path d="M90 1180C250 1080 390 1060 540 1095C690 1060 830 1080 990 1180"/>
+    <path d="M110 1230C270 1130 400 1120 540 1150C680 1120 810 1130 970 1230"/>
+  </g>
+
+  <g transform="translate(0 90)">
+    <g opacity="0.38" transform="translate(0 -190) scale(.84) translate(102 230)">
+      <path d="M186 1300C310 1262 426 1267 540 1332V1572C429 1513 310 1506 186 1540Z" fill="url(#page)"/>
+      <path d="M894 1300C770 1262 654 1267 540 1332V1572C651 1513 770 1506 894 1540Z" fill="url(#page)"/>
+      <path d="M540 1332V1572" stroke="url(#edge)" stroke-width="8"/>
+      <path d="M186 1540C308 1510 425 1518 540 1572C655 1518 772 1510 894 1540" fill="none" stroke="#9c8147" stroke-opacity="0.6" stroke-width="5"/>
+    </g>
+
+    <g opacity="0.62" transform="translate(0 -70) scale(.92) translate(47 125)">
+      <path d="M164 1305C298 1260 424 1265 540 1344V1628C423 1554 297 1544 164 1586Z" fill="url(#page)"/>
+      <path d="M916 1305C782 1260 656 1265 540 1344V1628C657 1554 783 1544 916 1586Z" fill="url(#page)"/>
+      <path d="M540 1344V1628" stroke="url(#edge)" stroke-width="9"/>
+      <path d="M164 1586C296 1547 423 1558 540 1628C657 1558 784 1547 916 1586" fill="none" stroke="#a98b4c" stroke-opacity="0.72" stroke-width="6"/>
+    </g>
+
+    <g>
+      <path d="M120 1355C274 1294 418 1305 540 1392V1760C414 1670 269 1654 120 1714Z" fill="url(#page)"/>
+      <path d="M960 1355C806 1294 662 1305 540 1392V1760C666 1670 811 1654 960 1714Z" fill="url(#page)"/>
+      <path d="M540 1392V1760" stroke="url(#edge)" stroke-width="12"/>
+      <path d="M120 1714C268 1657 414 1674 540 1760C666 1674 812 1657 960 1714" fill="none" stroke="#b79a57" stroke-width="8" stroke-opacity="0.78"/>
+      <path d="M170 1405C306 1362 414 1375 510 1434" stroke="#aa945f" stroke-opacity="0.16" stroke-width="3" fill="none"/>
+      <path d="M910 1405C774 1362 666 1375 570 1434" stroke="#aa945f" stroke-opacity="0.16" stroke-width="3" fill="none"/>
+    </g>
+  </g>
+
+  <ellipse cx="540" cy="1750" rx="430" ry="84" fill="#d1b36c" opacity="0.08" filter="url(#soft)"/>
+  <rect y="1780" width="1080" height="140" fill="#061a1b" opacity="0.58"/>
+</svg>
