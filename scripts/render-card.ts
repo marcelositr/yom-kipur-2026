@@ -19,12 +19,23 @@ const escapeHtml = (value: string) => value
   .replaceAll('"', '&quot;')
   .replaceAll("'", '&#039;');
 
+const loadBackground = async () => {
+  if (!marco.backgroundAsset) return '';
+
+  const assetPath = resolve('public', marco.backgroundAsset.replace(/^\//, ''));
+  const bytes = await readFile(assetPath);
+  const mime = marco.backgroundAsset.endsWith('.svg') ? 'image/svg+xml' : 'image/png';
+  return `data:${mime};base64,${bytes.toString('base64')}`;
+};
+
 let html = await readFile(templatePath, 'utf8');
 const styles = await readFile(stylesPath, 'utf8');
+const background = await loadBackground();
 
 const replacements: Record<string, string> = {
   styles,
   theme: escapeHtml(marco.theme),
+  background,
   hebrewDate: escapeHtml(marco.hebrewDate),
   civilDate: escapeHtml(marco.civilDate),
   classification: escapeHtml(marco.classification),
@@ -45,6 +56,7 @@ await mkdir(outputDir, { recursive: true });
 const browser = await chromium.launch({ headless: true });
 const page = await browser.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
 await page.setContent(html, { waitUntil: 'networkidle' });
+await page.evaluate(() => document.fonts.ready);
 await page.screenshot({ path: outputPath, fullPage: false });
 await browser.close();
 
