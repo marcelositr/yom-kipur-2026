@@ -288,5 +288,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco11-shabbat-shuvah.svg',
     practice: 'Antes do início do Shabbat, releia Oséias 14:1–4 na ACF. Escolha uma coisa da qual você precisa se afastar e uma direção para a qual precisa retornar. Escreva ambas em uma frase curta e carregue essa decisão com você até Yom Kipur.',
     status: 'draft'
+  },
+  {
+    id: 12,
+    slug: 'prepare-se-para-entrar',
+    title: 'Prepare-se para entrar',
+    hebrew: 'עֶרֶב יוֹם כִּפּוּר',
+    transliteration: 'Erev Yom Kipur',
+    translation: 'Véspera de Yom Kipur',
+    hebrewDate: '9 Tishrei 5787',
+    civilDate: '20 de setembro de 2026',
+    publicationDate: '19 de setembro de 2026',
+    theme: 'erev-yom-kippur',
+    summary: 'Yom Kipur não começa na improvisação. O nono dia de Tishrei é recebido na tradição judaica como tempo de preparação: alimentar o corpo, organizar a vida, aquietar o ritmo e chegar ao dia sagrado com consciência.',
+    classification: 'Erev Yom Kipur · dia de preparação na tradição haláchica e litúrgica judaica',
+    conceptSource: 'Levítico 23:32 · בְּתִשְׁעָה לַחֹדֶשׁ בָּעֶרֶב',
+    conceptSourceUrl: 'https://www.sefaria.org/Leviticus.23.32',
+    traditionSource: 'Talmud Bavli · Yoma 81b · comer e beber no nono dia em preparação para o décimo',
+    traditionSourceUrl: 'https://www.sefaria.org/Yoma.81b.4',
+    calendarSourceUrl: 'https://www.hebcal.com/holidays/yom-kippur-2026',
+    calendarNote: '9 Tishrei 5787 começa ao pôr do sol de sábado, 19 de setembro, após Shabbat Shuvah. O dia civil de domingo, 20 de setembro, é Erev Yom Kipur. Yom Kipur começa ao pôr do sol desse domingo e segue até a noite de segunda-feira, 21 de setembro.',
+    biblicalReference: 'Levítico 23:32 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco12-erev-yom-kippur.svg',
+    practice: 'Prepare-se sem improviso: organize alimentação e hidratação, reduza pendências, separe tempo para oração e descanso e deixe o necessário pronto antes da entrada de Yom Kipur. Se houver qualquer questão de saúde, não mude medicamentos nem imponha jejum por conta própria.',
+    status: 'draft'
   }
 ];
