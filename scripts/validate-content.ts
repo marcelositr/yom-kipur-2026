@@ -46,6 +46,7 @@ for (const marco of marcos) {
   }
 
   for (const [label, url] of [
+    ['conceptSourceUrl', marco.conceptSourceUrl],
     ['traditionSourceUrl', marco.traditionSourceUrl],
     ['calendarSourceUrl', marco.calendarSourceUrl]
   ] as const) {
