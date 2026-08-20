@@ -1,0 +1,197 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MarcoCard from '../../components/MarcoCard.astro';
+import { marcos } from '../../data/marcos';
+
+const marco = marcos.find((item) => item.id === 9);
+if (!marco) throw new Error('Marco 09 não encontrado.');
+---
+<BaseLayout
+  title={`${marco.title} · Caminho para Yom Kipur 5787`}
+  description={marco.summary}
+>
+  <section class="marco-page container">
+    <div class="marco-copy">
+      <a class="back" href={import.meta.env.BASE_URL}>← Voltar</a>
+      <div class="eyebrow">Marco 09 · card em construção</div>
+      <h1>{marco.title}</h1>
+      <p class="lede">{marco.summary}</p>
+
+      <dl class="facts">
+        <div>
+          <dt>Data</dt>
+          <dd>{marco.hebrewDate} · {marco.civilDate}</dd>
+        </div>
+        <div>
+          <dt>Publicação</dt>
+          <dd>{marco.publicationDate} · após o encerramento de Rosh Hashaná</dd>
+        </div>
+        <div>
+          <dt>Classificação</dt>
+          <dd>{marco.classification}</dd>
+        </div>
+      </dl>
+
+      {marco.calendarNote && <p class="note">{marco.calendarNote}</p>}
+
+      <div class="workflow-note">
+        <div class="workflow-kicker">Etapa atual</div>
+        <strong>Somente o card está sendo produzido.</strong>
+        <p>O texto devocional entra apenas na próxima etapa do fluxo editorial.</p>
+      </div>
+
+      <div class="sources">
+        <h2>Fontes de verificação</h2>
+        <ul>
+          {marco.calendarSourceUrl && (
+            <li><a href={marco.calendarSourceUrl} target="_blank" rel="noreferrer">Calendário hebraico · Hebcal</a></li>
+          )}
+          {marco.conceptSourceUrl && (
+            <li><a href={marco.conceptSourceUrl} target="_blank" rel="noreferrer">{marco.conceptSource}</a></li>
+          )}
+          {marco.traditionSourceUrl && (
+            <li><a href={marco.traditionSourceUrl} target="_blank" rel="noreferrer">{marco.traditionSource}</a></li>
+          )}
+        </ul>
+      </div>
+    </div>
+
+    <div class="preview-column">
+      <div class="preview-label">Prévia do card · 9:16</div>
+      <MarcoCard {marco} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .marco-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(320px, 540px);
+    gap: clamp(2rem, 6vw, 6rem);
+    align-items: start;
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .marco-copy {
+    position: sticky;
+    top: 110px;
+  }
+
+  .back {
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .marco-copy h1 {
+    font-size: clamp(3rem, 6vw, 5.8rem);
+    max-width: 10ch;
+  }
+
+  .facts {
+    margin: 2.5rem 0;
+    display: grid;
+    gap: 1rem;
+  }
+
+  .facts div {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  dt {
+    margin-bottom: .35rem;
+    color: var(--gold);
+    font-size: .75rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  dd {
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .note,
+  .workflow-note {
+    padding: 1rem 1.15rem;
+    background: var(--ivory);
+    line-height: 1.65;
+  }
+
+  .note {
+    border-left: 3px solid var(--gold);
+  }
+
+  .workflow-note {
+    margin-top: 1rem;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+
+  .workflow-note p {
+    margin: .35rem 0 0;
+  }
+
+  .workflow-kicker {
+    margin-bottom: .3rem;
+    color: var(--gold);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .sources {
+    margin-top: 2rem;
+  }
+
+  .sources h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .sources ul {
+    padding-left: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .sources a {
+    text-underline-offset: .18em;
+  }
+
+  .preview-column {
+    width: 100%;
+  }
+
+  .preview-label {
+    margin-bottom: .7rem;
+    color: var(--muted);
+    font-size: .78rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+
+  .preview-column :global(.yk-card-frame) {
+    border-radius: 18px;
+    box-shadow: 0 30px 90px rgba(12, 26, 21, .2);
+  }
+
+  @media (max-width: 900px) {
+    .marco-page {
+      grid-template-columns: 1fr;
+    }
+
+    .marco-copy {
+      position: static;
+    }
+
+    .preview-column {
+      max-width: 540px;
+      margin-inline: auto;
+    }
+  }
+</style>
