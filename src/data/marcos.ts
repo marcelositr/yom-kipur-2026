@@ -191,5 +191,29 @@ export const marcos: Marco[] = [
     backgroundAsset: '/assets/backgrounds/marco07-selichot.svg',
     practice: 'Leia Êxodo 34:6-7 lentamente. Depois, em suas próprias palavras, faça uma oração breve pedindo misericórdia e força para continuar a Teshuvá que você já começou, sem tentar reproduzir uma liturgia que pertence a uma comunidade específica.',
     status: 'draft'
+  },
+  {
+    id: 8,
+    slug: 'diante-do-rei',
+    title: 'Diante do Rei',
+    hebrew: 'רֹאשׁ הַשָּׁנָה',
+    transliteration: 'Rosh Hashaná',
+    translation: 'Cabeça do ano',
+    hebrewDate: '1 Tishrei 5787',
+    civilDate: '12 de setembro de 2026',
+    publicationDate: '11 de setembro de 2026',
+    theme: 'rosh-hashana',
+    summary: 'A caminhada de Elul chega a Rosh Hashaná. A tradição judaica desloca o foco para a realeza de Hashem, memória e julgamento: não apenas “o que quero para o novo ano?”, mas diante de Quem escolho viver.',
+    classification: 'Festividade bíblica de 1 Tishrei · Rosh Hashaná na tradição rabínica e litúrgica',
+    conceptSource: 'Levítico 23:24 · זִכְרוֹן תְּרוּעָה',
+    conceptSourceUrl: 'https://www.sefaria.org/Leviticus.23.24',
+    traditionSource: 'Talmud Bavli · Rosh Hashaná 16a · Malchuyot, Zichronot e Shofarot',
+    traditionSourceUrl: 'https://www.sefaria.org/Rosh_Hashanah.16a.15',
+    calendarSourceUrl: 'https://www.hebcal.com/converter?h2g=1&hd=1&hm=Tishrei&hy=5787',
+    calendarNote: '1 Tishrei 5787 começa ao pôr do sol de sexta-feira, 11 de setembro. Como o primeiro dia de Rosh Hashaná coincide com Shabbat, a publicação está prevista para a tarde de sexta-feira, antes do pôr do sol, como preparação para a entrada de Yom Tov.',
+    biblicalReference: 'Levítico 23:24 • ACF',
+    backgroundAsset: '/assets/backgrounds/marco08-rosh-hashana.svg',
+    practice: 'Antes do pôr do sol, releia o caminho percorrido desde Elul e escreva uma frase simples: “Neste novo ano, quero viver diante de Hashem com ______.” Não transforme isso em promessa grandiosa; escolha uma palavra que possa orientar decisões concretas.',
+    status: 'draft'
   }
 ];
