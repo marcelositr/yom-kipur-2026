@@ -14,8 +14,9 @@ USO
 COMANDOS
   setup
     Prepara o ambiente de desenvolvimento.
-    Faz: ativa/instala o Node definido em .nvmrc, instala dependências npm,
-    instala o Chromium do Playwright e executa a validação completa.
+    Faz: ativa/instala o Node definido em .nvmrc, instala dependências npm
+    a partir do package-lock.json, instala o Chromium do Playwright e executa
+    a validação completa.
 
     Uso:
       bash yk setup
@@ -43,19 +44,27 @@ COMANDOS
       bash yk open marcos/01-o-rei-esta-no-campo/
 
   test
-    Executa a validação completa do projeto.
-    Faz: valida os dados dos marcos, roda astro check e gera o build estático.
+    Executa a validação normal do projeto.
+    Faz: valida os dados dos Marcos, roda astro check e gera o build estático.
 
     Uso:
       bash yk test
 
+  preflight
+    Executa o gate completo de pré-lançamento.
+    Faz: valida conteúdo, Astro/TypeScript e build; renderiza os 15 cards;
+    confere páginas, TXTs, fundos, nomes e dimensões 1080x1920 dos PNGs.
+
+    Uso:
+      bash yk preflight
+
   render [N]
-    Renderiza em PNG o card do marco informado.
+    Renderiza em PNG o card do Marco informado.
     Se N não for fornecido, usa o Marco 01.
     Quando possível, abre automaticamente o PNG gerado.
 
     Parâmetros:
-      N            número inteiro do marco, por exemplo 1, 2, 3...
+      N            número inteiro do Marco, por exemplo 1, 2, 3...
 
     Uso:
       bash yk render
@@ -87,8 +96,11 @@ ATALHOS ÚTEIS
   Abrir o localhost se o Astro já estiver rodando:
     bash yk open
 
-  Validar tudo:
+  Validar durante o desenvolvimento:
     bash yk test
+
+  Gate final antes de publicar:
+    bash yk preflight
 
   Gerar o card do Marco 01:
     bash yk render 1
@@ -113,6 +125,9 @@ case "$command" in
     ;;
   test)
     exec bash "$ROOT/scripts/test.sh" "$@"
+    ;;
+  preflight)
+    exec bash "$ROOT/scripts/preflight.sh" "$@"
     ;;
   render)
     exec bash "$ROOT/scripts/render-card.sh" "$@"
