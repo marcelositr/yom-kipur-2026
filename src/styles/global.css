@@ -79,7 +79,7 @@ img { display: block; max-width: 100%; }
 h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(3rem, 7vw, 6.5rem); line-height: .94; max-width: 11ch; margin: .7rem 0 1.4rem; font-weight: 500; }
 .lede { max-width: 720px; color: #49534e; font-size: clamp(1.05rem, 2vw, 1.35rem); line-height: 1.7; }
 
-.panel { margin: 2rem 0 5rem; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--ivory); box-shadow: var(--shadow); }
+.panel { margin-block: 2rem 5rem; padding: clamp(1.5rem, 4vw, 3rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--ivory); box-shadow: var(--shadow); }
 .panel h2 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 500; margin-top: 0; }
 .panel p { line-height: 1.7; color: #4f5854; }
 
