@@ -1,0 +1,42 @@
+name: Generate social preview
+
+on:
+  push:
+    branches:
+      - fix/social-preview-1200x630
+
+permissions:
+  contents: write
+
+jobs:
+  generate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install renderer
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fonts-dejavu-core
+          python -m pip install --upgrade pip
+          python -m pip install pillow
+
+      - name: Render 1200x630 preview
+        run: python scripts/generate-social-preview.py
+
+      - name: Commit generated preview
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/assets/social/yom-kipur-2026-og.png
+          if git diff --cached --quiet; then
+            echo "No image change."
+            exit 0
+          fi
+          git commit -m "chore: generate 1200x630 social preview"
+          git push origin HEAD:${GITHUB_REF_NAME}
