@@ -12,11 +12,12 @@
     "preview": "astro preview",
     "check": "astro check",
     "test": "npm run content:validate && npm run check && npm run build",
+    "ux:audit": "tsx scripts/audit-ux.ts",
     "card:render": "tsx scripts/render-card.ts",
     "card:render:all": "tsx scripts/render-all-cards.ts",
     "content:validate": "tsx scripts/validate-content.ts",
     "preflight:release": "tsx scripts/preflight-release.ts",
-    "release:check": "npm test && npm run card:render:all && npm run preflight:release"
+    "release:check": "npm test && npm run ux:audit && npm run card:render:all && npm run preflight:release"
   },
   "dependencies": {
     "astro": "^7.2.4"

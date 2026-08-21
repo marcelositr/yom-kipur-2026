@@ -15,7 +15,12 @@ const {
 
 const base = import.meta.env.BASE_URL;
 const orderedMarcos = [...marcos].sort((a, b) => a.id - b.id);
-const routeMatch = Astro.url.pathname.match(/\/marcos\/(\d{2})-/);
+const pathname = Astro.url.pathname;
+const marcoRouteMatch = pathname.match(/\/marcos\/(\d{2})-/);
+const studyRouteMatch = pathname.match(/\/estudos\/(\d{2})-/);
+const routeMatch = marcoRouteMatch ?? studyRouteMatch;
+const isMarcoPage = Boolean(marcoRouteMatch);
+const isStudyPage = Boolean(studyRouteMatch);
 const currentId = routeMatch ? Number(routeMatch[1]) : undefined;
 const currentIndex = currentId
   ? orderedMarcos.findIndex((item) => item.id === currentId)
@@ -64,14 +69,16 @@ const marcoHref = (id: number, slug: string) =>
           <div class="container marco-context__inner">
             <a href={`${base}#marcos`}>Todos os Marcos</a>
             <span aria-hidden="true">·</span>
-            <strong>Marco {String(currentMarco.id).padStart(2, '0')} de {orderedMarcos.length}</strong>
+            <strong>
+              {isStudyPage ? 'Estudo · ' : ''}Marco {String(currentMarco.id).padStart(2, '0')} de {orderedMarcos.length}
+            </strong>
             <span aria-hidden="true">·</span>
             <span>{currentMarco.hebrewDate}</span>
           </div>
         </div>
       )}
 
-      {currentMarco && currentStudyHref && (
+      {currentMarco && currentStudyHref && isMarcoPage && (
         <aside class="study-access" aria-label="Estudo complementar deste Marco">
           <div class="container study-access__inner">
             <div>
@@ -88,7 +95,7 @@ const marcoHref = (id: number, slug: string) =>
 
       <main><slot /></main>
 
-      {currentMarco && (
+      {currentMarco && isMarcoPage && (
         <nav class="marco-pagination container" aria-label="Navegação entre os Marcos">
           <div class="marco-pagination__side">
             {previousMarco ? (
@@ -105,6 +112,33 @@ const marcoHref = (id: number, slug: string) =>
             {nextMarco ? (
               <a href={marcoHref(nextMarco.id, nextMarco.slug)} rel="next">
                 <small>Próximo</small>
+                <strong>Marco {String(nextMarco.id).padStart(2, '0')} · {nextMarco.title} →</strong>
+              </a>
+            ) : (
+              <span class="marco-pagination__finish">
+                <small>Fim da caminhada</small>
+                <strong>Ne’ilá encerra o arco principal.</strong>
+              </span>
+            )}
+          </div>
+        </nav>
+      )}
+
+      {currentMarco && isStudyPage && (
+        <nav class="marco-pagination container" aria-label="Continuidade após o estudo">
+          <div class="marco-pagination__side">
+            <a href={marcoHref(currentMarco.id, currentMarco.slug)}>
+              <small>Voltar ao Marco</small>
+              <strong>← Marco {String(currentMarco.id).padStart(2, '0')} · {currentMarco.title}</strong>
+            </a>
+          </div>
+
+          <a class="marco-pagination__all" href={`${base}#marcos`}>Ver os 15 Marcos</a>
+
+          <div class="marco-pagination__side marco-pagination__side--next">
+            {nextMarco ? (
+              <a href={marcoHref(nextMarco.id, nextMarco.slug)} rel="next">
+                <small>Continuar a caminhada</small>
                 <strong>Marco {String(nextMarco.id).padStart(2, '0')} · {nextMarco.title} →</strong>
               </a>
             ) : (
