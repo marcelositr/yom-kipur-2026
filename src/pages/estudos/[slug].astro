@@ -47,8 +47,14 @@ const downloadHref = `${base}estudos/${studyFile}`;
       </div>
 
       <div class="reader-toolbar__group reader-toolbar__speech" aria-label="Leitura por voz" data-speech-controls>
-        <button type="button" class="reader-tool reader-tool--primary" data-speech-toggle>Ouvir estudo</button>
+        <button type="button" class="reader-tool reader-tool--primary" data-speech-toggle disabled>Ouvir estudo</button>
         <button type="button" class="reader-tool" data-speech-stop disabled>Parar</button>
+        <label class="reader-voice">
+          <span>Voz</span>
+          <select data-speech-voice aria-label="Voz da leitura" disabled>
+            <option value="">Carregando vozes…</option>
+          </select>
+        </label>
         <label class="reader-rate">
           <span>Velocidade</span>
           <select data-speech-rate aria-label="Velocidade da leitura">
@@ -138,6 +144,7 @@ const downloadHref = `${base}estudos/${studyFile}`;
 
     const speechToggle = root.querySelector('[data-speech-toggle]');
     const speechStop = root.querySelector('[data-speech-stop]');
+    const speechVoice = root.querySelector('[data-speech-voice]');
     const speechRate = root.querySelector('[data-speech-rate]');
     const speechControls = root.querySelector('[data-speech-controls]');
     const speechSupported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
@@ -155,22 +162,85 @@ const downloadHref = `${base}estudos/${studyFile}`;
       .filter((element) => element.textContent?.trim());
     const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
+    const voiceKey = 'yk-study-speech-voice';
     let voices = [];
     let currentIndex = 0;
     let active = false;
     let paused = false;
     let generation = 0;
 
+    const voiceId = (voice) => voice.voiceURI || `${voice.name}|${voice.lang}`;
+
+    const sortVoices = (a, b) => {
+      const aLang = a.lang.toLowerCase();
+      const bLang = b.lang.toLowerCase();
+      const aScore = aLang === 'pt-br' ? 0 : 1;
+      const bScore = bLang === 'pt-br' ? 0 : 1;
+      if (aScore !== bScore) return aScore - bScore;
+      return a.name.localeCompare(b.name, 'pt-BR');
+    };
+
+    const selectedVoice = () => {
+      if (!speechVoice) return undefined;
+      return voices.find((voice) => voiceId(voice) === speechVoice.value);
+    };
+
     const refreshVoices = () => {
-      voices = synth.getVoices();
+      const hadPortugueseVoices = voices.length > 0;
+      const available = synth.getVoices();
+      voices = available
+        .filter((voice) => /^pt(?:[-_]|$)/i.test(voice.lang))
+        .sort(sortVoices);
+
+      if (!speechVoice || !speechToggle) return;
+
+      const saved = localStorage.getItem(voiceKey);
+      const previous = speechVoice.value;
+      const preferred =
+        voices.find((voice) => voiceId(voice) === saved) ||
+        voices.find((voice) => voiceId(voice) === previous) ||
+        voices.find((voice) => voice.lang.toLowerCase() === 'pt-br' && voice.default) ||
+        voices.find((voice) => voice.lang.toLowerCase() === 'pt-br') ||
+        voices[0];
+
+      speechVoice.replaceChildren();
+
+      if (!voices.length) {
+        const option = document.createElement('option');
+        option.value = '';
+        option.textContent = 'Nenhuma voz em português';
+        speechVoice.append(option);
+        speechVoice.disabled = true;
+        speechToggle.disabled = true;
+        setStatus('Nenhuma voz em português está disponível neste aparelho ou navegador.');
+        return;
+      }
+
+      voices.forEach((voice) => {
+        const option = document.createElement('option');
+        option.value = voiceId(voice);
+        const region = voice.lang.toLowerCase() === 'pt-br' ? 'Brasil' : voice.lang;
+        option.textContent = `${voice.name} · ${region}${voice.default ? ' · padrão' : ''}`;
+        speechVoice.append(option);
+      });
+
+      speechVoice.value = preferred ? voiceId(preferred) : voiceId(voices[0]);
+      speechVoice.disabled = false;
+      speechToggle.disabled = false;
+
+      if (preferred && saved !== voiceId(preferred)) {
+        localStorage.setItem(voiceKey, voiceId(preferred));
+      }
+
+      if (!hadPortugueseVoices && preferred) {
+        setStatus(`Voz em português pronta: ${preferred.name} (${preferred.lang}).`);
+      }
     };
 
     refreshVoices();
     synth.onvoiceschanged = refreshVoices;
-
-    const preferredVoice = () =>
-      voices.find((voice) => voice.lang.toLowerCase() === 'pt-br') ||
-      voices.find((voice) => voice.lang.toLowerCase().startsWith('pt'));
+    window.setTimeout(refreshVoices, 250);
+    window.setTimeout(refreshVoices, 1000);
 
     const clearHighlight = () => {
       chunks.forEach((chunk) => chunk.classList.remove('is-speaking'));
@@ -217,10 +287,14 @@ const downloadHref = `${base}estudos/${studyFile}`;
       }
 
       const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'pt-BR';
+      const voice = selectedVoice();
+      if (!voice) {
+        stopSpeech('Selecione uma voz em português antes de iniciar a leitura.');
+        return;
+      }
+      utterance.voice = voice;
+      utterance.lang = voice.lang || 'pt-BR';
       utterance.rate = Number.parseFloat(speechRate?.value || '1');
-      const voice = preferredVoice();
-      if (voice) utterance.voice = voice;
 
       utterance.onstart = () => {
         if (runId === generation) setStatus(`Lendo trecho ${index + 1} de ${chunks.length}.`);
@@ -264,6 +338,14 @@ const downloadHref = `${base}estudos/${studyFile}`;
     });
 
     speechStop?.addEventListener('click', () => stopSpeech());
+
+    speechVoice?.addEventListener('change', () => {
+      const voice = selectedVoice();
+      if (!voice) return;
+      localStorage.setItem(voiceKey, voiceId(voice));
+      setStatus(`Voz selecionada: ${voice.name} (${voice.lang}).`);
+      if (active) stopSpeech('Voz alterada. Inicie a leitura novamente para usar a nova voz.');
+    });
 
     speechRate?.addEventListener('change', () => {
       setStatus('A nova velocidade será usada a partir do próximo trecho.');
@@ -352,7 +434,8 @@ const downloadHref = `${base}estudos/${studyFile}`;
   }
 
   .reader-toolbar__label,
-  .reader-rate span {
+  .reader-rate span,
+  .reader-voice span {
     color: var(--muted);
     font-size: .76rem;
     font-weight: 700;
@@ -360,6 +443,7 @@ const downloadHref = `${base}estudos/${studyFile}`;
 
   .reader-tool,
   .reader-rate select,
+  .reader-voice select,
   .study-action {
     min-height: 42px;
     border: 1px solid var(--line);
@@ -391,22 +475,35 @@ const downloadHref = `${base}estudos/${studyFile}`;
 
   .reader-tool:focus-visible,
   .reader-rate select:focus-visible,
+  .reader-voice select:focus-visible,
   .study-action:focus-visible {
     outline: 3px solid color-mix(in srgb, var(--gold) 55%, transparent);
     outline-offset: 2px;
   }
 
-  .reader-rate {
+  .reader-rate,
+  .reader-voice {
     display: flex;
     align-items: center;
     gap: .4rem;
   }
 
-  .reader-rate select {
+  .reader-rate select,
+  .reader-voice select {
     padding: .55rem .7rem;
   }
 
-  .reader-toolbar__speech.is-unavailable .reader-rate {
+  .reader-voice select {
+    max-width: 220px;
+  }
+
+  .reader-toolbar__speech {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .reader-toolbar__speech.is-unavailable .reader-rate,
+  .reader-toolbar__speech.is-unavailable .reader-voice {
     display: none;
   }
 
@@ -526,7 +623,8 @@ const downloadHref = `${base}estudos/${studyFile}`;
       width: 100%;
     }
 
-    .reader-rate {
+    .reader-rate,
+    .reader-voice {
       width: 100%;
       justify-content: space-between;
       margin-top: .2rem;
@@ -534,6 +632,11 @@ const downloadHref = `${base}estudos/${studyFile}`;
 
     .reader-rate select {
       min-width: 110px;
+    }
+
+    .reader-voice select {
+      width: min(100%, 240px);
+      max-width: 240px;
     }
 
     .study-actions {
