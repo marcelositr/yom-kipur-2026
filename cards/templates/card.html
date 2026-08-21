@@ -13,22 +13,26 @@
   <div class="yk-card-frame">
     <article class="yk-card" data-theme="{{theme}}" style="--yk-background: url('{{background}}')">
       <div class="yk-card__body">
-        <div class="yk-card__topline">{{hebrewDate}} · {{civilDate}}</div>
-        <div class="yk-card__classification">{{classification}}</div>
+        <div class="yk-card__topline">Marco {{id}} · {{hebrewDate}}</div>
+        <div class="yk-card__civil-date">{{civilDate}}</div>
+        <div class="yk-card__classification">{{cardClassification}}</div>
         <div class="yk-card__hebrew" lang="he" dir="rtl">{{hebrew}}</div>
         <h1 class="yk-card__title">{{title}}</h1>
         <div class="yk-card__translit">{{transliteration}}</div>
         <div class="yk-card__translation">{{translation}}</div>
-        <div class="yk-card__summary">{{summary}}</div>
+        <p class="yk-card__summary">{{cardSummary}}</p>
         <div class="yk-card__practice">
           <strong>Para viver este marco</strong>
-          <p>{{practice}}</p>
+          <p>{{cardPractice}}</p>
         </div>
-        <div class="yk-card__reference">{{reference}}</div>
+        <div class="yk-card__source">{{cardSource}}</div>
       </div>
       <footer class="yk-card__footer">
-        <span>Marcelo Trindade · @marcelositr</span>
-        <span>devnux.com.br</span>
+        <div>
+          <strong>Caminho para Yom Kipur 5787</strong>
+          <span>Marcelo Trindade · @marcelositr</span>
+        </div>
+        <span class="yk-card__site">yomkipur.devnux.com.br</span>
       </footer>
     </article>
   </div>
