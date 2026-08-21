@@ -6,14 +6,20 @@ import { studyFileFor } from '../data/studies';
 interface Props {
   title?: string;
   description?: string;
+  socialImage?: string;
 }
 
 const {
   title = 'Caminho para Yom Kipur 5787',
-  description = 'Caminhada de estudo, reflexão e preparação para Yom Kipur 5787.'
+  description = 'Caminhada de estudo, reflexão e preparação para Yom Kipur 5787.',
+  socialImage = '/assets/social/yom-kipur-2026-og.jpg'
 } = Astro.props;
 
 const base = import.meta.env.BASE_URL;
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
+const socialImageUrl = new URL(socialImage, siteUrl).toString();
+const socialImageAlt = 'Caminho para Yom Kipur 5787 · 15 marcos de estudo, reflexão e preparação para Yom Kipur 2026';
 const orderedMarcos = [...marcos].sort((a, b) => a.id - b.id);
 const pathname = Astro.url.pathname;
 const marcoRouteMatch = pathname.match(/\/marcos\/(\d{2})-/);
@@ -45,6 +51,32 @@ const marcoHref = (id: number, slug: string) =>
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#173d32" />
+
+    <link rel="icon" type="image/png" href="https://devnux.com.br/assets/images/favicon.png?v=2" />
+    <link rel="shortcut icon" href="https://devnux.com.br/assets/images/favicon.png?v=2" />
+    <link rel="apple-touch-icon" href="https://devnux.com.br/assets/images/favicon.png?v=2" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Caminho para Yom Kipur 5787" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:secure_url" content={socialImageUrl} />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="315" />
+    <meta property="og:image:alt" content={socialImageAlt} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImageUrl} />
+    <meta name="twitter:image:alt" content={socialImageAlt} />
+
     <title>{title}</title>
   </head>
   <body>
