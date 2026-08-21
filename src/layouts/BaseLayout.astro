@@ -76,7 +76,7 @@ const marcoHref = (id: number, slug: string) =>
                 <small>Anterior</small>
                 <strong>← Marco {String(previousMarco.id).padStart(2, '0')} · {previousMarco.title}</strong>
               </a>
-            ) : <span class="marco-pagination__empty" />}
+            ) : <span class="marco-pagination__empty"></span>}
           </div>
 
           <a class="marco-pagination__all" href={`${base}#marcos`}>Ver os 15 Marcos</a>
