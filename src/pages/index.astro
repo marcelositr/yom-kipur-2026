@@ -3,6 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { marcos } from '../data/marcos';
 
 const orderedMarcos = [...marcos].sort((a, b) => a.id - b.id);
+const firstMarco = orderedMarcos[0];
+const marcoHref = (id: number, slug: string) =>
+  `${import.meta.env.BASE_URL}marcos/${String(id).padStart(2, '0')}-${slug}/`;
 ---
 <BaseLayout>
   <section class="hero">
@@ -10,98 +13,319 @@ const orderedMarcos = [...marcos].sort((a, b) => a.id - b.id);
       <div class="eyebrow">Elul 5786 → Yom Kipur 5787</div>
       <h1>Caminho para Yom Kipur</h1>
       <p class="lede">
-        Uma caminhada de estudo, reflexão e preparação que apresenta raízes judaicas,
-        Escrituras, conceitos e práticas de forma gradual, responsável e acessível.
+        Quinze Marcos de estudo, reflexão e prática que acompanham a caminhada de Elul
+        até Ne’ilá, apresentando conceitos, fontes e tradições judaicas com contexto,
+        distinções claras e aplicação responsável.
+      </p>
+      <div class="hero-actions">
+        {firstMarco && (
+          <a class="primary-action" href={marcoHref(firstMarco.id, firstMarco.slug)}>
+            Começar pelo Marco 01
+          </a>
+        )}
+        <a class="secondary-action" href="#cronograma">Ver cronograma</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre" class="container panel about-panel" aria-labelledby="sobre-titulo">
+    <div>
+      <div class="eyebrow">Sobre o projeto</div>
+      <h2 id="sobre-titulo">Uma caminhada, não uma corrida.</h2>
+    </div>
+    <div class="about-copy">
+      <p>
+        O projeto não foi construído como calendário de posts diários. Cada Marco entra
+        quando acrescenta uma compreensão nova e deixa tempo para que a prática anterior
+        seja vivida. O ritmo acompanha o calendário judaico e a progressão espiritual da série.
+      </p>
+      <p>
+        As fontes são identificadas conforme sua natureza: bíblica, rabínica, haláchica,
+        litúrgica, costume ou metáfora posterior. A proposta é apresentar a tradição judaica
+        sem transformar participação educativa de não judeus em obrigação haláchica.
       </p>
     </div>
   </section>
 
-  <section class="container panel" aria-labelledby="estado-projeto">
-    <h2 id="estado-projeto">Projeto em preparação</h2>
-    <p>
-      O conteúdo será publicado por marcos, não por obrigação diária. Cada novo marco
-      deve acrescentar uma compreensão nova e uma prática concreta, respeitando o
-      calendário judaico e o ritmo da caminhada.
-    </p>
+  <section id="como-usar" class="container section" aria-labelledby="como-usar-titulo">
+    <div class="section-heading">
+      <div class="eyebrow">Como usar</div>
+      <h2 id="como-usar-titulo">Um Marco de cada vez.</h2>
+      <p>O card abre o tema. O TXT aprofunda. A prática transforma leitura em resposta.</p>
+    </div>
+
+    <div class="steps-grid">
+      <article>
+        <span>01</span>
+        <h3>Veja o card</h3>
+        <p>Leia o conceito, a classificação, a referência e a prática concreta do Marco.</p>
+      </article>
+      <article>
+        <span>02</span>
+        <h3>Leia o devocional</h3>
+        <p>Use o arquivo TXT para aprofundar contexto, fontes, termos hebraicos e aplicação.</p>
+      </article>
+      <article>
+        <span>03</span>
+        <h3>Viva a prática</h3>
+        <p>Não tente resolver a caminhada inteira no mesmo dia. Faça o próximo passo possível.</p>
+      </article>
+      <article>
+        <span>04</span>
+        <h3>Continue no tempo certo</h3>
+        <p>Avance conforme o cronograma e o calendário. A sequência foi pensada para produzir descoberta.</p>
+      </article>
+    </div>
   </section>
 
-  <section class="container draft-section" aria-labelledby="marcos-em-construcao">
-    <div class="eyebrow">Laboratório editorial</div>
-    <h2 id="marcos-em-construcao">Marcos em construção</h2>
+  <section id="cronograma" class="container section" aria-labelledby="cronograma-titulo">
+    <div class="section-heading">
+      <div class="eyebrow">Cronograma mestre</div>
+      <h2 id="cronograma-titulo">Da aproximação ao encerramento de Yom Kipur.</h2>
+      <p>
+        As datas abaixo são as datas editoriais de publicação. Quando um Marco depende de
+        pôr do sol, encerramento de Shabbat ou fim de Yom Tov, a própria página registra essa janela.
+      </p>
+    </div>
 
-    <div class="draft-list">
+    <div class="schedule" role="list">
       {orderedMarcos.map((marco) => (
-        <a
-          class="draft-card"
-          href={`${import.meta.env.BASE_URL}marcos/${String(marco.id).padStart(2, '0')}-${marco.slug}/`}
-        >
-          <div>
-            <span class="status">{marco.status === 'draft' ? 'Rascunho' : marco.status} · Marco {String(marco.id).padStart(2, '0')}</span>
+        <a class="schedule-row" role="listitem" href={marcoHref(marco.id, marco.slug)}>
+          <span class="schedule-id">{String(marco.id).padStart(2, '0')}</span>
+          <span class="schedule-main">
             <strong>{marco.title}</strong>
-            <span>{marco.hebrewDate} · {marco.civilDate}</span>
-          </div>
-          <span aria-hidden="true">→</span>
+            <small>{marco.hebrewDate} · {marco.civilDate}</small>
+          </span>
+          <span class="schedule-date">{marco.publicationDate}</span>
+          <span class="schedule-arrow" aria-hidden="true">→</span>
         </a>
       ))}
+    </div>
+  </section>
+
+  <section id="marcos" class="container section collection-section" aria-labelledby="marcos-titulo">
+    <div class="section-heading">
+      <div class="eyebrow">Os 15 Marcos</div>
+      <h2 id="marcos-titulo">A caminhada completa.</h2>
+      <p>Do primeiro reconhecimento de proximidade em Elul até a oração conclusiva de Ne’ilá.</p>
+    </div>
+
+    <div class="marco-list">
+      {orderedMarcos.map((marco) => (
+        <a class="marco-link" href={marcoHref(marco.id, marco.slug)}>
+          <div class="marco-number">Marco {String(marco.id).padStart(2, '0')}</div>
+          <div class="marco-link__body">
+            <strong>{marco.title}</strong>
+            <span lang="he" dir="rtl">{marco.hebrew}</span>
+            <small>{marco.translation}</small>
+          </div>
+          <span class="marco-link__arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="container panel editorial-panel" aria-labelledby="criterios-titulo">
+    <div>
+      <div class="eyebrow">Critérios editoriais</div>
+      <h2 id="criterios-titulo">Tradição com contexto. Prática com responsabilidade.</h2>
+    </div>
+    <div class="editorial-grid">
+      <div>
+        <strong>Fontes identificadas</strong>
+        <p>O projeto distingue Escritura, ensino rabínico, halachá, liturgia, costume e metáfora.</p>
+      </div>
+      <div>
+        <strong>Sem obrigação artificial</strong>
+        <p>Participação educativa ou devocional de não judeus não cria obrigação pelas mitzvot de Yom Kipur.</p>
+      </div>
+      <div>
+        <strong>A vida vem primeiro</strong>
+        <p>Jejum nunca é tratado como competição espiritual. Pikuach Nefesh permanece um limite explícito.</p>
+      </div>
     </div>
   </section>
 </BaseLayout>
 
 <style>
-  .draft-section {
-    margin-bottom: 6rem;
+  .hero-actions {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
   }
 
-  .draft-section h2 {
-    margin: .55rem 0 1.4rem;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 500;
+  .primary-action,
+  .secondary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: .75rem 1.1rem;
+    border-radius: 999px;
+    font-size: .9rem;
+    font-weight: 750;
+    text-decoration: none;
   }
 
-  .draft-list {
+  .primary-action {
+    background: var(--forest);
+    color: var(--ivory);
+  }
+
+  .secondary-action {
+    border: 1px solid var(--line);
+    color: var(--forest);
+    background: #fffdf8;
+  }
+
+  .about-panel,
+  .editorial-panel {
     display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    gap: clamp(1.5rem, 5vw, 5rem);
+  }
+
+  .about-panel { margin-block: 0 7rem; }
+  .about-panel h2,
+  .editorial-panel h2 { margin-top: .55rem; }
+  .about-copy p:first-child { margin-top: 0; }
+
+  .section {
+    margin-block: 0 7rem;
+    scroll-margin-top: 120px;
+  }
+
+  .section-heading {
+    max-width: 760px;
+    margin-bottom: 2rem;
+  }
+
+  .section-heading h2 {
+    margin: .55rem 0 .8rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 500;
+    line-height: 1.02;
+  }
+
+  .section-heading p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 1.03rem;
+    line-height: 1.7;
+  }
+
+  .steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 1rem;
   }
 
-  .draft-card {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1.5rem;
-    padding: 1.5rem;
+  .steps-grid article {
+    min-height: 230px;
+    padding: 1.35rem;
     border: 1px solid var(--line);
     border-radius: 20px;
     background: var(--ivory);
+  }
+
+  .steps-grid article > span,
+  .schedule-id,
+  .marco-number {
+    color: var(--gold);
+    font-size: .72rem;
+    font-weight: 850;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .steps-grid h3 {
+    margin: 2.8rem 0 .6rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .steps-grid p {
+    margin: 0;
+    color: #56605b;
+    line-height: 1.65;
+  }
+
+  .schedule {
+    border-top: 1px solid var(--line);
+  }
+
+  .schedule-row {
+    display: grid;
+    grid-template-columns: 3.2rem minmax(0, 1fr) minmax(9rem, auto) 1.5rem;
+    align-items: center;
+    gap: 1rem;
+    min-height: 78px;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--line);
+    text-decoration: none;
+  }
+
+  .schedule-row:hover .schedule-main strong { text-decoration: underline; text-underline-offset: .2em; }
+  .schedule-main { display: grid; gap: .25rem; }
+  .schedule-main strong { font-family: Georgia, 'Times New Roman', serif; font-size: 1.18rem; font-weight: 500; }
+  .schedule-main small,
+  .schedule-date { color: var(--muted); line-height: 1.4; }
+  .schedule-date { text-align: right; font-size: .9rem; }
+  .schedule-arrow { color: var(--gold); text-align: right; }
+
+  .marco-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .marco-link {
+    position: relative;
+    min-height: 245px;
+    padding: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--line);
+    border-radius: 22px;
+    background: #fffdf8;
     text-decoration: none;
     transition: transform .18s ease, box-shadow .18s ease;
   }
 
-  .draft-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
+  .marco-link:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+  .marco-link__body { margin-top: auto; display: grid; gap: .4rem; }
+  .marco-link__body strong { font-family: Georgia, 'Times New Roman', serif; font-size: 1.55rem; font-weight: 500; line-height: 1.08; }
+  .marco-link__body span { margin-top: .45rem; font-family: 'Noto Serif Hebrew', 'Noto Serif', Georgia, serif; font-size: 1.55rem; text-align: left; }
+  .marco-link__body small { color: var(--muted); font-size: .85rem; line-height: 1.45; }
+  .marco-link__arrow { position: absolute; top: 1.25rem; right: 1.3rem; color: var(--gold); }
+
+  .editorial-panel { margin-block: 0 7rem; }
+  .editorial-grid { display: grid; gap: 1.4rem; }
+  .editorial-grid > div { padding-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
+  .editorial-grid > div:last-child { padding-bottom: 0; border-bottom: 0; }
+  .editorial-grid strong { font-family: Georgia, 'Times New Roman', serif; font-size: 1.25rem; font-weight: 500; }
+  .editorial-grid p { margin: .4rem 0 0; }
+
+  @media (max-width: 900px) {
+    .steps-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .marco-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   }
 
-  .draft-card div {
-    display: grid;
-    gap: .35rem;
+  @media (max-width: 720px) {
+    .about-panel,
+    .editorial-panel { grid-template-columns: 1fr; }
+    .schedule-row { grid-template-columns: 2.5rem minmax(0, 1fr) 1rem; }
+    .schedule-date { grid-column: 2; text-align: left; }
+    .schedule-arrow { grid-column: 3; grid-row: 1 / span 2; }
   }
 
-  .draft-card strong {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    font-weight: 500;
-  }
-
-  .draft-card span:not(.status) {
-    color: var(--muted);
-  }
-
-  .status {
-    color: var(--gold);
-    font-size: .72rem;
-    font-weight: 800;
-    letter-spacing: .1em;
-    text-transform: uppercase;
+  @media (max-width: 560px) {
+    .steps-grid,
+    .marco-list { grid-template-columns: 1fr; }
+    .steps-grid article { min-height: 190px; }
+    .marco-link { min-height: 210px; }
   }
 </style>
