@@ -10,27 +10,17 @@ interface Props {
 const { marco } = Astro.props;
 const card = cardCopyFor(marco.id);
 
-const spriteBackgroundAsset = '/assets/backgrounds/marcos-art-sprite.webp';
-const spriteColumns = ['0%', '25%', '50%', '75%', '100%'];
-const spriteRows = ['0%', '50%', '100%'];
-const usesArtSprite = marco.id >= 1 && marco.id <= 15;
-
-const resolvedBackgroundAsset = usesArtSprite
-  ? spriteBackgroundAsset
+const resolvedBackgroundAsset = marco.id === 1
+  ? '/assets/backgrounds/marco01-proximidade.webp'
   : marco.backgroundAsset;
+
 const backgroundAsset = resolvedBackgroundAsset?.replace(/^\/+/, '');
 const backgroundUrl = backgroundAsset
   ? `${import.meta.env.BASE_URL}${backgroundAsset}`
   : undefined;
-
-const spriteColumn = (marco.id - 1) % 5;
-const spriteRow = Math.floor((marco.id - 1) / 5);
 const backgroundStyle = backgroundUrl
-  ? usesArtSprite
-    ? `--yk-background: url('${backgroundUrl}'); background-size: cover, 500% 300%, cover; background-position: center, ${spriteColumns[spriteColumn]} ${spriteRows[spriteRow]}, center; background-repeat: no-repeat;`
-    : `--yk-background: url('${backgroundUrl}')`
+  ? `--yk-background: url('${backgroundUrl}')`
   : undefined;
-
 const marcoNumber = String(marco.id).padStart(2, '0');
 ---
 <div class="yk-card-frame">
