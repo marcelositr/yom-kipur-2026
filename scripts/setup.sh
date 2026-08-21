@@ -10,8 +10,8 @@ fnm install
 fnm use
 print_versions
 
-say "Instalando dependências npm"
-npm install
+say "Instalando dependências npm a partir do lockfile"
+npm ci
 
 say "Instalando Chromium para o renderizador de cards"
 npx playwright install chromium
