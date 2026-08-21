@@ -30,6 +30,11 @@ if (Object.keys(studyFiles).length !== expectedCount) {
   fail(`esperados ${expectedCount} estudos mapeados, encontrados ${Object.keys(studyFiles).length}.`);
 }
 
+const studyReaderSource = resolve('src/pages/estudos/[slug].astro');
+if (!(await exists(studyReaderSource))) {
+  fail(`página dinâmica de leitura dos estudos ausente: ${studyReaderSource}`);
+}
+
 for (let index = 0; index < ordered.length; index += 1) {
   const marco = ordered[index];
   const expectedId = index + 1;
@@ -69,6 +74,21 @@ for (let index = 0; index < ordered.length; index += 1) {
       const study = await readFile(studyPath, 'utf8');
       if (!study.includes(`Marco ${nn}`)) {
         fail(`Marco ${nn}: estudo não identifica corretamente o próprio Marco.`);
+      }
+    }
+
+    const builtStudyPage = resolve(`dist/estudos/${nn}-${marco.slug}/index.html`);
+    if (!(await exists(builtStudyPage))) {
+      fail(`Marco ${nn}: página HTML do estudo não foi gerada: ${builtStudyPage}`);
+    } else {
+      const studyPageHtml = await readFile(builtStudyPage, 'utf8');
+      for (const requiredText of ['Ouvir estudo', 'Copiar para WhatsApp', 'Baixar .TXT']) {
+        if (!studyPageHtml.includes(requiredText)) {
+          fail(`Marco ${nn}: página do estudo não contém o controle esperado: ${requiredText}.`);
+        }
+      }
+      if (!studyPageHtml.includes(studyFile)) {
+        fail(`Marco ${nn}: página do estudo não referencia o TXT correspondente.`);
       }
     }
   }
@@ -135,4 +155,4 @@ if (uniqueBackgrounds.size !== expectedCount) {
 }
 
 if (failed) process.exit(1);
-console.log(`Pré-lançamento válido: ${expectedCount} Marcos, páginas, TXTs, estudos, fundos e PNGs 1080x1920 conferidos.`);
+console.log(`Pré-lançamento válido: ${expectedCount} Marcos, páginas, TXTs, estudos com leitor acessível, fundos e PNGs 1080x1920 conferidos.`);
