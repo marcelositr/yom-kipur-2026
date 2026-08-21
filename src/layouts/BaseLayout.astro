@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { marcos } from '../data/marcos';
+import { studyFileFor } from '../data/studies';
 
 interface Props {
   title?: string;
@@ -24,6 +25,8 @@ const previousMarco = currentIndex > 0 ? orderedMarcos[currentIndex - 1] : undef
 const nextMarco = currentIndex >= 0 && currentIndex < orderedMarcos.length - 1
   ? orderedMarcos[currentIndex + 1]
   : undefined;
+const currentStudyFile = currentMarco ? studyFileFor(currentMarco.id) : undefined;
+const currentStudyHref = currentStudyFile ? `${base}estudos/${currentStudyFile}` : undefined;
 
 const marcoHref = (id: number, slug: string) =>
   `${base}marcos/${String(id).padStart(2, '0')}-${slug}/`;
@@ -66,6 +69,21 @@ const marcoHref = (id: number, slug: string) =>
         </div>
       )}
 
+      {currentMarco && currentStudyHref && (
+        <aside class="study-access" aria-label="Estudo complementar deste Marco">
+          <div class="container study-access__inner">
+            <div>
+              <span class="study-access__kicker">Material de apoio</span>
+              <strong>Estudo complementar · Marco {String(currentMarco.id).padStart(2, '0')}</strong>
+              <p>Explicações, termos, fontes, dúvidas comuns e prática para acompanhar o card com mais contexto.</p>
+            </div>
+            <a class="study-access__button" href={currentStudyHref} download>
+              Baixar estudo .TXT
+            </a>
+          </div>
+        </aside>
+      )}
+
       <main><slot /></main>
 
       {currentMarco && (
@@ -106,3 +124,70 @@ const marcoHref = (id: number, slug: string) =>
     </div>
   </body>
 </html>
+
+<style>
+  .study-access {
+    border-bottom: 1px solid var(--line);
+    background: #f7f1e5;
+  }
+
+  .study-access__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.15rem;
+  }
+
+  .study-access__inner > div {
+    min-width: 0;
+  }
+
+  .study-access__kicker {
+    display: block;
+    margin-bottom: .25rem;
+    color: var(--gold);
+    font-size: .7rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .study-access strong {
+    display: block;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+
+  .study-access p {
+    margin: .35rem 0 0;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  .study-access__button {
+    flex: 0 0 auto;
+    padding: .8rem 1rem;
+    border-radius: 999px;
+    background: var(--forest);
+    color: var(--ivory);
+    font-size: .88rem;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .study-access__button:hover,
+  .study-access__button:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+
+  @media (max-width: 700px) {
+    .study-access__inner {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+</style>
