@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-label="Fundo abstrato de Ne'ilah com duas formas arquitetônicas aproximando-se e uma faixa final de luz ao centro">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0d2a2a"/>
+      <stop offset="0.58" stop-color="#123b39"/>
+      <stop offset="1" stop-color="#0a201f"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="46%" r="48%">
+      <stop offset="0" stop-color="#f1d58a" stop-opacity="0.56"/>
+      <stop offset="0.36" stop-color="#c8a55c" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#c8a55c" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="light" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fff2bd" stop-opacity="0.95"/>
+      <stop offset="0.55" stop-color="#d9b86a" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#9f7b39" stop-opacity="0.36"/>
+    </linearGradient>
+    <linearGradient id="stoneL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#0b2323"/>
+      <stop offset="1" stop-color="#1a4641"/>
+    </linearGradient>
+    <linearGradient id="stoneR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0" stop-color="#0b2323"/>
+      <stop offset="1" stop-color="#1a4641"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="34"/>
+    </filter>
+    <pattern id="grain" width="120" height="120" patternUnits="userSpaceOnUse">
+      <circle cx="14" cy="22" r="1.4" fill="#f3e6bd" opacity="0.05"/>
+      <circle cx="78" cy="64" r="1" fill="#f3e6bd" opacity="0.04"/>
+      <circle cx="102" cy="18" r="0.9" fill="#f3e6bd" opacity="0.035"/>
+      <circle cx="38" cy="102" r="1.2" fill="#f3e6bd" opacity="0.035"/>
+    </pattern>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#bg)"/>
+  <rect width="1080" height="1920" fill="url(#grain)"/>
+  <ellipse cx="540" cy="860" rx="420" ry="650" fill="url(#glow)" filter="url(#blur)"/>
+
+  <!-- Abstract closing architecture: symbolic editorial image, not literal heavenly mechanics. -->
+  <path d="M0 0H414C400 245 392 492 398 735C405 1010 428 1286 454 1545L472 1920H0Z" fill="url(#stoneL)"/>
+  <path d="M1080 0H666C680 245 688 492 682 735C675 1010 652 1286 626 1545L608 1920H1080Z" fill="url(#stoneR)"/>
+
+  <path d="M466 0C475 310 484 628 490 946C496 1265 500 1591 502 1920H578C580 1591 584 1265 590 946C596 628 605 310 614 0Z" fill="url(#light)" opacity="0.9"/>
+  <path d="M506 0H574L560 1920H520Z" fill="#fff4c9" opacity="0.18" filter="url(#blur)"/>
+
+  <path d="M118 1570C260 1512 384 1482 480 1474" fill="none" stroke="#c9a55b" stroke-opacity="0.22" stroke-width="3"/>
+  <path d="M962 1570C820 1512 696 1482 600 1474" fill="none" stroke="#c9a55b" stroke-opacity="0.22" stroke-width="3"/>
+
+  <path d="M142 1790H938" stroke="#dbc17e" stroke-opacity="0.13" stroke-width="2"/>
+  <path d="M178 1832H902" stroke="#dbc17e" stroke-opacity="0.09" stroke-width="2"/>
+
+  <circle cx="540" cy="394" r="142" fill="none" stroke="#d8bb73" stroke-opacity="0.08" stroke-width="2"/>
+  <circle cx="540" cy="394" r="88" fill="none" stroke="#d8bb73" stroke-opacity="0.06" stroke-width="2"/>
+</svg>

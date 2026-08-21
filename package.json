@@ -1,0 +1,31 @@
+{
+  "name": "yom-kipur-2026",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.19.0 <23"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "npm run content:validate && npm run check && npm run build",
+    "card:render": "tsx scripts/render-card.ts",
+    "card:render:all": "tsx scripts/render-all-cards.ts",
+    "content:validate": "tsx scripts/validate-content.ts",
+    "preflight:release": "tsx scripts/preflight-release.ts",
+    "release:check": "npm test && npm run card:render:all && npm run preflight:release"
+  },
+  "dependencies": {
+    "astro": "^7.2.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "latest",
+    "@playwright/test": "^1.62.1",
+    "@types/node": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

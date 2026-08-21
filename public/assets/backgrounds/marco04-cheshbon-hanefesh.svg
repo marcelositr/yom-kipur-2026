@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1920" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Ambientação do Marco 04: Cheshbon HaNefesh</title>
+  <desc id="desc">Mesa silenciosa ao entardecer com caderno aberto, lamparina e luz suave para sugerir exame da própria vida.</desc>
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#173947"/>
+      <stop offset="0.55" stop-color="#25463f"/>
+      <stop offset="1" stop-color="#132d27"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#674d35"/>
+      <stop offset="0.55" stop-color="#4f3b2c"/>
+      <stop offset="1" stop-color="#2e291f"/>
+    </linearGradient>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#eee4cf"/>
+      <stop offset="1" stop-color="#c9b993"/>
+    </linearGradient>
+    <radialGradient id="lampGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#f3d28e" stop-opacity="0.72"/>
+      <stop offset="0.45" stop-color="#d2aa62" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#d2aa62" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="windowGlow" cx="50%" cy="35%" r="70%">
+      <stop offset="0" stop-color="#d8b979" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#d8b979" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="17" result="noise"/>
+      <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+      <feComponentTransfer in="mono" result="faded">
+        <feFuncA type="table" tableValues="0 0.055"/>
+      </feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="faded" mode="soft-light"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#wall)"/>
+  <rect width="1080" height="1920" fill="url(#windowGlow)"/>
+
+  <g opacity="0.72">
+    <rect x="112" y="245" width="360" height="540" rx="8" fill="#0e2928" stroke="#947a4f" stroke-opacity="0.42" stroke-width="7"/>
+    <rect x="136" y="269" width="312" height="492" fill="#1f4850"/>
+    <path d="M136 600 C210 535 286 565 350 510 C389 476 420 455 448 430 L448 761 L136 761 Z" fill="#31574f"/>
+    <path d="M136 675 C205 624 271 652 334 603 C381 567 412 551 448 535 L448 761 L136 761 Z" fill="#233f39"/>
+    <circle cx="380" cy="350" r="92" fill="#b8975d" opacity="0.2"/>
+    <line x1="292" y1="269" x2="292" y2="761" stroke="#947a4f" stroke-opacity="0.34" stroke-width="6"/>
+  </g>
+
+  <ellipse cx="765" cy="855" rx="365" ry="395" fill="url(#lampGlow)"/>
+
+  <rect y="1120" width="1080" height="800" fill="url(#table)"/>
+  <path d="M0 1205 C180 1168 355 1187 533 1172 C713 1157 890 1182 1080 1140 L1080 1920 L0 1920 Z" fill="#49382b" opacity="0.45"/>
+
+  <g transform="translate(585 655)">
+    <path d="M188 370 h88 l52 94 h-192 z" fill="#2b261e" opacity="0.95"/>
+    <rect x="183" y="213" width="98" height="182" rx="18" fill="#b58d4e" stroke="#d5b575" stroke-width="8"/>
+    <rect x="204" y="236" width="56" height="127" rx="12" fill="#ead6a0" opacity="0.6"/>
+    <path d="M176 212 C194 120 268 120 288 212 Z" fill="#6d5636" stroke="#c09a5d" stroke-width="7"/>
+    <path d="M223 136 C223 86 244 55 244 27 C270 62 285 87 278 123 C272 153 255 170 235 185 C216 168 206 155 206 134 C206 119 211 105 223 88" fill="#f0cc7e" opacity="0.88"/>
+    <path d="M233 155 C223 134 227 113 246 93 C255 114 258 130 251 148 C247 158 242 165 236 171 Z" fill="#fff0ba" opacity="0.85"/>
+  </g>
+
+  <g transform="translate(160 1260) rotate(-3 360 230)">
+    <path d="M56 92 C190 48 315 54 372 91 C435 48 566 53 700 95 L664 412 C548 381 455 383 374 420 C290 382 191 378 80 414 Z" fill="#3a3024" opacity="0.32"/>
+    <path d="M72 72 C198 42 302 48 363 82 L363 391 C281 354 190 351 92 382 Z" fill="url(#paper)" stroke="#9f895f" stroke-width="5"/>
+    <path d="M363 82 C428 48 542 45 683 75 L662 382 C562 349 468 353 363 391 Z" fill="#e7dcc5" stroke="#9f895f" stroke-width="5"/>
+    <path d="M363 82 L363 391" stroke="#9d875f" stroke-width="4"/>
+    <g stroke="#8e7a5a" stroke-width="3" opacity="0.46">
+      <line x1="120" y1="145" x2="325" y2="145"/>
+      <line x1="113" y1="194" x2="325" y2="194"/>
+      <line x1="108" y1="244" x2="326" y2="244"/>
+      <line x1="103" y1="294" x2="324" y2="294"/>
+      <line x1="402" y1="143" x2="633" y2="143"/>
+      <line x1="402" y1="193" x2="628" y2="193"/>
+      <line x1="402" y1="243" x2="624" y2="243"/>
+      <line x1="402" y1="293" x2="620" y2="293"/>
+    </g>
+    <g fill="#6b5334" opacity="0.72">
+      <circle cx="133" cy="145" r="7"/><circle cx="133" cy="194" r="7"/><circle cx="133" cy="244" r="7"/>
+      <circle cx="419" cy="143" r="7"/><circle cx="419" cy="193" r="7"/><circle cx="419" cy="243" r="7"/>
+    </g>
+  </g>
+
+  <g transform="translate(710 1455) rotate(17)">
+    <rect x="0" y="0" width="27" height="255" rx="12" fill="#8f6f3f"/>
+    <polygon points="0,0 27,0 13,-42" fill="#ded0af"/>
+    <polygon points="8,-17 18,-17 13,-42" fill="#2c2c29"/>
+  </g>
+
+  <path d="M0 1700 C190 1644 354 1715 530 1684 C716 1650 874 1698 1080 1648 L1080 1920 L0 1920 Z" fill="#182822" opacity="0.36"/>
+  <rect width="1080" height="1920" filter="url(#grain)" opacity="0.8"/>
+</svg>

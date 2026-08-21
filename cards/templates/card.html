@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=1080, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; width: 1080px; height: 1920px; overflow: hidden; background: #173d32; }
+    {{styles}}
+  </style>
+</head>
+<body>
+  <div class="yk-card-frame">
+    <article class="yk-card" data-theme="{{theme}}" style="--yk-background: url('{{background}}')">
+      <div class="yk-card__body">
+        <div class="yk-card__topline">{{hebrewDate}} · {{civilDate}}</div>
+        <div class="yk-card__classification">{{classification}}</div>
+        <div class="yk-card__hebrew" lang="he" dir="rtl">{{hebrew}}</div>
+        <h1 class="yk-card__title">{{title}}</h1>
+        <div class="yk-card__translit">{{transliteration}}</div>
+        <div class="yk-card__translation">{{translation}}</div>
+        <div class="yk-card__summary">{{summary}}</div>
+        <div class="yk-card__practice">
+          <strong>Para viver este marco</strong>
+          <p>{{practice}}</p>
+        </div>
+        <div class="yk-card__reference">{{reference}}</div>
+      </div>
+      <footer class="yk-card__footer">
+        <span>Marcelo Trindade · @marcelositr</span>
+        <span>devnux.com.br</span>
+      </footer>
+    </article>
+  </div>
+</body>
+</html>

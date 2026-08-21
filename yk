@@ -1,0 +1,146 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+usage() {
+  cat <<'EOF'
+Caminho para Yom Kipur 5787
+Launcher local do projeto
+
+USO
+  bash yk <comando> [parâmetros]
+
+COMANDOS
+  setup
+    Prepara o ambiente de desenvolvimento.
+    Faz: ativa/instala o Node definido em .nvmrc, instala dependências npm
+    a partir do package-lock.json, instala o Chromium do Playwright e executa
+    a validação completa.
+
+    Uso:
+      bash yk setup
+
+  dev [--open|-o]
+    Inicia o Astro em modo desenvolvimento.
+    O processo fica ativo no terminal até você pressionar Ctrl+C.
+
+    Parâmetros:
+      --open, -o   abre o navegador automaticamente assim que o servidor responder
+
+    Uso:
+      bash yk dev
+      bash yk dev --open
+
+  open [CAMINHO]
+    Abre no navegador o localhost do projeto que já estiver rodando.
+    Sem parâmetro, abre a página inicial.
+
+    Parâmetros:
+      CAMINHO      rota relativa dentro do projeto
+
+    Uso:
+      bash yk open
+      bash yk open marcos/01-o-rei-esta-no-campo/
+
+  test
+    Executa a validação normal do projeto.
+    Faz: valida os dados dos Marcos, roda astro check e gera o build estático.
+
+    Uso:
+      bash yk test
+
+  preflight
+    Executa o gate completo de pré-lançamento.
+    Faz: valida conteúdo, Astro/TypeScript e build; renderiza os 15 cards;
+    confere páginas, TXTs, fundos, nomes e dimensões 1080x1920 dos PNGs.
+
+    Uso:
+      bash yk preflight
+
+  render [N]
+    Renderiza em PNG o card do Marco informado.
+    Se N não for fornecido, usa o Marco 01.
+    Quando possível, abre automaticamente o PNG gerado.
+
+    Parâmetros:
+      N            número inteiro do Marco, por exemplo 1, 2, 3...
+
+    Uso:
+      bash yk render
+      bash yk render 1
+
+  doctor
+    Mostra um diagnóstico rápido do ambiente local.
+    Exibe branch Git, fnm, Node, npm, versão definida em .nvmrc,
+    presença de node_modules e cache do Playwright.
+
+    Uso:
+      bash yk doctor
+
+  help
+    Mostra esta ajuda.
+
+    Uso:
+      bash yk help
+      bash yk -h
+      bash yk --help
+
+ATALHOS ÚTEIS
+  Primeira preparação:
+    bash yk setup
+
+  Trabalhar no site e abrir o navegador automaticamente:
+    bash yk dev --open
+
+  Abrir o localhost se o Astro já estiver rodando:
+    bash yk open
+
+  Validar durante o desenvolvimento:
+    bash yk test
+
+  Gate final antes de publicar:
+    bash yk preflight
+
+  Gerar o card do Marco 01:
+    bash yk render 1
+
+LOCALHOST PADRÃO
+  http://localhost:4321/yom-kipur-2026/
+EOF
+}
+
+command="${1:-help}"
+shift || true
+
+case "$command" in
+  setup)
+    exec bash "$ROOT/scripts/setup.sh" "$@"
+    ;;
+  dev)
+    exec bash "$ROOT/scripts/dev.sh" "$@"
+    ;;
+  open)
+    exec bash "$ROOT/scripts/open.sh" "$@"
+    ;;
+  test)
+    exec bash "$ROOT/scripts/test.sh" "$@"
+    ;;
+  preflight)
+    exec bash "$ROOT/scripts/preflight.sh" "$@"
+    ;;
+  render)
+    exec bash "$ROOT/scripts/render-card.sh" "$@"
+    ;;
+  doctor)
+    exec bash "$ROOT/scripts/doctor.sh" "$@"
+    ;;
+  help|-h|--help)
+    usage
+    ;;
+  *)
+    printf 'Comando desconhecido: %s\n\n' "$command" >&2
+    usage >&2
+    exit 2
+    ;;
+esac

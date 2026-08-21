@@ -1,0 +1,108 @@
+---
+import '../styles/global.css';
+import { marcos } from '../data/marcos';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Caminho para Yom Kipur 5787',
+  description = 'Caminhada de estudo, reflexão e preparação para Yom Kipur 5787.'
+} = Astro.props;
+
+const base = import.meta.env.BASE_URL;
+const orderedMarcos = [...marcos].sort((a, b) => a.id - b.id);
+const routeMatch = Astro.url.pathname.match(/\/marcos\/(\d{2})-/);
+const currentId = routeMatch ? Number(routeMatch[1]) : undefined;
+const currentIndex = currentId
+  ? orderedMarcos.findIndex((item) => item.id === currentId)
+  : -1;
+const currentMarco = currentIndex >= 0 ? orderedMarcos[currentIndex] : undefined;
+const previousMarco = currentIndex > 0 ? orderedMarcos[currentIndex - 1] : undefined;
+const nextMarco = currentIndex >= 0 && currentIndex < orderedMarcos.length - 1
+  ? orderedMarcos[currentIndex + 1]
+  : undefined;
+
+const marcoHref = (id: number, slug: string) =>
+  `${base}marcos/${String(id).padStart(2, '0')}-${slug}/`;
+---
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="container header-inner">
+          <a class="brand" href={base}>
+            Caminho para Yom Kipur
+            <small>5787 · 2026</small>
+          </a>
+          <nav class="site-nav" aria-label="Navegação principal">
+            <a href={`${base}#sobre`}>Sobre</a>
+            <a href={`${base}#como-usar`}>Como usar</a>
+            <a href={`${base}#cronograma`}>Cronograma</a>
+            <a href={`${base}#marcos`}>Marcos</a>
+          </nav>
+        </div>
+      </header>
+
+      {currentMarco && (
+        <div class="marco-context">
+          <div class="container marco-context__inner">
+            <a href={`${base}#marcos`}>Todos os Marcos</a>
+            <span aria-hidden="true">·</span>
+            <strong>Marco {String(currentMarco.id).padStart(2, '0')} de {orderedMarcos.length}</strong>
+            <span aria-hidden="true">·</span>
+            <span>{currentMarco.hebrewDate}</span>
+          </div>
+        </div>
+      )}
+
+      <main><slot /></main>
+
+      {currentMarco && (
+        <nav class="marco-pagination container" aria-label="Navegação entre os Marcos">
+          <div class="marco-pagination__side">
+            {previousMarco ? (
+              <a href={marcoHref(previousMarco.id, previousMarco.slug)} rel="prev">
+                <small>Anterior</small>
+                <strong>← Marco {String(previousMarco.id).padStart(2, '0')} · {previousMarco.title}</strong>
+              </a>
+            ) : <span class="marco-pagination__empty"></span>}
+          </div>
+
+          <a class="marco-pagination__all" href={`${base}#marcos`}>Ver os 15 Marcos</a>
+
+          <div class="marco-pagination__side marco-pagination__side--next">
+            {nextMarco ? (
+              <a href={marcoHref(nextMarco.id, nextMarco.slug)} rel="next">
+                <small>Próximo</small>
+                <strong>Marco {String(nextMarco.id).padStart(2, '0')} · {nextMarco.title} →</strong>
+              </a>
+            ) : (
+              <span class="marco-pagination__finish">
+                <small>Fim da caminhada</small>
+                <strong>Ne’ilá encerra o arco principal.</strong>
+              </span>
+            )}
+          </div>
+        </nav>
+      )}
+
+      <footer class="site-footer">
+        <div class="container site-footer__inner">
+          <span>Marcelo Trindade · @marcelositr · devnux.com.br</span>
+          <span>Estudo e preparação · tradição judaica apresentada com fontes e contexto</span>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>

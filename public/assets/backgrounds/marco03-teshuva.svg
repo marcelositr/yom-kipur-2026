@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Caminho de retorno</title>
+  <desc id="desc">Paisagem simbólica com caminho sinuoso levando a uma porta iluminada ao entardecer.</desc>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#183245"/>
+      <stop offset="0.48" stop-color="#5d6a61"/>
+      <stop offset="1" stop-color="#b18a59"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#314c3f"/>
+      <stop offset="1" stop-color="#10271f"/>
+    </linearGradient>
+    <linearGradient id="path" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d5b47b" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#806542" stop-opacity=".85"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="72%" cy="29%" r="25%">
+      <stop offset="0" stop-color="#ffe2a1" stop-opacity=".78"/>
+      <stop offset=".48" stop-color="#deb36c" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#deb36c" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <rect width="1080" height="1050" fill="url(#glow)"/>
+
+  <path d="M0 700 C210 620 390 665 565 640 C745 613 895 548 1080 590 L1080 1920 L0 1920 Z" fill="url(#ground)"/>
+  <path d="M0 890 C250 790 414 835 606 790 C817 742 924 680 1080 710 L1080 1920 L0 1920 Z" fill="#17372c" opacity=".88"/>
+
+  <path d="M535 1920 C470 1600 500 1370 592 1175 C672 1004 742 892 771 756 C792 657 797 566 795 486 L887 486 C879 611 866 718 829 827 C789 944 706 1072 641 1212 C550 1408 554 1633 626 1920 Z" fill="url(#path)" opacity=".92"/>
+
+  <g opacity=".62" fill="#0d211a">
+    <path d="M74 1190 l48 -102 39 89 34 -57 58 126 -179 0z"/>
+    <path d="M818 1112 l50 -116 42 93 36 -65 62 144 -190 0z"/>
+    <path d="M178 970 l33 -72 28 60 25 -44 43 96 -129 0z"/>
+  </g>
+
+  <g transform="translate(746 340)">
+    <rect x="0" y="0" width="190" height="250" rx="4" fill="#0c1d18" opacity=".78"/>
+    <rect x="30" y="28" width="130" height="210" rx="2" fill="#d9b16a" opacity=".78"/>
+    <rect x="44" y="42" width="102" height="196" fill="#f1d69b" opacity=".62"/>
+    <rect x="56" y="54" width="78" height="184" fill="#fff0bf" opacity=".5" filter="url(#soft)"/>
+  </g>
+
+  <g transform="translate(555 1315)" fill="#0a1915">
+    <circle cx="26" cy="0" r="18"/>
+    <path d="M12 20 C8 78 12 132 0 180 L21 183 L34 105 L46 183 L68 180 C55 125 58 78 49 24 Z"/>
+    <path d="M10 64 L-28 112 L-12 126 L24 88 Z"/>
+    <path d="M49 64 L84 112 L68 127 L35 89 Z"/>
+  </g>
+
+  <g stroke="#d3b777" stroke-width="3" opacity=".18">
+    <path d="M80 1500 C258 1410 405 1438 560 1374"/>
+    <path d="M110 1552 C284 1464 420 1492 570 1420"/>
+  </g>
+</svg>

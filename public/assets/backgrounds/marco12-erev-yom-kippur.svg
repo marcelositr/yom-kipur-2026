@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-label="Ambiente sereno de preparação para Yom Kipur, com mesa simples, água, livro e luz do entardecer">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b2c2d"/>
+      <stop offset="0.58" stop-color="#173d3a"/>
+      <stop offset="1" stop-color="#8b6b43"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#d8bd7d" stop-opacity="0"/>
+      <stop offset="0.52" stop-color="#ead7a4" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#f2dfad" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="table" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5f4932"/>
+      <stop offset="1" stop-color="#2a241d"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="28"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="#092626"/>
+  <rect width="1080" height="1280" fill="url(#sky)"/>
+
+  <circle cx="760" cy="660" r="240" fill="#d7bd7e" opacity="0.13" filter="url(#soft)"/>
+  <circle cx="760" cy="660" r="125" fill="#e8cf92" opacity="0.14" filter="url(#soft)"/>
+  <rect x="110" y="360" width="860" height="6" rx="3" fill="url(#glow)" opacity="0.5"/>
+
+  <path d="M130 280 H950 V1190 H130 Z" fill="#071f20" opacity="0.42"/>
+  <path d="M210 350 H870 V1110 H210 Z" fill="#14383a" stroke="#b99b5e" stroke-width="5" opacity="0.9"/>
+  <path d="M540 350 V1110" stroke="#b99b5e" stroke-width="4" opacity="0.55"/>
+  <path d="M210 730 H870" stroke="#b99b5e" stroke-width="4" opacity="0.45"/>
+  <rect x="235" y="375" width="280" height="330" fill="#214b4a" opacity="0.65"/>
+  <rect x="565" y="375" width="280" height="330" fill="#82613c" opacity="0.45"/>
+  <rect x="235" y="755" width="280" height="330" fill="#173c3c" opacity="0.7"/>
+  <rect x="565" y="755" width="280" height="330" fill="#bc9660" opacity="0.25"/>
+
+  <path d="M0 1240 C210 1170 390 1220 540 1185 C720 1145 880 1185 1080 1115 V1920 H0 Z" fill="url(#table)"/>
+  <ellipse cx="540" cy="1235" rx="510" ry="56" fill="#c6aa71" opacity="0.08"/>
+
+  <g transform="translate(165 1260)">
+    <ellipse cx="145" cy="320" rx="155" ry="28" fill="#0b1d1c" opacity="0.38"/>
+    <path d="M70 50 H210 L230 285 Q230 315 200 320 H80 Q50 315 50 285 Z" fill="#d9cfb5" opacity="0.95"/>
+    <path d="M92 72 H188 L202 280 H78 Z" fill="#f2ead5" opacity="0.88"/>
+    <path d="M85 95 C115 115 165 115 195 95" fill="none" stroke="#b99658" stroke-width="5" opacity="0.65"/>
+    <path d="M210 115 C282 120 292 205 245 235" fill="none" stroke="#d9cfb5" stroke-width="18" stroke-linecap="round"/>
+    <path d="M65 58 Q140 5 215 58" fill="none" stroke="#c3a36a" stroke-width="7"/>
+  </g>
+
+  <g transform="translate(445 1360)">
+    <ellipse cx="110" cy="236" rx="120" ry="20" fill="#0b1d1c" opacity="0.35"/>
+    <path d="M55 10 H165 L150 215 H70 Z" fill="#e7e0cc" opacity="0.88"/>
+    <path d="M65 90 H155" stroke="#b99b5e" stroke-width="4" opacity="0.55"/>
+    <path d="M72 130 H148" stroke="#b99b5e" stroke-width="4" opacity="0.35"/>
+  </g>
+
+  <g transform="translate(610 1305)">
+    <ellipse cx="180" cy="275" rx="210" ry="28" fill="#0b1d1c" opacity="0.38"/>
+    <path d="M25 90 Q180 30 335 90 V260 Q180 205 25 260 Z" fill="#e9e1cb"/>
+    <path d="M180 56 V230" stroke="#af9360" stroke-width="4" opacity="0.65"/>
+    <path d="M55 120 Q115 92 160 105" fill="none" stroke="#8c7753" stroke-width="5" opacity="0.42"/>
+    <path d="M200 105 Q255 92 310 120" fill="none" stroke="#8c7753" stroke-width="5" opacity="0.42"/>
+    <path d="M65 150 Q120 128 160 138" fill="none" stroke="#8c7753" stroke-width="4" opacity="0.3"/>
+    <path d="M200 138 Q245 128 300 150" fill="none" stroke="#8c7753" stroke-width="4" opacity="0.3"/>
+  </g>
+
+  <path d="M130 1740 C360 1665 720 1665 950 1740" fill="none" stroke="#c7aa6d" stroke-width="3" opacity="0.25"/>
+  <rect x="0" y="0" width="1080" height="1920" fill="none" stroke="#b99b5e" stroke-width="12" opacity="0.28"/>
+</svg>

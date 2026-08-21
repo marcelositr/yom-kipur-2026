@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1920" role="img" aria-labelledby="title desc">
+  <title id="title">Caminho de pedras ao amanhecer</title>
+  <desc id="desc">Paisagem vetorial contemplativa com colinas em camadas, luz dourada e uma sequência de pedras firmes conduzindo ao horizonte.</desc>
+
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#17344b"/>
+      <stop offset="0.42" stop-color="#496661"/>
+      <stop offset="0.72" stop-color="#9b805c"/>
+      <stop offset="1" stop-color="#d2ae73"/>
+    </linearGradient>
+    <linearGradient id="hillFar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#536a5f"/>
+      <stop offset="1" stop-color="#30473f"/>
+    </linearGradient>
+    <linearGradient id="hillNear" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#29483e"/>
+      <stop offset="1" stop-color="#122f29"/>
+    </linearGradient>
+    <linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#27463b"/>
+      <stop offset="1" stop-color="#102a24"/>
+    </linearGradient>
+    <radialGradient id="sunGlow" cx="72%" cy="24%" r="32%">
+      <stop offset="0" stop-color="#f3d99f" stop-opacity="0.9"/>
+      <stop offset="0.25" stop-color="#e2bb78" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#e2bb78" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1080" height="1920" fill="url(#sky)"/>
+  <rect width="1080" height="980" fill="url(#sunGlow)"/>
+  <circle cx="780" cy="395" r="72" fill="#f4d79c" opacity="0.58" filter="url(#soft)"/>
+  <circle cx="780" cy="395" r="42" fill="#f7deb0" opacity="0.78"/>
+
+  <path d="M0 760 C160 680 300 700 435 740 C600 790 715 720 835 675 C930 640 1015 655 1080 690 L1080 1110 L0 1110 Z" fill="url(#hillFar)" opacity="0.86"/>
+  <path d="M0 920 C125 845 245 850 365 905 C510 970 640 910 760 850 C875 792 985 810 1080 880 L1080 1290 L0 1290 Z" fill="url(#hillNear)"/>
+  <path d="M0 1120 C170 1040 340 1090 500 1160 C665 1235 845 1120 1080 1090 L1080 1920 L0 1920 Z" fill="url(#ground)"/>
+
+  <g opacity="0.26" fill="#d5bd8b">
+    <path d="M90 1108 C190 1085 295 1092 402 1120 C520 1150 635 1160 760 1130 C870 1103 965 1098 1080 1115 L1080 1142 C960 1124 860 1128 758 1155 C628 1188 505 1178 390 1148 C285 1121 185 1115 90 1136 Z"/>
+    <path d="M0 1285 C135 1252 260 1260 390 1298 C520 1336 660 1335 790 1294 C902 1258 998 1255 1080 1272 L1080 1294 C1000 1278 910 1282 803 1317 C657 1364 512 1362 381 1325 C254 1288 133 1284 0 1316 Z"/>
+  </g>
+
+  <g fill="#b5a27c" stroke="#6d674f" stroke-width="5">
+    <path d="M502 1838 C430 1802 422 1738 492 1708 C558 1680 650 1705 672 1768 C694 1832 621 1872 550 1865 Z"/>
+    <path d="M474 1662 C426 1628 439 1581 490 1558 C542 1535 614 1546 637 1594 C659 1641 609 1681 550 1683 Z"/>
+    <path d="M491 1515 C452 1482 468 1445 512 1426 C555 1408 609 1418 625 1455 C643 1492 603 1520 553 1532 Z"/>
+    <path d="M515 1388 C488 1365 500 1332 535 1317 C571 1301 616 1307 632 1338 C648 1368 615 1394 575 1400 Z"/>
+    <path d="M548 1282 C523 1261 534 1238 562 1226 C591 1215 627 1219 640 1244 C653 1269 626 1290 592 1293 Z"/>
+    <path d="M580 1192 C561 1175 568 1157 590 1147 C613 1137 643 1140 653 1159 C664 1179 642 1195 615 1198 Z"/>
+  </g>
+
+  <g opacity="0.22" fill="#f1d39a">
+    <ellipse cx="558" cy="1787" rx="170" ry="56"/>
+    <ellipse cx="549" cy="1608" rx="128" ry="42"/>
+    <ellipse cx="558" cy="1464" rx="92" ry="31"/>
+  </g>
+
+  <g fill="#1b3a32" opacity="0.9">
+    <path d="M72 1190 C94 1110 130 1058 176 1048 C215 1039 251 1073 260 1125 C269 1175 246 1217 218 1251 C168 1238 118 1223 72 1190 Z"/>
+    <path d="M862 1035 C888 963 926 922 970 920 C1014 917 1054 957 1070 1012 L1080 1075 C1013 1064 942 1052 862 1035 Z"/>
+  </g>
+
+  <g stroke="#8d7a55" stroke-width="3" opacity="0.35">
+    <path d="M140 1035 L118 1188"/>
+    <path d="M970 908 L945 1044"/>
+    <path d="M1008 918 L1030 1054"/>
+  </g>
+
+  <rect width="1080" height="1920" fill="none" stroke="#f5f0e5" stroke-opacity="0.04" stroke-width="2"/>
+</svg>
