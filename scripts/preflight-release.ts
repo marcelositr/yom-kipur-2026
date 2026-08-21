@@ -1,6 +1,7 @@
 import { access, readFile, readdir } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { marcos } from '../src/data/marcos.js';
+import { studyFiles } from '../src/data/studies.js';
 
 const expectedCount = 15;
 let failed = false;
@@ -25,6 +26,10 @@ if (ordered.length !== expectedCount) {
   fail(`esperados ${expectedCount} Marcos, encontrados ${ordered.length}.`);
 }
 
+if (Object.keys(studyFiles).length !== expectedCount) {
+  fail(`esperados ${expectedCount} estudos mapeados, encontrados ${Object.keys(studyFiles).length}.`);
+}
+
 for (let index = 0; index < ordered.length; index += 1) {
   const marco = ordered[index];
   const expectedId = index + 1;
@@ -47,6 +52,24 @@ for (let index = 0; index < ordered.length; index += 1) {
     const txtPath = resolve(`public/downloads/${downloadMatch[1]}`);
     if (!(await exists(txtPath))) {
       fail(`Marco ${nn}: TXT referenciado não existe: ${txtPath}`);
+    }
+  }
+
+  const studyFile = studyFiles[marco.id];
+  if (!studyFile) {
+    fail(`Marco ${nn}: estudo complementar não mapeado.`);
+  } else {
+    if (!studyFile.includes(`_marco${nn}_estudo_`)) {
+      fail(`Marco ${nn}: nome do estudo não segue o padrão esperado: ${studyFile}`);
+    }
+    const studyPath = resolve(`public/estudos/${studyFile}`);
+    if (!(await exists(studyPath))) {
+      fail(`Marco ${nn}: estudo complementar ausente: ${studyPath}`);
+    } else {
+      const study = await readFile(studyPath, 'utf8');
+      if (!study.includes(`Marco ${nn}`)) {
+        fail(`Marco ${nn}: estudo não identifica corretamente o próprio Marco.`);
+      }
     }
   }
 
@@ -95,10 +118,21 @@ if (txtFiles.length !== expectedCount) {
   fail(`public/downloads contém ${txtFiles.length} TXTs de Marcos; esperado ${expectedCount}.`);
 }
 
+const studyTxtFiles = (await readdir(resolve('public/estudos')))
+  .filter((name) => /_marco\d{2}_estudo_.*\.txt$/.test(name));
+if (studyTxtFiles.length !== expectedCount) {
+  fail(`public/estudos contém ${studyTxtFiles.length} estudos; esperado ${expectedCount}.`);
+}
+
+const uniqueStudyFiles = new Set(Object.values(studyFiles));
+if (uniqueStudyFiles.size !== expectedCount) {
+  fail(`esperados ${expectedCount} estudos exclusivos, encontrados ${uniqueStudyFiles.size}.`);
+}
+
 const uniqueBackgrounds = new Set(ordered.map((marco) => marco.backgroundAsset).filter(Boolean));
 if (uniqueBackgrounds.size !== expectedCount) {
   fail(`esperados ${expectedCount} fundos exclusivos, encontrados ${uniqueBackgrounds.size}.`);
 }
 
 if (failed) process.exit(1);
-console.log(`Pré-lançamento válido: ${expectedCount} Marcos, páginas, TXTs, fundos e PNGs 1080x1920 conferidos.`);
+console.log(`Pré-lançamento válido: ${expectedCount} Marcos, páginas, TXTs, estudos, fundos e PNGs 1080x1920 conferidos.`);
