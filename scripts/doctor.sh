@@ -9,6 +9,13 @@ printf 'fnm:     %s\n' "$(command -v fnm 2>/dev/null || printf 'não encontrado'
 printf 'node:    %s\n' "$(command -v node 2>/dev/null || printf 'não encontrado')"
 printf 'npm:     %s\n' "$(command -v npm 2>/dev/null || printf 'não encontrado')"
 printf '.nvmrc:  %s\n' "$(cat .nvmrc 2>/dev/null || printf 'ausente')"
+
+if [[ -f package-lock.json ]]; then
+  printf 'lockfile: presente\n'
+else
+  printf 'lockfile: AUSENTE\n'
+fi
+
 printf '\n'
 print_versions
 
