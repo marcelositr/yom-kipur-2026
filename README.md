@@ -2,20 +2,39 @@
 
 Projeto editorial e visual de preparação para Yom Kipur 5787 / 2026.
 
-A proposta é construir uma caminhada gradual de estudo, reflexão e prática, apresentando raízes judaicas, Escrituras, conceitos e tradições de forma responsável e acessível a um público majoritariamente cristão que conhece a Bíblia, mas pouco o Judaísmo.
+A proposta é oferecer uma caminhada gradual de estudo, reflexão e prática, apresentando Escrituras, conceitos e tradições judaicas de forma responsável e acessível a um público majoritariamente cristão que conhece a Bíblia, mas pouco o Judaísmo.
 
-> Este repositório está em desenvolvimento privado. GitHub Pages ainda não está configurado para publicação.
+> O repositório continua privado e em pré-lançamento. GitHub Pages ainda não está configurado para publicação.
+
+## Estado atual
+
+O arco principal está completo em **15 Marcos**, de Elul até Ne’ilá.
+
+Cada Marco possui:
+
+- dados estruturados em `src/data/marcos.ts`;
+- card vertical 9:16;
+- ambientação SVG própria;
+- página Astro individual;
+- TXT devocional para distribuição e leitura no WhatsApp;
+- fontes e notas de calendário quando necessárias.
+
+A sequência editorial percorre:
+
+`proximidade → Emuná → Teshuvá → Cheshbon HaNefesh → reparação → Tzedaká → Selichot → Rosh Hashaná → responsabilidade → Aseret Yemei Teshuvá → Shabbat Shuvah → Erev Yom Kipur → Pikuach Nefesh → Yom Kipur → Ne’ilá`
 
 ## Princípio editorial
 
 Não existe obrigação de publicar diariamente.
 
-Cada novo marco precisa acrescentar:
+Cada Marco precisa acrescentar:
 
 - uma compreensão nova;
 - uma prática concreta.
 
 O ritmo é determinado pelo calendário judaico, pela progressão espiritual e pelo tempo necessário para viver cada etapa.
+
+As fontes são identificadas conforme sua natureza: bíblica, rabínica, haláchica, litúrgica, costume ou metáfora posterior. O projeto apresenta a tradição judaica sem transformar participação educativa de não judeus em obrigação haláchica.
 
 ## Stack
 
@@ -61,7 +80,7 @@ Comandos disponíveis:
 - `bash yk dev --open` — sobe o Astro e abre o navegador quando o servidor responder.
 - `bash yk open [CAMINHO]` — abre no navegador o localhost que já estiver rodando.
 - `bash yk test` — valida conteúdo, Astro/TypeScript e build.
-- `bash yk render N` — gera o PNG do marco `N`; sem número, usa o Marco 01.
+- `bash yk render N` — gera o PNG do Marco `N`; sem número, usa o Marco 01.
 - `bash yk doctor` — mostra branch, Node, npm, fnm e estado básico do ambiente.
 - `bash yk help` — mostra ajuda detalhada, parâmetros e exemplos.
 
@@ -73,41 +92,36 @@ Comandos disponíveis:
 ├── cards/
 │   ├── templates/       # composição 9:16 determinística
 │   └── rendered/        # PNGs gerados localmente, não versionados
-├── docs/                # regras editoriais e sistema visual
+├── docs/                # regras, cronograma e sistema visual
 ├── public/
-│   └── assets/          # ambientações e recursos públicos
+│   ├── assets/          # ambientações e recursos públicos
+│   └── downloads/       # 15 textos devocionais em TXT
 ├── scripts/             # setup, dev, open, testes, diagnóstico e renderização
 ├── src/
 │   ├── components/      # componentes visuais reutilizáveis
-│   ├── data/            # fonte estruturada dos marcos
+│   ├── data/            # fonte estruturada dos Marcos
 │   ├── layouts/
-│   ├── pages/
+│   ├── pages/           # homepage + 15 páginas dos Marcos
 │   └── styles/          # design system do site e do card
 └── .github/workflows/   # CI, sem deploy público
 ```
 
-## Desenvolvimento manual
+## Site local
 
-Os comandos abaixo continuam disponíveis caso seja necessário trabalhar sem o launcher:
-
-```bash
-fnm install
-fnm use
-npm install
-npm run dev
-```
-
-O Astro abre localmente em:
+O Astro abre em:
 
 ```text
 http://localhost:4321/yom-kipur-2026/
 ```
 
-O laboratório do Marco 01 fica em:
+A homepage funciona como guia do projeto e reúne:
 
-```text
-http://localhost:4321/yom-kipur-2026/marcos/01-o-rei-esta-no-campo/
-```
+- apresentação;
+- instruções de uso;
+- cronograma mestre;
+- coleção completa dos 15 Marcos.
+
+As páginas dos Marcos possuem navegação sequencial com **Anterior / Todos os Marcos / Próximo**.
 
 Para iniciar e abrir automaticamente:
 
@@ -143,7 +157,7 @@ npm test
 
 Esse comando valida o conteúdo, executa a checagem do Astro/TypeScript e gera o build estático.
 
-## Renderização do card
+## Renderização dos cards
 
 Via launcher:
 
@@ -164,28 +178,19 @@ Saída esperada:
 cards/rendered/01-o-rei-esta-no-campo.png
 ```
 
-## Card visual
+O card é composto em HTML/CSS e capturado pelo Chromium em **1080 × 1920**. A prévia do site e o PNG exportado usam `src/styles/card.css`, reduzindo divergências entre revisão e material final.
 
-O card é composto em HTML/CSS e capturado pelo Chromium em **1080 × 1920**.
-
-O preview exibido pelo site e o PNG exportado usam a mesma fonte de estilos (`src/styles/card.css`). Isso evita divergência entre o que é revisado no navegador e o material final.
-
-A ambientação do Marco 01 é um SVG próprio do projeto (`public/assets/backgrounds/marco01-proximidade.svg`) com campo, caminho, oliveiras e luz de entardecer. O renderizador incorpora esse recurso no PNG final, portanto o export não depende de servidor web nem de conexão externa.
-
-Hebraico, niqqud, datas, referências e créditos permanecem texto real. Isso evita erros gráficos em conteúdo que precisa de precisão textual.
-
-## Primeiro marco
-
-**9 Elul 5786 · 22 de agosto de 2026**
-
-**הַמֶּלֶךְ בַּשָּׂדֶה · HaMelech BaSadeh · O Rei está no campo**
-
-O primeiro marco está registrado como `draft` e possui uma página de laboratório para revisão visual e factual. O devocional ainda não é tratado como conteúdo publicado.
+O renderizador incorpora a ambientação SVG no PNG final, portanto o export não depende de servidor web nem de conexão externa. Hebraico, niqqud, datas, referências e créditos permanecem texto real.
 
 ## Documentação
 
 - [`docs/EDITORIAL.md`](docs/EDITORIAL.md) — limites, fontes e regras editoriais.
 - [`docs/VISUAL.md`](docs/VISUAL.md) — identidade gráfica e regras dos cards.
+- [`docs/CRONOGRAMA.md`](docs/CRONOGRAMA.md) — ordem, datas e janelas editoriais dos 15 Marcos.
+
+## Antes da publicação
+
+A etapa seguinte é o pré-lançamento técnico: instalação reprodutível, validação completa, renderização dos 15 PNGs e simulação integral do site antes de qualquer merge, Pages ou publicação pública.
 
 ## Crédito editorial
 
