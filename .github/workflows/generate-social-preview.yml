@@ -29,14 +29,33 @@ jobs:
       - name: Render 1200x630 preview
         run: python scripts/generate-social-preview.py
 
+      - name: Update social metadata
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('src/layouts/BaseLayout.astro')
+          text = path.read_text()
+          replacements = {
+              "socialImage = '/assets/social/yom-kipur-2026-og.jpg'": "socialImage = '/assets/social/yom-kipur-2026-og.png'",
+              'content="image/jpeg"': 'content="image/png"',
+              'content="600"': 'content="1200"',
+              'content="315"': 'content="630"',
+          }
+          for old, new in replacements.items():
+              if old not in text:
+                  raise SystemExit(f'Expected social metadata not found: {old}')
+              text = text.replace(old, new, 1)
+          path.write_text(text)
+          PY
+
       - name: Commit generated preview
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add public/assets/social/yom-kipur-2026-og.png
+          git add public/assets/social/yom-kipur-2026-og.png src/layouts/BaseLayout.astro
           if git diff --cached --quiet; then
-            echo "No image change."
+            echo "No social preview change."
             exit 0
           fi
-          git commit -m "chore: generate 1200x630 social preview"
+          git commit -m "chore: upgrade social preview to 1200x630"
           git push origin HEAD:${GITHUB_REF_NAME}
