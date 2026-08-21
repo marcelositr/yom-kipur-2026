@@ -9,7 +9,10 @@ interface Props {
 
 const { marco } = Astro.props;
 const card = cardCopyFor(marco.id);
-const backgroundAsset = marco.backgroundAsset?.replace(/^\/+/, '');
+const resolvedBackgroundAsset = marco.id === 1
+  ? '/assets/backgrounds/marco01-proximidade.webp'
+  : marco.backgroundAsset;
+const backgroundAsset = resolvedBackgroundAsset?.replace(/^\/+/, '');
 const backgroundUrl = backgroundAsset
   ? `${import.meta.env.BASE_URL}${backgroundAsset}`
   : undefined;
