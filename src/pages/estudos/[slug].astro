@@ -117,30 +117,18 @@ const downloadHref = `${base}estudos/${studyFile}`;
     });
 
     const copyButton = root.querySelector('[data-copy-whatsapp]');
-    const copyFallback = (text) => {
-      const textarea = document.createElement('textarea');
-      textarea.value = text;
-      textarea.setAttribute('readonly', '');
-      textarea.style.position = 'fixed';
-      textarea.style.opacity = '0';
-      document.body.appendChild(textarea);
-      textarea.select();
-      document.execCommand('copy');
-      textarea.remove();
-    };
 
     copyButton?.addEventListener('click', async () => {
       try {
+        if (!navigator.clipboard?.writeText) {
+          setStatus('Seu navegador não permite cópia automática. Use “Baixar .TXT”.');
+          return;
+        }
+
         const response = await fetch(root.dataset.downloadHref, { cache: 'no-store' });
         if (!response.ok) throw new Error('Falha ao carregar o estudo.');
         const text = await response.text();
-
-        if (navigator.clipboard?.writeText) {
-          await navigator.clipboard.writeText(text);
-        } else {
-          copyFallback(text);
-        }
-
+        await navigator.clipboard.writeText(text);
         setStatus('Texto copiado. Agora é só colar no WhatsApp.');
       } catch (error) {
         setStatus('Não foi possível copiar automaticamente. Use “Baixar .TXT”.');
@@ -165,6 +153,7 @@ const downloadHref = `${base}estudos/${studyFile}`;
     const synth = window.speechSynthesis;
     const chunks = [...article.querySelectorAll('[data-speech-chunk]')]
       .filter((element) => element.textContent?.trim());
+    const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
     let voices = [];
     let currentIndex = 0;
@@ -224,7 +213,7 @@ const downloadHref = `${base}estudos/${studyFile}`;
 
       const rect = chunk.getBoundingClientRect();
       if (rect.top < 90 || rect.bottom > window.innerHeight - 70) {
-        chunk.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        chunk.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
       }
 
       const utterance = new SpeechSynthesisUtterance(text);
@@ -443,7 +432,7 @@ const downloadHref = `${base}estudos/${studyFile}`;
   .study-article h2 {
     margin: 2.6em 0 .8em;
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: calc(1.5em / var(--reader-scale));
+    font-size: 1.5em;
     line-height: 1.25;
     letter-spacing: -.01em;
   }
