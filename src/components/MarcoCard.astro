@@ -1,12 +1,14 @@
 ---
 import '../styles/card.css';
 import type { Marco } from '../data/marcos';
+import { cardCopyFor } from '../data/cardCopy';
 
 interface Props {
   marco: Marco;
 }
 
 const { marco } = Astro.props;
+const card = cardCopyFor(marco.id);
 const backgroundAsset = marco.backgroundAsset?.replace(/^\/+/, '');
 const backgroundUrl = backgroundAsset
   ? `${import.meta.env.BASE_URL}${backgroundAsset}`
@@ -14,26 +16,36 @@ const backgroundUrl = backgroundAsset
 const backgroundStyle = backgroundUrl
   ? `--yk-background: url('${backgroundUrl}')`
   : undefined;
+const marcoNumber = String(marco.id).padStart(2, '0');
 ---
 <div class="yk-card-frame">
   <article class="yk-card" data-theme={marco.theme} style={backgroundStyle}>
     <div class="yk-card__body">
-      <div class="yk-card__topline">{marco.hebrewDate} · {marco.civilDate}</div>
-      <div class="yk-card__classification">{marco.classification}</div>
+      <div class="yk-card__topline">Marco {marcoNumber} · {marco.hebrewDate}</div>
+      <div class="yk-card__civil-date">{marco.civilDate}</div>
+      <div class="yk-card__classification">{card.classification}</div>
+
       <div class="yk-card__hebrew" lang="he" dir="rtl">{marco.hebrew}</div>
       <h2 class="yk-card__title">{marco.title}</h2>
       <div class="yk-card__translit">{marco.transliteration}</div>
       <div class="yk-card__translation">{marco.translation}</div>
-      <div class="yk-card__summary">{marco.summary}</div>
+
+      <p class="yk-card__summary">{card.summary}</p>
+
       <div class="yk-card__practice">
         <strong>Para viver este marco</strong>
-        <p>{marco.practice}</p>
+        <p>{card.practice}</p>
       </div>
-      {marco.biblicalReference && <div class="yk-card__reference">{marco.biblicalReference}</div>}
+
+      <div class="yk-card__source">{card.source}</div>
     </div>
+
     <footer class="yk-card__footer">
-      <span>Marcelo Trindade · @marcelositr</span>
-      <span>devnux.com.br</span>
+      <div>
+        <strong>Caminho para Yom Kipur 5787</strong>
+        <span>Marcelo Trindade · @marcelositr</span>
+      </div>
+      <span class="yk-card__site">yomkipur.devnux.com.br</span>
     </footer>
   </article>
 </div>
