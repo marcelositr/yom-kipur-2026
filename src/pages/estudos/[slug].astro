@@ -1,0 +1,564 @@
+---
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { marcos, type Marco } from '../../data/marcos';
+import { studyFileFor } from '../../data/studies';
+import { renderStudyText } from '../../lib/studyText';
+
+interface Props {
+  marco: Marco;
+  studyFile: string;
+}
+
+export function getStaticPaths() {
+  return marcos.map((marco) => ({
+    params: { slug: `${String(marco.id).padStart(2, '0')}-${marco.slug}` },
+    props: { marco, studyFile: studyFileFor(marco.id) }
+  }));
+}
+
+const { marco, studyFile } = Astro.props as Props;
+const source = await readFile(resolve('public', 'estudos', studyFile), 'utf8');
+const studyHtml = renderStudyText(source);
+const base = import.meta.env.BASE_URL;
+const marcoHref = `${base}marcos/${String(marco.id).padStart(2, '0')}-${marco.slug}/`;
+const downloadHref = `${base}estudos/${studyFile}`;
+---
+<BaseLayout
+  title={`Estudo do Marco ${String(marco.id).padStart(2, '0')} · ${marco.title} · Caminho para Yom Kipur 5787`}
+  description={`Estudo complementar do Marco ${String(marco.id).padStart(2, '0')}: ${marco.title}.`}
+>
+  <section class="study-reader container" data-study-reader data-download-href={downloadHref}>
+    <header class="study-reader__header">
+      <a class="study-reader__back" href={marcoHref}>← Voltar ao Marco {String(marco.id).padStart(2, '0')}</a>
+      <div class="study-reader__eyebrow">Estudo complementar · Marco {String(marco.id).padStart(2, '0')}</div>
+      <h1>{marco.title}</h1>
+      <p class="study-reader__date">{marco.hebrewDate} · {marco.civilDate}</p>
+      <p class="study-reader__intro">Leia no navegador, ajuste o tamanho do texto, ouça o estudo ou use o arquivo preparado para compartilhar.</p>
+    </header>
+
+    <div class="reader-toolbar" aria-label="Ferramentas de leitura">
+      <div class="reader-toolbar__group" aria-label="Tamanho do texto">
+        <span class="reader-toolbar__label">Texto</span>
+        <button type="button" class="reader-tool" data-font-decrease aria-label="Diminuir tamanho do texto">A−</button>
+        <button type="button" class="reader-tool" data-font-reset aria-label="Restaurar tamanho padrão do texto">A</button>
+        <button type="button" class="reader-tool" data-font-increase aria-label="Aumentar tamanho do texto">A+</button>
+      </div>
+
+      <div class="reader-toolbar__group reader-toolbar__speech" aria-label="Leitura por voz" data-speech-controls>
+        <button type="button" class="reader-tool reader-tool--primary" data-speech-toggle>Ouvir estudo</button>
+        <button type="button" class="reader-tool" data-speech-stop disabled>Parar</button>
+        <label class="reader-rate">
+          <span>Velocidade</span>
+          <select data-speech-rate aria-label="Velocidade da leitura">
+            <option value="0.75">0,75×</option>
+            <option value="1" selected>1×</option>
+            <option value="1.25">1,25×</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <p class="reader-status" data-reader-status role="status" aria-live="polite"></p>
+
+    <article id="study-article" class="study-article" set:html={studyHtml}></article>
+
+    <div class="study-actions" aria-label="Compartilhar e baixar estudo">
+      <button type="button" class="study-action study-action--primary" data-copy-whatsapp>Copiar para WhatsApp</button>
+      <a class="study-action" href={downloadHref} download>Baixar .TXT</a>
+      <a class="study-action" href={marcoHref}>Voltar ao Marco</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<script is:inline>
+  (() => {
+    const root = document.querySelector('[data-study-reader]');
+    if (!root) return;
+
+    const article = root.querySelector('#study-article');
+    const status = root.querySelector('[data-reader-status]');
+    const setStatus = (message) => {
+      if (status) status.textContent = message;
+    };
+
+    const fontKey = 'yk-study-font-scale';
+    const minScale = 0.85;
+    const maxScale = 1.5;
+    const step = 0.1;
+    let scale = Number.parseFloat(localStorage.getItem(fontKey) || '1');
+    if (!Number.isFinite(scale)) scale = 1;
+
+    const applyScale = () => {
+      scale = Math.min(maxScale, Math.max(minScale, Math.round(scale * 100) / 100));
+      root.style.setProperty('--reader-scale', String(scale));
+      localStorage.setItem(fontKey, String(scale));
+    };
+
+    applyScale();
+
+    root.querySelector('[data-font-decrease]')?.addEventListener('click', () => {
+      scale -= step;
+      applyScale();
+      setStatus(`Tamanho do texto: ${Math.round(scale * 100)}%.`);
+    });
+
+    root.querySelector('[data-font-reset]')?.addEventListener('click', () => {
+      scale = 1;
+      applyScale();
+      setStatus('Tamanho do texto restaurado para 100%.');
+    });
+
+    root.querySelector('[data-font-increase]')?.addEventListener('click', () => {
+      scale += step;
+      applyScale();
+      setStatus(`Tamanho do texto: ${Math.round(scale * 100)}%.`);
+    });
+
+    const copyButton = root.querySelector('[data-copy-whatsapp]');
+    const copyFallback = (text) => {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.setAttribute('readonly', '');
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      textarea.remove();
+    };
+
+    copyButton?.addEventListener('click', async () => {
+      try {
+        const response = await fetch(root.dataset.downloadHref, { cache: 'no-store' });
+        if (!response.ok) throw new Error('Falha ao carregar o estudo.');
+        const text = await response.text();
+
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          copyFallback(text);
+        }
+
+        setStatus('Texto copiado. Agora é só colar no WhatsApp.');
+      } catch (error) {
+        setStatus('Não foi possível copiar automaticamente. Use “Baixar .TXT”.');
+        console.error(error);
+      }
+    });
+
+    const speechToggle = root.querySelector('[data-speech-toggle]');
+    const speechStop = root.querySelector('[data-speech-stop]');
+    const speechRate = root.querySelector('[data-speech-rate]');
+    const speechControls = root.querySelector('[data-speech-controls]');
+    const speechSupported = 'speechSynthesis' in window && 'SpeechSynthesisUtterance' in window;
+
+    if (!speechSupported || !article) {
+      speechControls?.classList.add('is-unavailable');
+      if (speechToggle) speechToggle.disabled = true;
+      if (speechStop) speechStop.disabled = true;
+      setStatus('Leitura por voz não está disponível neste navegador.');
+      return;
+    }
+
+    const synth = window.speechSynthesis;
+    const chunks = [...article.querySelectorAll('[data-speech-chunk]')]
+      .filter((element) => element.textContent?.trim());
+
+    let voices = [];
+    let currentIndex = 0;
+    let active = false;
+    let paused = false;
+    let generation = 0;
+
+    const refreshVoices = () => {
+      voices = synth.getVoices();
+    };
+
+    refreshVoices();
+    synth.onvoiceschanged = refreshVoices;
+
+    const preferredVoice = () =>
+      voices.find((voice) => voice.lang.toLowerCase() === 'pt-br') ||
+      voices.find((voice) => voice.lang.toLowerCase().startsWith('pt'));
+
+    const clearHighlight = () => {
+      chunks.forEach((chunk) => chunk.classList.remove('is-speaking'));
+    };
+
+    const updateSpeechButtons = () => {
+      if (!speechToggle || !speechStop) return;
+      speechToggle.textContent = !active ? 'Ouvir estudo' : paused ? 'Continuar' : 'Pausar';
+      speechStop.disabled = !active;
+    };
+
+    const stopSpeech = (message = 'Leitura encerrada.') => {
+      generation += 1;
+      synth.cancel();
+      active = false;
+      paused = false;
+      currentIndex = 0;
+      clearHighlight();
+      updateSpeechButtons();
+      setStatus(message);
+    };
+
+    const speakChunk = (index, runId) => {
+      if (!active || runId !== generation) return;
+      if (index >= chunks.length) {
+        stopSpeech('Leitura concluída.');
+        return;
+      }
+
+      currentIndex = index;
+      const chunk = chunks[index];
+      const text = chunk.textContent?.trim();
+      if (!text) {
+        speakChunk(index + 1, runId);
+        return;
+      }
+
+      clearHighlight();
+      chunk.classList.add('is-speaking');
+
+      const rect = chunk.getBoundingClientRect();
+      if (rect.top < 90 || rect.bottom > window.innerHeight - 70) {
+        chunk.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'pt-BR';
+      utterance.rate = Number.parseFloat(speechRate?.value || '1');
+      const voice = preferredVoice();
+      if (voice) utterance.voice = voice;
+
+      utterance.onstart = () => {
+        if (runId === generation) setStatus(`Lendo trecho ${index + 1} de ${chunks.length}.`);
+      };
+
+      utterance.onend = () => {
+        if (!active || paused || runId !== generation) return;
+        speakChunk(index + 1, runId);
+      };
+
+      utterance.onerror = (event) => {
+        if (event.error === 'interrupted' || event.error === 'canceled') return;
+        stopSpeech('A leitura por voz foi interrompida pelo navegador.');
+      };
+
+      synth.speak(utterance);
+    };
+
+    speechToggle?.addEventListener('click', () => {
+      if (!active) {
+        generation += 1;
+        active = true;
+        paused = false;
+        currentIndex = 0;
+        updateSpeechButtons();
+        speakChunk(0, generation);
+        return;
+      }
+
+      if (paused) {
+        synth.resume();
+        paused = false;
+        updateSpeechButtons();
+        setStatus(`Leitura retomada no trecho ${currentIndex + 1}.`);
+      } else {
+        synth.pause();
+        paused = true;
+        updateSpeechButtons();
+        setStatus(`Leitura pausada no trecho ${currentIndex + 1}.`);
+      }
+    });
+
+    speechStop?.addEventListener('click', () => stopSpeech());
+
+    speechRate?.addEventListener('change', () => {
+      setStatus('A nova velocidade será usada a partir do próximo trecho.');
+    });
+
+    window.addEventListener('pagehide', () => {
+      generation += 1;
+      synth.cancel();
+    });
+
+    updateSpeechButtons();
+  })();
+</script>
+
+<style is:global>
+  .study-reader {
+    --reader-scale: 1;
+    max-width: 920px;
+    padding-block: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  .study-reader__header {
+    margin-inline: auto;
+    max-width: 760px;
+  }
+
+  .study-reader__back {
+    display: inline-block;
+    margin-bottom: 1.8rem;
+    color: var(--muted);
+    text-decoration: none;
+  }
+
+  .study-reader__back:hover,
+  .study-reader__back:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+
+  .study-reader__eyebrow {
+    color: var(--gold);
+    font-size: .76rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .study-reader__header h1 {
+    margin: .45rem 0 .6rem;
+    font-size: clamp(2.6rem, 7vw, 5rem);
+    line-height: .98;
+  }
+
+  .study-reader__date,
+  .study-reader__intro {
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .study-reader__intro {
+    max-width: 62ch;
+  }
+
+  .reader-toolbar {
+    position: sticky;
+    top: 84px;
+    z-index: 6;
+    margin: 2rem auto 0;
+    max-width: 760px;
+    padding: .8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .8rem;
+    border: 1px solid var(--line);
+    border-radius: 18px;
+    background: rgba(255, 253, 248, .96);
+    box-shadow: 0 10px 35px rgba(12, 26, 21, .08);
+    backdrop-filter: blur(12px);
+  }
+
+  .reader-toolbar__group {
+    display: flex;
+    align-items: center;
+    gap: .45rem;
+  }
+
+  .reader-toolbar__label,
+  .reader-rate span {
+    color: var(--muted);
+    font-size: .76rem;
+    font-weight: 700;
+  }
+
+  .reader-tool,
+  .reader-rate select,
+  .study-action {
+    min-height: 42px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: #fffdf8;
+    color: var(--forest);
+    font: inherit;
+    font-size: .86rem;
+    font-weight: 800;
+  }
+
+  .reader-tool {
+    min-width: 42px;
+    padding: .6rem .78rem;
+    cursor: pointer;
+  }
+
+  .reader-tool--primary,
+  .study-action--primary {
+    border-color: var(--forest);
+    background: var(--forest);
+    color: var(--ivory);
+  }
+
+  .reader-tool:disabled {
+    cursor: not-allowed;
+    opacity: .45;
+  }
+
+  .reader-tool:focus-visible,
+  .reader-rate select:focus-visible,
+  .study-action:focus-visible {
+    outline: 3px solid color-mix(in srgb, var(--gold) 55%, transparent);
+    outline-offset: 2px;
+  }
+
+  .reader-rate {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+
+  .reader-rate select {
+    padding: .55rem .7rem;
+  }
+
+  .reader-toolbar__speech.is-unavailable .reader-rate {
+    display: none;
+  }
+
+  .reader-status {
+    min-height: 1.4em;
+    margin: .8rem auto 0;
+    max-width: 760px;
+    color: var(--muted);
+    font-size: .82rem;
+  }
+
+  .study-article {
+    margin: 1.2rem auto 0;
+    max-width: 760px;
+    font-size: calc(1.08rem * var(--reader-scale));
+    line-height: 1.82;
+  }
+
+  .study-article p {
+    margin: 1.05em 0;
+  }
+
+  .study-article h2 {
+    margin: 2.6em 0 .8em;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: calc(1.5em / var(--reader-scale));
+    line-height: 1.25;
+    letter-spacing: -.01em;
+  }
+
+  .study-article blockquote {
+    margin: 1.6em 0;
+    padding: .25em 0 .25em 1.25em;
+    border-left: 3px solid var(--gold);
+    color: color-mix(in srgb, var(--forest) 86%, #000);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.06em;
+  }
+
+  .study-article blockquote p {
+    margin: .35em 0;
+  }
+
+  .study-list {
+    margin: 1.2em 0;
+    padding-left: 1.4em;
+  }
+
+  .study-list li {
+    margin: .55em 0;
+  }
+
+  .study-article hr {
+    margin: 2.2em 0;
+    border: 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .study-article [data-speech-chunk] {
+    border-radius: .35rem;
+    transition: background-color .2s ease, box-shadow .2s ease;
+  }
+
+  .study-article [data-speech-chunk].is-speaking {
+    background: color-mix(in srgb, var(--gold) 15%, transparent);
+    box-shadow: 0 0 0 .3rem color-mix(in srgb, var(--gold) 15%, transparent);
+  }
+
+  .study-actions {
+    margin: 3rem auto 0;
+    max-width: 760px;
+    padding-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .7rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .study-action {
+    padding: .72rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .study-action:hover,
+  .study-action:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: .2em;
+  }
+
+  @media (max-width: 780px) {
+    .reader-toolbar {
+      position: static;
+      align-items: stretch;
+      flex-direction: column;
+    }
+
+    .reader-toolbar__group {
+      flex-wrap: wrap;
+    }
+
+    .reader-toolbar__speech {
+      padding-top: .7rem;
+      border-top: 1px solid var(--line);
+    }
+  }
+
+  @media (max-width: 520px) {
+    .study-reader {
+      padding-inline: 1rem;
+    }
+
+    .reader-toolbar__label {
+      width: 100%;
+    }
+
+    .reader-rate {
+      width: 100%;
+      justify-content: space-between;
+      margin-top: .2rem;
+    }
+
+    .reader-rate select {
+      min-width: 110px;
+    }
+
+    .study-actions {
+      flex-direction: column;
+    }
+
+    .study-action {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .study-article [data-speech-chunk] {
+      transition: none;
+    }
+  }
+</style>
