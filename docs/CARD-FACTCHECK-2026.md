@@ -121,7 +121,7 @@ Não foi encontrado erro estrutural que exija mudar a sequência dos 15 Marcos. 
 
 - Data conferida: 10 Tishrei 5787 começa ao pôr do sol de domingo, 20/09/2026, e termina na noite de segunda, 21/09.
 - Natureza: Yom Kipur é moed bíblico e dia de aflição/expiação para Israel; Rambam o descreve como tempo de Teshuvá e confissão.
-- Ajuste V2: o card mantém claramente que a mitzvá é de Israel e que, para não judeus neste projeto, eventual abstinência é voluntária e segura.
+- Ajuste final: o card mantém claramente que Yom Kipur e seu jejum pertencem à observância judaica. Para não judeus, o projeto propõe estudo, oração, reflexão, Teshuvá e reparação, sem apresentar o jejum do dia como observância religiosa voluntária.
 - Referências: https://www.sefaria.org/Leviticus.16.29-30 · https://www.sefaria.org/Mishneh_Torah%2C_Repentance.2.7 · https://www.hebcal.com/holidays/yom-kippur-2026
 
 ## Marco 15 · Permaneça até o fim
