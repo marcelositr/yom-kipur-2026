@@ -349,7 +349,7 @@ export const marcos: Marco[] = [
     publicationDate: '20 de setembro de 2026',
     theme: 'yom-kippur',
     summary: 'A caminhada chega a Yom Kipur. O décimo dia de Tishrei reúne Teshuvá, oração, confissão, jejum e busca de expiação e purificação. O jejum não é o objetivo isolado do dia e nunca se sobrepõe à preservação da vida.',
-    classification: 'Moed bíblico e mitzvá bíblica para Israel · participação educativa/devocional voluntária para não judeus',
+    classification: 'Moed bíblico e mitzvá bíblica para Israel · estudo e reflexão educativa para não judeus',
     conceptSource: 'Levítico 16:30 · כִּי־בַיּוֹם הַזֶּה יְכַפֵּר עֲלֵיכֶם לְטַהֵר אֶתְכֶם',
     conceptSourceUrl: 'https://www.sefaria.org/Leviticus.16.30',
     traditionSource: 'Rambam · Mishneh Torah, Hilchot Teshuvá 2:7 · Yom Kipur como tempo de Teshuvá e confissão',
@@ -358,7 +358,7 @@ export const marcos: Marco[] = [
     calendarNote: '10 Tishrei 5787 começa ao pôr do sol de domingo, 20 de setembro. A publicação está prevista para o fim da tarde, antes da entrada de Yom Kipur em cada localidade. O dia segue até a noite de segunda-feira, 21 de setembro.',
     biblicalReference: 'Levítico 16:29–30 • ACF',
     backgroundAsset: '/assets/backgrounds/marco14-yom-kippur.svg',
-    practice: 'Entre no dia com três eixos: Teshuvá, oração e responsabilidade. Leia Levítico 16:29–30 e reserve tempo real para silêncio e oração. Se você não é judeu, não trate o jejum como obrigação haláchica; qualquer abstinência deve ser voluntária e segura. Pikuach Nefesh permanece acima do jejum.',
+    practice: 'Entre no dia com três eixos: Teshuvá, oração e responsabilidade. Leia Levítico 16:29–30 e reserve tempo real para silêncio e oração. Se você não é judeu, não assuma o jejum de Yom Kipur como observância religiosa própria. Acompanhe o sentido do dia por estudo, oração, reflexão, Teshuvá e reparação, de maneira compatível com sua realidade. Pikuach Nefesh permanece acima do jejum.',
     status: 'draft'
   },
   {
