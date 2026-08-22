@@ -29,7 +29,7 @@ Cada estudo deve usar somente as seções que realmente ajudam aquele Marco. A e
 - Não forçar Brit Chadashá em todos os Marcos.
 - Toda história atribuída a sábios deve ter fonte identificável.
 - Distinguir material bíblico, rabínico, haláchico, litúrgico, costume e metáfora posterior.
-- Não apresentar participação voluntária de não judeus como obrigação haláchica judaica.
+- Não apresentar mitzvot ou observâncias específicas de Israel como obrigação de não judeus e, no caso de Yom Kipur, não orientar o leitor não judeu a assumir o jejum do dia como observância religiosa própria. A participação educativa deve privilegiar estudo, oração, reflexão, Teshuvá e responsabilidade ética.
 - Questões de saúde, medicamentos, alimentação e jejum devem priorizar segurança e Pikuach Nefesh; o projeto não emite psak nem orientação médica.
 - Evitar transformar jejum em prova de fé, resistência ou mérito espiritual.
 - O texto deve ser curto o bastante para acompanhar a publicação de um Marco sem virar uma apostila entregue de uma vez.
