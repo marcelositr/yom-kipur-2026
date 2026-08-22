@@ -87,7 +87,7 @@ export const cardCopyByMarco: Record<number, CardCopy> = {
   14: {
     classification: 'Yom Kipur · mitzvá de Israel',
     summary: 'Yom Kipur é tempo de Teshuvá, confissão, expiação e purificação. O jejum é parte do dia, não seu objetivo isolado.',
-    practice: 'Entre com Teshuvá e oração. Se você não é judeu, qualquer abstinência é voluntária e deve ser segura.',
+    practice: 'Entre com Teshuvá e oração. Se você não é judeu, acompanhe o sentido do dia sem assumir o jejum de Yom Kipur como obrigação ou observância religiosa própria.',
     source: 'Levítico 16:29–30 · Rambam, Hilchot Teshuvá 2:7'
   },
   15: {
