@@ -20,7 +20,7 @@
     "release:check": "npm test && npm run ux:audit && npm run card:render:all && npm run preflight:release"
   },
   "dependencies": {
-    "astro": "^7.2.4"
+    "astro": "^7.3.3"
   },
   "devDependencies": {
     "@astrojs/check": "latest",
